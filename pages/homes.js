@@ -19,10 +19,12 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import { mainListItems, secondaryListItems } from '../components/listItems';
-import Chart from '../components/chart';
+import Chart from '../components/Chart';
 import Deposits from '../components/Deposits';
 import Orders from '../components/Orders';
 import MessageIcon from '@material-ui/icons/Message';
+import PeopleAltIcon from '@material-ui/icons/PeopleAlt';
+import ListItemText from "@material-ui/core/ListItemText";
 
 function Copyright() {
     return (
@@ -112,9 +114,10 @@ const useStyles = makeStyles(theme => ({
         display: 'flex',
         overflow: 'auto',
         flexDirection: 'column',
+        borderColor: theme.palette.primary,
     },
     fixedHeight: {
-        height: 240,
+        height: 150,
     },
 }));
 
@@ -178,19 +181,40 @@ function Dashboard() {
             <main className={classes.content}>
                 <div className={classes.appBarSpacer} />
                 <Container maxWidth="lg" className={classes.container}>
-                    <Grid container spacing={3}>
+                    <Grid container spacing={2}>
                         {/* Chart */}
-                        <Grid item xs={12} md={8} lg={9}>
-                            <Paper className={fixedHeightPaper}>
-                                <Orders />
-                            </Paper>
-                        </Grid>
-                        {/* Recent Deposits */}
                         <Grid item xs={12} md={4} lg={3}>
                             <Paper className={fixedHeightPaper}>
+                                <Grid container>
 
+                                <Grid item xs={6} style={{marginTop:'25px'}}>
+                                    <Badge  color="secondary">
+                                        <PeopleAltIcon style={{fontSize:'4rem'}} />
+                                    </Badge>
+                                </Grid>
+                                <Grid item xs={6} style={{marginTop:'25px'}}>
+                                    <h1>Clients</h1>
+                                </Grid>
+                                </Grid>
                             </Paper>
                         </Grid>
+                        <Grid item xs={12} md={4} lg={3}>
+                            <Paper className={fixedHeightPaper}>
+                                <h1>Propect</h1>
+                            </Paper>
+                        </Grid>
+                        <Grid item xs={12} md={4} lg={3}>
+                            <Paper className={fixedHeightPaper}>
+                                <h1>E-mail</h1>
+                            </Paper>
+                        </Grid>
+                        <Grid item xs={12} md={4} lg={3}>
+                            <Paper className={fixedHeightPaper}>
+                                <h1>Demandes</h1>
+                            </Paper>
+                        </Grid>
+
+
                         {/* Recent Orders */}
                         <Grid item xs={12} md={8} lg={9}>
                             <Paper className={classes.paper}>
