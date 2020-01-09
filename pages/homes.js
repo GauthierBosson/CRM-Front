@@ -22,6 +22,7 @@ import { mainListItems, secondaryListItems } from "../components/listItems";
 import Chart from "../components/Chart";
 import Deposits from "../components/Deposits";
 import Orders from "../components/Orders";
+import MessageIcon from "@material-ui/icons/Message";
 
 function Copyright() {
   return (
@@ -155,11 +156,16 @@ function Dashboard() {
             noWrap
             className={classes.title}
           >
-            Dashboard
+            Accueil
           </Typography>
           <IconButton color="inherit">
             <Badge badgeContent={4} color="secondary">
               <NotificationsIcon />
+            </Badge>
+          </IconButton>
+          <IconButton color="inherit">
+            <Badge color="secondary">
+              <MessageIcon />
             </Badge>
           </IconButton>
         </Toolbar>
@@ -187,14 +193,16 @@ function Dashboard() {
           <Grid container spacing={3}>
             {/* Chart */}
             <Grid item xs={12} md={8} lg={9}>
-              <Paper className={fixedHeightPaper}></Paper>
+              <Paper className={fixedHeightPaper}>
+                <Orders />
+              </Paper>
             </Grid>
             {/* Recent Deposits */}
             <Grid item xs={12} md={4} lg={3}>
               <Paper className={fixedHeightPaper}></Paper>
             </Grid>
             {/* Recent Orders */}
-            <Grid item xs={12}>
+            <Grid item xs={12} md={8} lg={9}>
               <Paper className={classes.paper}></Paper>
             </Grid>
           </Grid>
