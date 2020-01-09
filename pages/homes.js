@@ -25,7 +25,13 @@ import Orders from '../components/Orders';
 import MessageIcon from '@material-ui/icons/Message';
 import PeopleAltIcon from '@material-ui/icons/PeopleAlt';
 import ListItemText from "@material-ui/core/ListItemText";
-
+import MailOutlineIcon from '@material-ui/icons/MailOutline';
+import AddAlertIcon from '@material-ui/icons/AddAlert';
+import SupervisedUserCircleIcon from '@material-ui/icons/SupervisedUserCircle';
+import ListSubheader from "@material-ui/core/ListSubheader";
+import Title from "../components/Title";
+import Button from "@material-ui/core/button"
+import VisibilityIcon from '@material-ui/icons/Visibility';
 function Copyright() {
     return (
         <Typography variant="body2" color="textSecondary" align="center">
@@ -117,8 +123,7 @@ const useStyles = makeStyles(theme => ({
         borderColor: theme.palette.primary,
     },
     fixedHeight: {
-        height: 150,
-    },
+        height: 100  },
 }));
 
 function Dashboard() {
@@ -147,10 +152,10 @@ function Dashboard() {
                         <MenuIcon />
                     </IconButton>
                     <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-                        Accueil
+                        <strong>Accueil</strong>
                     </Typography>
                     <IconButton color="inherit">
-                        <Badge badgeContent={4} color="secondary">
+                        <Badge badgeContent={4} color="error">
                             <NotificationsIcon />
                         </Badge>
                     </IconButton>
@@ -168,15 +173,16 @@ function Dashboard() {
                 }}
                 open={open}
             >
-                <div className={classes.toolbarIcon}>
+                <div className={classes.toolbarIcon} style={{backgroundColor:'#F1F1F1'}}>
+
                     <IconButton onClick={handleDrawerClose}>
                         <ChevronLeftIcon />
                     </IconButton>
                 </div>
                 <Divider />
-                <List>{mainListItems}</List>
+                <List style={{backgroundColor:'#F1F1F1'}}>{mainListItems}</List>
                 <Divider />
-                <List>{secondaryListItems}</List>
+                <List style={{backgroundColor:'#F1F1F1'}}>{secondaryListItems}</List>
             </Drawer>
             <main className={classes.content}>
                 <div className={classes.appBarSpacer} />
@@ -184,47 +190,105 @@ function Dashboard() {
                     <Grid container spacing={2}>
                         {/* Chart */}
                         <Grid item xs={12} md={4} lg={3}>
-                            <Paper className={fixedHeightPaper}>
+                            <Paper className={fixedHeightPaper} style={{borderLeft:'solid 3px #4ECC90'}}>
+                                <Grid container>
+                                    <Grid item xs={6} style={{marginTop:'8px'}}>
+                                        <Badge  color="secondary">
+                                            <PeopleAltIcon style={{fontSize:'2rem', marginTop:'8px', fill: '#4ECC90'}} />
+                                        </Badge>
+                                    </Grid>
+
+                                    <Grid item xs={6} style={{marginTop:'8px'}}>
+                                        <h3><strong>Clients</strong></h3>
+                                    </Grid>
+                                </Grid>
+                            </Paper>
+                        </Grid>
+                        <Grid item xs={12} md={4} lg={3}>
+                            <Paper className={fixedHeightPaper} style={{borderLeft:'solid 3px #FFB27A'}}>
                                 <Grid container>
 
-                                <Grid item xs={6} style={{marginTop:'25px'}}>
-                                    <Badge  color="secondary">
-                                        <PeopleAltIcon style={{fontSize:'4rem'}} />
-                                    </Badge>
-                                </Grid>
-                                <Grid item xs={6} style={{marginTop:'25px'}}>
-                                    <h1>Clients</h1>
-                                </Grid>
+                                    <Grid item xs={6} style={{marginTop:'8px'}}>
+                                        <Badge  color="secondary">
+                                            <SupervisedUserCircleIcon style={{fontSize:'2rem', marginTop:'8px', fill: '#FFB27A'}} />
+                                        </Badge>
+                                    </Grid>
+                                    <Grid item xs={6} style={{marginTop:'8px'}}>
+                                        <h3>Prospect</h3>
+                                    </Grid>
                                 </Grid>
                             </Paper>
                         </Grid>
                         <Grid item xs={12} md={4} lg={3}>
-                            <Paper className={fixedHeightPaper}>
-                                <h1>Propect</h1>
+                            <Paper className={fixedHeightPaper} style={{borderLeft:'solid 3px #4EA4CC'}}>
+                                <Grid container>
+
+                                    <Grid item xs={6} style={{marginTop:'8px'}}>
+                                        <Badge  color="secondary">
+                                            <MailOutlineIcon style={{fontSize:'2rem', marginTop:'8px', fill: '#4EA4CC'}} />
+                                        </Badge>
+                                    </Grid>
+                                    <Grid item xs={6} style={{marginTop:'8px'}}>
+                                        <h3 >Emails</h3>
+                                    </Grid>
+                                </Grid>
                             </Paper>
                         </Grid>
                         <Grid item xs={12} md={4} lg={3}>
-                            <Paper className={fixedHeightPaper}>
-                                <h1>E-mail</h1>
-                            </Paper>
-                        </Grid>
-                        <Grid item xs={12} md={4} lg={3}>
-                            <Paper className={fixedHeightPaper}>
-                                <h1>Demandes</h1>
+
+                            <Paper className={fixedHeightPaper} style={{borderLeft:'solid 3px #CF2C29'}}>
+                                <Grid container>
+
+                                    <Grid item xs={6} style={{marginTop:'10px'}}>
+                                        <Badge badgeContent={1} color="error">
+                                            <AddAlertIcon style={{fontSize:'2rem', marginTop:'8px'}}/>
+                                        </Badge>
+                                    </Grid>
+                                    <Grid item xs={6} style={{marginTop:'10px'}}>
+                                        <h3 inset>Demandes</h3>
+                                    </Grid>
+                                </Grid>
                             </Paper>
                         </Grid>
 
 
                         {/* Recent Orders */}
-                        <Grid item xs={12} md={8} lg={9}>
-                            <Paper className={classes.paper}>
+                        <Grid item xs={12} md={8} lg={6}>
+                            <Paper className={classes.paper} style={{borderLeft:'solid 3px #41CC86'}}>
+                                <Orders />
+                                <Button color="secondary" style={{marginTop:'10px'}}>Voir Plus <VisibilityIcon style={{marginLeft:'6px'}} /></Button>
 
                             </Paper>
                         </Grid>
+                        <Grid item xs={12} md={8} lg={6}>
+                            <Paper className={classes.paper} style={{borderLeft:'solid 3px #E86B56'}}>
+                                <Title>Calendrier</Title>
+                            </Paper>
+                        </Grid>
+
+                        <Grid item xs={12} md={8} lg={3}>
+                            <Paper className={classes.paper}>
+                                <Chart />
+                            </Paper>
+                        </Grid>
+                        <Grid item xs={12} md={8} lg={3}>
+                            <Paper className={classes.paper} style={{borderLeft:'solid 3px #41CC86'}}>
+                                <Deposits />
+                            </Paper>
+                        </Grid>
+                        <Grid item xs={12} md={8} lg={3}>
+                            <Paper className={classes.paper}>
+                                <Deposits />
+                            </Paper>
+                        </Grid>
+
+                        <Grid item xs={12} md={8} lg={3}>
+                            <Paper className={classes.paper}>
+                                <Chart />
+                            </Paper>
+                        </Grid>
                     </Grid>
-                    <Box pt={4}>
-                        <Copyright />
-                    </Box>
+
                 </Container>
             </main>
         </div>

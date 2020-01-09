@@ -16,9 +16,7 @@ function createData(id, date, name, shipTo, paymentMethod, amount) {
 }
 
 const rows = [
-    createData(0, '16 Mar, 2019', 'Elvis Presley', 'Tupelo, MS', 'VISA ⠀•••• 3719', 312.44),
-    createData(1, '16 Mar, 2019', 'Paul McCartney', 'London, UK', 'VISA ⠀•••• 2574', 866.99),
-    createData(2, '16 Mar, 2019', 'Tom Scholz', 'Boston, MA', 'MC ⠀•••• 1253', 100.81),
+
     createData(2, '04 Apr, 2019', 'Hugo Ratel', 'Paris, FR', 'MC ⠀•••• 1345', 80.20),
 
 ];
@@ -37,15 +35,15 @@ export default function Orders() {
     const classes = useStyles();
     return (
         <React.Fragment>
-            <Title>Clients</Title>
+            <Title>Derniers Paiements</Title>
             <Table size="small">
                 <TableHead>
                     <TableRow>
 
                         <TableCell>Nom</TableCell>
                         <TableCell>Ville</TableCell>
-                        <TableCell>Payment Method</TableCell>
-                        <TableCell align="right">Sale Amount</TableCell>
+                        <TableCell>Mode de paiement</TableCell>
+                        <TableCell align="right">Montant</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
@@ -60,12 +58,7 @@ export default function Orders() {
                     ))}
                 </TableBody>
             </Table>
-            <div className={classes.seeMore}>
-                <Link color="primary" href="#" onClick={preventDefault}>
-                    Voir Plus  <Badge  color="secondary">
-                    <VisibilityIcon />
-                </Badge>
-                </Link>
+            <div >
             </div>
         </React.Fragment>
     );
