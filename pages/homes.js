@@ -192,14 +192,18 @@ function Dashboard() {
                         <Grid item xs={12} md={4} lg={3}>
                             <Paper className={fixedHeightPaper} style={{borderLeft:'solid 3px #4ECC90'}}>
                                 <Grid container>
-                                    <Grid item xs={6} style={{marginTop:'8px'}}>
-                                        <Badge  color="secondary">
-                                            <PeopleAltIcon style={{fontSize:'2rem', marginTop:'8px', fill: '#4ECC90'}} />
-                                        </Badge>
-                                    </Grid>
 
+                                        <Grid item xs={6} style={{marginTop:'8px'}}>
+                                            <Box justifyContent="center" style={{display:'flex'}}>
+                                                <Badge  color="secondary">
+                                            <PeopleAltIcon style={{fontSize:'3rem', marginTop:'6px', fill: '#4ECC90'}}/>
+                                        </Badge>
+                                            </Box>
+                                    </Grid>
                                     <Grid item xs={6} style={{marginTop:'8px'}}>
+                                        <Box justifyContent="center" style={{display:'flex'}}>
                                         <h3><strong>Clients</strong></h3>
+                                        </Box>
                                     </Grid>
                                 </Grid>
                             </Paper>
@@ -207,11 +211,12 @@ function Dashboard() {
                         <Grid item xs={12} md={4} lg={3}>
                             <Paper className={fixedHeightPaper} style={{borderLeft:'solid 3px #FFB27A'}}>
                                 <Grid container>
-
                                     <Grid item xs={6} style={{marginTop:'8px'}}>
+                                        <Box justifyContent="center" style={{display:'flex'}}>
                                         <Badge  color="secondary">
-                                            <SupervisedUserCircleIcon style={{fontSize:'2rem', marginTop:'8px', fill: '#FFB27A'}} />
+                                            <SupervisedUserCircleIcon style={{fontSize:'3rem', marginTop:'6px', fill: '#FFB27A'}} />
                                         </Badge>
+                                        </Box>
                                     </Grid>
                                     <Grid item xs={6} style={{marginTop:'8px'}}>
                                         <h3>Prospect</h3>
@@ -224,9 +229,11 @@ function Dashboard() {
                                 <Grid container>
 
                                     <Grid item xs={6} style={{marginTop:'8px'}}>
+                                        <Box justifyContent="center" style={{display:'flex'}}>
                                         <Badge  color="secondary">
-                                            <MailOutlineIcon style={{fontSize:'2rem', marginTop:'8px', fill: '#4EA4CC'}} />
+                                            <MailOutlineIcon style={{fontSize:'3rem', marginTop:'6px', fill: '#4EA4CC'}} />
                                         </Badge>
+                                        </Box>
                                     </Grid>
                                     <Grid item xs={6} style={{marginTop:'8px'}}>
                                         <h3 >Emails</h3>
@@ -240,9 +247,11 @@ function Dashboard() {
                                 <Grid container>
 
                                     <Grid item xs={6} style={{marginTop:'10px'}}>
+                                        <Box justifyContent="center" style={{display:'flex'}}>
                                         <Badge badgeContent={1} color="error">
-                                            <AddAlertIcon style={{fontSize:'2rem', marginTop:'8px'}}/>
+                                            <AddAlertIcon style={{fontSize:'3rem', marginTop:'6px'}}/>
                                         </Badge>
+                                        </Box>
                                     </Grid>
                                     <Grid item xs={6} style={{marginTop:'10px'}}>
                                         <h3 inset>Demandes</h3>
