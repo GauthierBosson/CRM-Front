@@ -24,14 +24,14 @@ import Deposits from '../components/Deposits';
 import Orders from '../components/Orders';
 import MessageIcon from '@material-ui/icons/Message';
 import PeopleAltIcon from '@material-ui/icons/PeopleAlt';
-import ListItemText from "@material-ui/core/ListItemText";
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import AddAlertIcon from '@material-ui/icons/AddAlert';
 import SupervisedUserCircleIcon from '@material-ui/icons/SupervisedUserCircle';
-import ListSubheader from "@material-ui/core/ListSubheader";
 import Title from "../components/Title";
 import Button from "@material-ui/core/button"
 import VisibilityIcon from '@material-ui/icons/Visibility';
+import Factures from '../components/factures';
+
 function Copyright() {
     return (
         <Typography variant="body2" color="textSecondary" align="center">
@@ -274,26 +274,14 @@ function Dashboard() {
                                 <Title>Calendrier</Title>
                             </Paper>
                         </Grid>
-
-                        <Grid item xs={12} md={8} lg={3}>
-                            <Paper className={classes.paper}>
-                                <Chart />
-                            </Paper>
-                        </Grid>
-                        <Grid item xs={12} md={8} lg={3}>
+                        <Grid item xs={12} md={8} lg={2}>
                             <Paper className={classes.paper} style={{borderLeft:'solid 3px #41CC86'}}>
                                 <Deposits />
                             </Paper>
                         </Grid>
-                        <Grid item xs={12} md={8} lg={3}>
-                            <Paper className={classes.paper}>
-                                <Deposits />
-                            </Paper>
-                        </Grid>
+                        <Grid item xs={12} md={8} lg={10}>
+                            <Paper className={classes.paper} style={{maxheight:'100'}}>
 
-                        <Grid item xs={12} md={8} lg={3}>
-                            <Paper className={classes.paper}>
-                                <Chart />
                             </Paper>
                         </Grid>
                     </Grid>
