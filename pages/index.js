@@ -6,7 +6,8 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
-
+import LockOpenIcon from '@material-ui/icons/LockOpen';
+import NotificationsIcon from "@material-ui/core/SvgIcon/SvgIcon";
 const useStyles = makeStyles(theme => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -28,10 +29,11 @@ export default function SignIn() {
 
   return (
     <Container component="main" maxWidth="sm">
+    <div style={{height:'100px'}} ></div>
       <CssBaseline />
       <div className={classes.paper}>
         <Typography component="h1" variant="h5">
-          Login
+          Connexion <LockOpenIcon style={{marginLeft:'6px', fill:'4rem'}}/>
         </Typography>
 
         <form className={classes.form} noValidate>
