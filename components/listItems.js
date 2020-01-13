@@ -30,7 +30,7 @@ export const mainListItems = (
       </ListItem>
     </Link>
 
-    <Link href="/clientProfil">
+    <Link href="/listClient">
       <ListItem button>
         <ListItemIcon>
           <PeopleIcon style={{fill: '#106B9C'}}/>

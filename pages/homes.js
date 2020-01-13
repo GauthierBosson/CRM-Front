@@ -30,7 +30,7 @@ import SupervisedUserCircleIcon from '@material-ui/icons/SupervisedUserCircle';
 import Title from "../components/Title";
 import Button from "@material-ui/core/button"
 import VisibilityIcon from '@material-ui/icons/Visibility';
-import Factures from '../components/factures';
+
 
 function Copyright() {
     return (
