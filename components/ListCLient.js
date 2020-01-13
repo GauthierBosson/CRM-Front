@@ -57,7 +57,6 @@ export default function SimpleTable() {
                                 Voir plus
                             </Button>
                                 <Button><DeleteForeverIcon style={{fill:'#CF2C29'}} /></Button></TableCell>
-
                         </TableRow>
                     ))}
                 </TableBody>

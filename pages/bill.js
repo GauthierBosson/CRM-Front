@@ -151,7 +151,7 @@ function Dashboard() {
                         <MenuIcon />
                     </IconButton>
                     <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-                        <strong>Accueil</strong>
+                        <strong>Factures</strong>
                     </Typography>
                     <IconButton color="inherit">
                         <Badge badgeContent={4} color="error">
