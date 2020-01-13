@@ -24,6 +24,7 @@ import Container from '@material-ui/core/container'
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import Button from "@material-ui/core/Button";
 import ArchiveIcon from '@material-ui/icons/Archive';
+import ModalViewBill from '../components/modal/modalViewBill'
 
 
 
@@ -35,12 +36,12 @@ const rows = [
     createData('JeanJean & co',21, 3.7, 67),
     createData('Donut Entreprise', 452, 25.0, 51),
     createData('Nfacto Date', 262, 16.0, 24),
-    createData('Frozen yoghurt', 159, 6.0, 24),
-    createData('Gingerbread', 356, 16.0, 49),
-    createData('Honeycomb', 408, 3.2, 87),
-    createData('Ice cream sandwich', 237, 9.0, 37),
-    createData('Jelly Bean', 375, 0.0, 94),
-    createData('KitKat', 518, 26.0, 65),
+    createData('Bonjour & Co', 159, 6.0, 24),
+    createData('Campus Saint-Marc', 356, 16.0, 49),
+    createData('Mabichette', 408, 3.2, 87),
+    createData('RosaParks', 237, 9.0, 37),
+    createData('Billy Jean', 375, 0.0, 94),
+    createData('KitKatBall Entreprise', 518, 26.0, 65),
     createData('Lollipop', 392, 0.2, 98),
     createData('Marshmallow', 318, 0, 81),
     createData('Nougat', 360, 19.0, 90),
@@ -329,10 +330,11 @@ export default function EnhancedTable() {
                                                 </TableCell>
                                                 <TableCell align="right">{row.calories}</TableCell>
                                                 <TableCell align="right">{row.fat}</TableCell>
-                                                <TableCell align="right"><Button color="secondary">
-                                                     <VisibilityIcon />
-                                                </Button>
-                                                    <Button style={{color: '#CF2C29'}}><ArchiveIcon/> </Button>
+                                                <TableCell align="right"><button style={{border: '0px',
+                                                    backgroundColor: 'transparent'}}>
+                                                     <ModalViewBill />
+                                                </button>
+                                                    <Button  href='/homes' style={{color: '#CF2C29'}}><ArchiveIcon/> </Button>
                                                 </TableCell>
 
                                             </TableRow>
