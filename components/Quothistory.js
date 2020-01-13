@@ -24,8 +24,8 @@ import Container from '@material-ui/core/container'
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import Button from "@material-ui/core/Button";
 import ArchiveIcon from '@material-ui/icons/Archive';
-import ModalViewBill from '../components/modal/modalViewBill';
-import Navbar from '../components/Navbar';
+import ModalViewquote from '../components/modal/ModalViewquote';
+
 
 
 function createData(name, calories, fat, carbs, protein) {
@@ -169,7 +169,7 @@ const EnhancedTableToolbar = props => {
                 </Typography>
             ) : (
                 <Typography className={classes.title} variant="h6" id="tableTitle">
-                    Liste Factures
+                    Liste Devis
                 </Typography>
             )}
 
@@ -283,91 +283,93 @@ export default function EnhancedTable() {
         <main className={classes.content}>
             <div className={classes.appBarSpacer} />
             <Container maxWidth="lg" className={classes.container}>
-        <React.Fragment>
-        <Container maxWidth="lg">
-            <div className={classes.root}>
-                <Paper className={classes.paper}>
-                    <EnhancedTableToolbar numSelected={selected.length}/>
-                    <TableContainer>
-                        <Table
-                            className={classes.table}
-                            aria-labelledby="tableTitle"
-                            size={dense ? 'small' : 'medium'}
-                            aria-label="enhanced table"
-                        >
-                            <EnhancedTableHead
-                                classes={classes}
-                                numSelected={selected.length}
-                                order={order}
-                                orderBy={orderBy}
-                                onSelectAllClick={handleSelectAllClick}
-                                onRequestSort={handleRequestSort}
-                                rowCount={rows.length}
+                <React.Fragment>
+                    <Container maxWidth="lg">
+
+
+                        <div className={classes.root}>
+                            <Paper className={classes.paper}>
+                                <EnhancedTableToolbar numSelected={selected.length}/>
+                                <TableContainer>
+                                    <Table
+                                        className={classes.table}
+                                        aria-labelledby="tableTitle"
+                                        size={dense ? 'small' : 'medium'}
+                                        aria-label="enhanced table"
+                                    >
+                                        <EnhancedTableHead
+                                            classes={classes}
+                                            numSelected={selected.length}
+                                            order={order}
+                                            orderBy={orderBy}
+                                            onSelectAllClick={handleSelectAllClick}
+                                            onRequestSort={handleRequestSort}
+                                            rowCount={rows.length}
+                                        />
+                                        <TableBody>
+                                            {stableSort(rows, getSorting(order, orderBy))
+                                                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                                                .map((row, index) => {
+                                                    const isItemSelected = isSelected(row.name);
+                                                    const labelId = `enhanced-table-checkbox-${index}`;
+
+                                                    return (
+                                                        <TableRow
+                                                            hover
+                                                            onClick={event => handleClick(event, row.name)}
+                                                            role="checkbox"
+                                                            aria-checked={isItemSelected}
+                                                            tabIndex={-1}
+                                                            key={row.name}
+                                                            selected={isItemSelected}
+                                                        >
+                                                            <TableCell padding="checkbox">
+                                                                <Checkbox
+                                                                    checked={isItemSelected}
+                                                                    inputProps={{'aria-labelledby': labelId}}
+                                                                />
+                                                            </TableCell>
+                                                            <TableCell component="th" id={labelId} scope="row" padding="none">
+                                                                {row.name}
+                                                            </TableCell>
+                                                            <TableCell align="right">{row.calories}</TableCell>
+                                                            <TableCell align="right">{row.fat}</TableCell>
+                                                            <TableCell align="right"><button style={{border: '0px',
+                                                                backgroundColor: 'transparent'}}>
+                                                                <ModalViewquote />
+                                                            </button>
+                                                                <Button  href='/bill' style={{color: '#CF2C29',border: '0px',
+                                                                    backgroundColor: 'transparent'}}><ArchiveIcon/> </Button>
+                                                            </TableCell>
+
+                                                        </TableRow>
+                                                    );
+                                                })}
+                                            {emptyRows > 0 && (
+                                                <TableRow style={{height: (dense ? 33 : 53) * emptyRows}}>
+                                                    <TableCell colSpan={6}/>
+                                                </TableRow>
+                                            )}
+                                        </TableBody>
+                                    </Table>
+                                </TableContainer>
+                                <TablePagination
+                                    rowsPerPageOptions={[5, 10, 25]}
+                                    component="div"
+                                    count={rows.length}
+                                    rowsPerPage={rowsPerPage}
+                                    page={page}
+                                    onChangePage={handleChangePage}
+                                    onChangeRowsPerPage={handleChangeRowsPerPage}
+                                />
+                            </Paper>
+                            <FormControlLabel
+                                control={<Switch checked={dense} onChange={handleChangeDense}/>}
+                                label="Dense padding"
                             />
-                            <TableBody>
-                                {stableSort(rows, getSorting(order, orderBy))
-                                    .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                                    .map((row, index) => {
-                                        const isItemSelected = isSelected(row.name);
-                                        const labelId = `enhanced-table-checkbox-${index}`;
-
-                                        return (
-                                            <TableRow
-                                                hover
-                                                onClick={event => handleClick(event, row.name)}
-                                                role="checkbox"
-                                                aria-checked={isItemSelected}
-                                                tabIndex={-1}
-                                                key={row.name}
-                                                selected={isItemSelected}
-                                            >
-                                                <TableCell padding="checkbox">
-                                                    <Checkbox
-                                                        checked={isItemSelected}
-                                                        inputProps={{'aria-labelledby': labelId}}
-                                                    />
-                                                </TableCell>
-                                                <TableCell component="th" id={labelId} scope="row" padding="none">
-                                                    {row.name}
-                                                </TableCell>
-                                                <TableCell align="right">{row.calories}</TableCell>
-                                                <TableCell align="right">{row.fat}</TableCell>
-                                                <TableCell align="right"><button style={{border: '0px',
-                                                    backgroundColor: 'transparent'}}>
-                                                    <ModalViewBill />
-                                                </button>
-                                                    <Button  href='/bill' style={{color: '#CF2C29',border: '0px',
-                                                        backgroundColor: 'transparent'}}><ArchiveIcon/> </Button>
-                                                </TableCell>
-
-                                            </TableRow>
-                                        );
-                                    })}
-                                {emptyRows > 0 && (
-                                    <TableRow style={{height: (dense ? 33 : 53) * emptyRows}}>
-                                        <TableCell colSpan={6}/>
-                                    </TableRow>
-                                )}
-                            </TableBody>
-                        </Table>
-                    </TableContainer>
-                    <TablePagination
-                        rowsPerPageOptions={[5, 10, 25]}
-                        component="div"
-                        count={rows.length}
-                        rowsPerPage={rowsPerPage}
-                        page={page}
-                        onChangePage={handleChangePage}
-                        onChangeRowsPerPage={handleChangeRowsPerPage}
-                    />
-                </Paper>
-                <FormControlLabel
-                    control={<Switch checked={dense} onChange={handleChangeDense}/>}
-                    label="Dense padding"
-                />
-            </div>
-        </Container>
-        </React.Fragment>
+                        </div>
+                    </Container>
+                </React.Fragment>
             </Container>
         </main>
 

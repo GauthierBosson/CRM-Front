@@ -72,8 +72,9 @@ export default function TransitionsModal() {
                 }}
             >
                 <Fade in={open}>
+
                     <div className={classes.paper}>
-                        <div id="transition-modal-title" style={{fontSize:'30px', backgroundColor:'#19857b', color:'#F1F1F1'}}><strong style={{marginLeft:'10px'}}>Détails de la Facture </strong></div>
+                        <div id="transition-modal-title" style={{fontSize:'30px', backgroundColor:'#19857b', color:'#F1F1F1'}}><strong style={{marginLeft:'10px'}}>Détails du devis </strong></div>
                         <br/>
                         <br/>
                         <Grid item xs={12}>
@@ -141,7 +142,7 @@ export default function TransitionsModal() {
                                 </Grid>
                                 <Grid item xs={4} align="center">
                                     <div id="transition-modal-description" align="center" style={{fontSize:'30px'}}> A Régler avant le <br/></div>
-                                <div><strong style={{fontSize:'20px'}}> 10/10/20</strong></div>
+                                    <div><strong style={{fontSize:'20px'}}> 10/10/20</strong></div>
                                 </Grid>
                                 <Grid item xs={4} align="center">
                                     <div id="transition-modal-description" align=""> Total<br/>
