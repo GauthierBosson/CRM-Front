@@ -189,6 +189,8 @@ function Dashboard() {
                     <Grid container spacing={2}>
                         {/* Chart */}
                         <Grid item xs={12} md={4} lg={3}>
+
+
                             <Paper className={fixedHeightPaper} style={{borderLeft:'solid 3px #4ECC90'}}>
                                 <Grid container>
 

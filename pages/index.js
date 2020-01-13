@@ -19,6 +19,11 @@ const useStyles = makeStyles(theme => ({
     width: "100%", // Fix IE 11 issue.
     marginTop: theme.spacing(1)
   },
+  background: {
+    height: "100vh",
+    backgroundSize: "cover",
+
+  },
   submit: {
     margin: theme.spacing(3, 0, 2)
   }
@@ -28,12 +33,14 @@ export default function SignIn() {
   const classes = useStyles();
 
   return (
+      <div className={classes.background} style={{background:'linear-gradient(89.54755525118753deg, rgba(255, 255, 255,1) 1.249348965163032%,rgba(254, 254, 254,1) 1.249348965163032%,rgba(207, 207, 207,1) 100.18164388524987%)'}}>
     <Container component="main" maxWidth="sm">
+
     <div style={{height:'100px'}} ></div>
       <CssBaseline />
       <div className={classes.paper}>
-        <Typography component="h1" variant="h5">
-          Connexion <LockOpenIcon style={{marginLeft:'6px', fill:'4rem'}}/>
+        <Typography component="h1" variant="h5" style={{fontSize:'40px'}}>
+          Connexion <LockOpenIcon style={{marginLeft:'6px', fill:'5rem'}}/>
         </Typography>
 
         <form className={classes.form} noValidate>
@@ -73,5 +80,6 @@ export default function SignIn() {
         </form>
       </div>
     </Container>
+      </div>
   );
 }

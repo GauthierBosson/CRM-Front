@@ -158,7 +158,7 @@ export default function TransitionsModal() {
                                 </Grid>
                             </Grid>
                         </form>
-                        <hr style={{marginTop:'30px', border:'solid 1px black', width:'50%', marginBottom:'30px'}}/>
+                        <hr style={{marginTop:'30px', border:'solid 1px #36393F',color:'#36393F' ,width:'50%', marginBottom:'30px'}}/>
                         <form className={classes.root} noValidate autoComplete="off">
                             <h2 align="center">Détail Entreprise</h2>
                             <Grid container spacing={3}>

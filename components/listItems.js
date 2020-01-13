@@ -20,24 +20,24 @@ export const mainListItems = (
         <ListItemText primary="Accueil" />
       </ListItem>
     </Link>
-
+      <Link href="/listClient">
+          <ListItem button>
+              <ListItemIcon>
+                  <PeopleIcon style={{fill: '#4ECC90'}}/>
+              </ListItemIcon>
+              <ListItemText primary="Clients" />
+          </ListItem>
+      </Link>
     <Link href="/prospect">
       <ListItem button>
         <ListItemIcon>
-          <ShoppingCartIcon style={{fill: '#106B9C'}}/>
+          <ShoppingCartIcon style={{fill: '#ffb27a'}}/>
         </ListItemIcon>
         <ListItemText primary="Prospect" />
       </ListItem>
     </Link>
 
-    <Link href="/listClient">
-      <ListItem button>
-        <ListItemIcon>
-          <PeopleIcon style={{fill: '#106B9C'}}/>
-        </ListItemIcon>
-        <ListItemText primary="Clients" />
-      </ListItem>
-    </Link>
+
     <Link href="/agenda">
       <ListItem button>
         <ListItemIcon>
