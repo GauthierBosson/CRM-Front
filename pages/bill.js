@@ -225,7 +225,7 @@ export default function EnhancedTable() {
     const [selected, setSelected] = React.useState([]);
     const [page, setPage] = React.useState(0);
     const [dense, setDense] = React.useState(true);
-    const [rowsPerPage, setRowsPerPage] = React.useState(10);
+    const [rowsPerPage, setRowsPerPage] = React.useState(7);
 
     const handleRequestSort = (event, property) => {
         const isAsc = orderBy === property && order === 'asc';
@@ -334,7 +334,8 @@ export default function EnhancedTable() {
                                                     backgroundColor: 'transparent'}}>
                                                      <ModalViewBill />
                                                 </button>
-                                                    <Button  href='/homes' style={{color: '#CF2C29'}}><ArchiveIcon/> </Button>
+                                                    <Button  href='/bill' style={{color: '#CF2C29',border: '0px',
+                                                        backgroundColor: 'transparent'}}><ArchiveIcon/> </Button>
                                                 </TableCell>
 
                                             </TableRow>
