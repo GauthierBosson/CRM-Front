@@ -22,11 +22,13 @@ const useStyles = makeStyles(theme => ({
     },
     paper: {
         backgroundColor: theme.palette.background.paper,
-        border: '1px solid',
         boxShadow: theme.shadows[5],
         padding: theme.spacing(2, 4, 3),
         width: '1000px',
-        minWidth: '100px',
+        minWidth: '50px',
+        height: '600px',
+        minHeight: '200px',
+        overflow:'scroll',
 
     },
     button: {
@@ -73,7 +75,7 @@ export default function TransitionsModal() {
             >
                 <Fade in={open}>
                     <div className={classes.paper}>
-                        <div id="transition-modal-title" style={{fontSize:'30px', backgroundColor:'#19857b', color:'#F1F1F1'}}><strong style={{marginLeft:'10px'}}>Détails de la Facture </strong></div>
+                        <div id="transition-modal-title" style={{fontSize:'30px', borderLeft:'solid 3px #19857b'}}><strong style={{marginLeft:'10px'}}>Détails de la Facture </strong></div>
                         <br/>
                         <br/>
                         <Grid item  sm={12}>
@@ -91,7 +93,7 @@ export default function TransitionsModal() {
                                 <br/>
                                 <div> Date : 10/11/2019 <br/> Facture n° :</div>
                             </Grid>
-                            <Grid item sm   ={6}>
+                            <Grid item sm={6}>
                                 <div id="transition-modal-description" align="right"> Numéro adresse<br/>Ville Code
                                     postal
                                 </div>
@@ -99,7 +101,7 @@ export default function TransitionsModal() {
                         </Grid>
                         <br/>
                         <br/>
-                        <Grid item xs={12}>
+                        <Grid item sm={12}>
                             <TableContainer component={Paper}>
                                 <Table className={classes.Table} aria-label="simple table">
                                     <TableHead>
@@ -133,17 +135,17 @@ export default function TransitionsModal() {
 
 
                             <Grid container spacing={3}>
-                                <Grid item xs={4} align="center">
+                                <Grid item sm={4} align="center">
                                     <div id="transition-modal-description" ><strong> RIB <br/>
                                     </strong></div>
                                     <br/>
                                     <div> IBAN :  **** **** **** 1234 <br/> BIC n° : 123 123 123</div>
                                 </Grid>
-                                <Grid item xs={4} align="center">
+                                <Grid item sm={4} align="center">
                                     <div id="transition-modal-description" align="center" style={{fontSize:'30px'}}> A Régler avant le <br/></div>
                                 <div><strong style={{fontSize:'20px'}}> 10/10/20</strong></div>
                                 </Grid>
-                                <Grid item xs={4} align="center">
+                                <Grid item sm={4} align="center">
                                     <div id="transition-modal-description" align=""> Total<br/>
                                         <div style={{fontSize:'30px', color:'#19857b'}}><strong>3000 € </strong></div>
                                     </div>

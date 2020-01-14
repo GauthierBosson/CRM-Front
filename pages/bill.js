@@ -19,17 +19,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import { mainListItems, secondaryListItems } from '../components/listItems';
-import Chart from '../components/Chart';
-import Deposits from '../components/Deposits';
-import Orders from '../components/Orders';
 import MessageIcon from '@material-ui/icons/Message';
-import PeopleAltIcon from '@material-ui/icons/PeopleAlt';
-import MailOutlineIcon from '@material-ui/icons/MailOutline';
-import AddAlertIcon from '@material-ui/icons/AddAlert';
-import SupervisedUserCircleIcon from '@material-ui/icons/SupervisedUserCircle';
-import Title from "../components/Title";
-import Button from "@material-ui/core/button"
-import VisibilityIcon from '@material-ui/icons/Visibility';
 import Factures from '../components/factures';
 
 function Copyright() {
