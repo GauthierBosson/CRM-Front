@@ -19,7 +19,7 @@ const clientProfil = () => {
         <div>
             <Grid container spacing={3}>
                 <Grid item xs={12}>
-                    <Paper style={{padding: '6px'}}><h3 style={{fontSize: '24px'}} align="left">Coordonnées</h3>
+                    <Paper style={{padding: '10px'}}><h3 style={{fontSize: '24px',borderLeft:'solid 3px #4ECC90', padding:'10px'}} align="left">Coordonnées</h3>
 
                         <p style={{marginLeft: '5px', fontSize: '15px'}}>
                             Nom/Prénom : <br/>
@@ -31,7 +31,7 @@ const clientProfil = () => {
                         </p>
 
 
-                        <div style={{padding: '6px'}}><h3 style={{fontSize: '24px'}} align="left">Coordonnées
+                        <div style={{padding: '6px'}}><h3 style={{fontSize: '24px',borderLeft:'solid 3px #4ECC90', padding:'10px'}} align="left">Coordonnées
                             d'entreprise</h3>
 
                             <p style={{marginLeft: '5px', fontSize: '15px'}}>

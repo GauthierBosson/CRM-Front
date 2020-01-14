@@ -25,11 +25,12 @@ const useStyles = makeStyles(theme => ({
     },
     paper: {
         backgroundColor: theme.palette.background.paper,
-        border: '1px solid #000',
         boxShadow: theme.shadows[5],
-        padding: theme.spacing(2, 4, 3),
         width: '1000px',
-        minWidth: '100px',
+        minWidth: '50px',
+        height: '500px',
+        minHeight: '200px',
+        overflow:'scroll',
 
     },
     button: {
@@ -98,9 +99,11 @@ export default function TransitionsModal() {
             >
                 <Fade in={open}>
                     <div className={classes.paper}>
+                        <div style={{padding:'20px'}}>
                         <div id="transition-modal-title"
-                             style={{fontSize: '30px', backgroundColor: '#19857b', color: '#F1F1F1'}}><strong
-                            style={{marginLeft: '10px'}}>Modification Profil Client </strong></div>
+
+                             style={{fontSize: '30px', padding:'10px', borderLeft:'solid 3px #4ECC90'}}><strong
+                            style={{color:''}}>Modification Profil Client </strong></div>
 
                         <form className={classes.root} noValidate autoComplete="off">
                             <h2 align="center">Détail Contact</h2>
@@ -157,7 +160,7 @@ export default function TransitionsModal() {
                                 </Grid>
                             </Grid>
                         </form>
-                        <hr style={{marginTop:'30px', border:'solid 1px #36393F',color:'#36393F' ,width:'50%', marginBottom:'30px'}}/>
+                        <hr style={{marginTop:'30px', border:'solid 1px #4ECC90',color:'#4ECC90' ,width:'50%', marginBottom:'30px'}}/>
                         <form className={classes.root} noValidate autoComplete="off">
                             <h2 align="center">Détail Entreprise</h2>
                             <Grid container spacing={3}>
@@ -233,7 +236,7 @@ export default function TransitionsModal() {
                             <Button color="error" href="/" align="right" style={{color:'#cf2c29'}}>Annuler</Button>
                             </div>
                             </form>
-
+                        </div>
                     </div>
                 </Fade>
             </Modal>

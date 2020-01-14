@@ -76,14 +76,14 @@ export default function TransitionsModal() {
                         <div id="transition-modal-title" style={{fontSize:'30px', backgroundColor:'#19857b', color:'#F1F1F1'}}><strong style={{marginLeft:'10px'}}>Détails de la Facture </strong></div>
                         <br/>
                         <br/>
-                        <Grid item xs={12}>
+                        <Grid item  sm={12}>
                             <h2 id="transition-modal-title" align="center">Logo Entreprise</h2>
                         </Grid>
 
                         <br/>
                         <br/>
                         <Grid container spacing={3}>
-                            <Grid item xs={6}>
+                            <Grid item sm={6}>
                                 <br/>
                                 <br/>
                                 <div id="transition-modal-description"><strong> Nom Responsable entreprise <br/>
@@ -91,7 +91,7 @@ export default function TransitionsModal() {
                                 <br/>
                                 <div> Date : 10/11/2019 <br/> Facture n° :</div>
                             </Grid>
-                            <Grid item xs={6}>
+                            <Grid item sm   ={6}>
                                 <div id="transition-modal-description" align="right"> Numéro adresse<br/>Ville Code
                                     postal
                                 </div>
@@ -99,7 +99,7 @@ export default function TransitionsModal() {
                         </Grid>
                         <br/>
                         <br/>
-                        <Grid item xs={12}>
+                        <Grid item sm={12}>
                             <TableContainer component={Paper}>
                                 <Table className={classes.Table} aria-label="simple table">
                                     <TableHead>
