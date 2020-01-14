@@ -12,7 +12,8 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-
+import Button from '@material-ui/core/Button';
+import PictureAsPdfIcon from '@material-ui/icons/PictureAsPdf';
 
 const useStyles = makeStyles(theme => ({
     modal: {
@@ -75,7 +76,8 @@ export default function TransitionsModal() {
             >
                 <Fade in={open}>
                     <div className={classes.paper}>
-                        <div id="transition-modal-title" style={{fontSize:'30px', borderLeft:'solid 3px #19857b'}}><strong style={{marginLeft:'10px'}}>Détails de la Facture </strong></div>
+                        <div id="transition-modal-title" style={{fontSize:'30px', borderLeft:'solid 3px #19857b'}}><strong style={{marginLeft:'10px'}}>Détails de la Facture  </strong> </div>
+                        <div align="right"><Button>Générer en PDF <PictureAsPdfIcon style={{marginLeft:'4px'}}/></Button></div>
                         <br/>
                         <br/>
                         <Grid item  sm={12}>

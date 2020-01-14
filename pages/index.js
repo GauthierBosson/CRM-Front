@@ -40,7 +40,7 @@ export default function SignIn() {
       <CssBaseline />
       <div className={classes.paper}>
         <Typography component="h1" variant="h5" style={{fontSize:'40px'}}>
-          Connexion <LockOpenIcon style={{marginLeft:'6px', fill:'5rem'}}/>
+          Connexion <LockOpenIcon style={{marginLeft:'6px', fontSize:'40px'}}/>
         </Typography>
 
         <form className={classes.form} noValidate>
