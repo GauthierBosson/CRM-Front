@@ -168,8 +168,8 @@ const EnhancedTableToolbar = props => {
                     {numSelected} selected
                 </Typography>
             ) : (
-                <Typography className={classes.title} variant="h6" id="tableTitle">
-                    Liste Devis
+                <Typography variant="" id="tableTitle">
+
                 </Typography>
             )}
 

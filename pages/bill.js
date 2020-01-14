@@ -176,6 +176,7 @@ function Dashboard() {
             <main className={classes.content}>
                 <div className={classes.appBarSpacer} />
                 <Container maxWidth="lg" className={classes.container}>
+                    <h1 style={{color:'#19857b'}}>Liste de toutes les factures</h1>
 
                     <Factures/>
 
