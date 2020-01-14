@@ -286,7 +286,7 @@ export default function EnhancedTable() {
         <React.Fragment>
         <Container maxWidth="lg">
             <div className={classes.root}>
-                <Paper className={classes.paper}>
+                <Paper className={classes.paper} style={{borderLeft:'solid 3px #4EA4CC'}}>
                     <EnhancedTableToolbar numSelected={selected.length}/>
                     <TableContainer>
                         <Table

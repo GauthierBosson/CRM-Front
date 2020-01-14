@@ -106,7 +106,7 @@ export default function TransitionsModal() {
                             <h2 align="center">Détail Contact</h2>
                             <Grid container spacing={3}>
 
-                                <Grid item xs={3}>
+                                <Grid item sm={3}>
                                     <TextField
                                         id="standard-full-width"
                                         label="Nom/Prénom"
@@ -118,7 +118,7 @@ export default function TransitionsModal() {
                                             shrink: true,
                                         }} />
                                 </Grid>
-                                <Grid item xs={3}>
+                                <Grid item sm={3}>
                                     <TextField
                                         id="standard-full-width"
                                         label="Adresse"
@@ -130,8 +130,7 @@ export default function TransitionsModal() {
                                             shrink: true,
                                         }} />
                                 </Grid>
-                                <Grid item xs={3}>
-
+                                <Grid item sm={3}>
                                     <TextField
                                         id="standard-full-width"
                                         label="E-mail"
@@ -143,7 +142,7 @@ export default function TransitionsModal() {
                                             shrink: true,
                                         }} />
                                 </Grid>
-                                <Grid item xs={3}>
+                                <Grid item sm={3}>
 
                                     <TextField
                                         id="standard-full-width"
@@ -163,7 +162,7 @@ export default function TransitionsModal() {
                             <h2 align="center">Détail Entreprise</h2>
                             <Grid container spacing={3}>
 
-                                <Grid item xs={2}>
+                                <Grid item sm={2}>
 
                                     <TextField
                                         id="standard-full-width"
@@ -177,7 +176,7 @@ export default function TransitionsModal() {
                                     }}
                                         />
                                 </Grid>
-                                <Grid item xs={2}>
+                                <Grid item sm={2}>
                                     <TextField
                                         id="standard-full-width"
                                         label="Adresse"
@@ -190,7 +189,7 @@ export default function TransitionsModal() {
                                         }}
                                     />
                                 </Grid>
-                                <Grid item xs={2}>
+                                <Grid item sm={2}>
                                     <TextField
                                         id="standard-full-width"
                                         label="Tel"
@@ -203,7 +202,7 @@ export default function TransitionsModal() {
                                         }}
                                     />
                                 </Grid>
-                                <Grid item xs={2}>
+                                <Grid item sm={2}>
                                     <TextField
                                         id="standard-full-width"
                                         label="SIRET"
@@ -216,7 +215,7 @@ export default function TransitionsModal() {
                                         }}
                                     />
                                 </Grid>
-                                <Grid item xs={3}>
+                                <Grid item sm={3}>
 
                                     <TextField style={{marginTop:'8px'}}
                                         id="standard-select-currency"

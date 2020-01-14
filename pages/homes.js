@@ -123,12 +123,21 @@ const useStyles = makeStyles(theme => ({
         borderColor: theme.palette.primary,
     },
     fixedHeight: {
-        height: 100  },
+        height: 100,
+        textDecoration: 'none',
+        '&:hover': {
+            opacity: 0.7,
+            transition: 0.5,
+        },
+    },
+
+
 }));
+
 
 function Dashboard() {
     const classes = useStyles();
-    const [open, setOpen] = React.useState(true);
+    const [open, setOpen] = React.useState(false);
     const handleDrawerOpen = () => {
         setOpen(true);
     };
@@ -137,10 +146,10 @@ function Dashboard() {
     };
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
     return (
-        <div className={classes.root}>
+        <div className={classes.root}style={{backgroundColor:'transparent'}} >
             <CssBaseline />
             <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
-                <Toolbar className={classes.toolbar}>
+                <Toolbar className={classes.toolbar} >
                     <IconButton
                         edge="start"
                         color="inherit"
@@ -189,8 +198,7 @@ function Dashboard() {
                     <Grid container spacing={2}>
                         {/* Chart */}
                         <Grid item xs={12} md={4} lg={3}>
-
-
+                            <Link href="/listClient"  style={{textDecoration:'none'}}>
                             <Paper className={fixedHeightPaper} style={{borderLeft:'solid 3px #4ECC90'}}>
                                 <Grid container>
 
@@ -208,8 +216,10 @@ function Dashboard() {
                                     </Grid>
                                 </Grid>
                             </Paper>
+                            </Link>
                         </Grid>
                         <Grid item xs={12} md={4} lg={3}>
+                            <Link href="/prospect"  style={{textDecoration:'none'}}>
                             <Paper className={fixedHeightPaper} style={{borderLeft:'solid 3px #FFB27A'}}>
                                 <Grid container>
                                     <Grid item xs={6} style={{marginTop:'8px'}}>
@@ -224,8 +234,10 @@ function Dashboard() {
                                     </Grid>
                                 </Grid>
                             </Paper>
+                            </Link>
                         </Grid>
                         <Grid item xs={12} md={4} lg={3}>
+                            <Link href="/mail"  style={{textDecoration:'none'}}>
                             <Paper className={fixedHeightPaper} style={{borderLeft:'solid 3px #4EA4CC'}}>
                                 <Grid container>
 
@@ -241,9 +253,10 @@ function Dashboard() {
                                     </Grid>
                                 </Grid>
                             </Paper>
+                            </Link>
                         </Grid>
                         <Grid item xs={12} md={4} lg={3}>
-
+                            <Link href="/"  style={{textDecoration:'none'}}>
                             <Paper className={fixedHeightPaper} style={{borderLeft:'solid 3px #CF2C29'}}>
                                 <Grid container>
 
@@ -259,6 +272,7 @@ function Dashboard() {
                                     </Grid>
                                 </Grid>
                             </Paper>
+                            </Link>
                         </Grid>
 
 
@@ -292,6 +306,7 @@ function Dashboard() {
         </div>
     );
 }
+
 
 
 

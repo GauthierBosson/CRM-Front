@@ -33,7 +33,7 @@ export default function SimpleTable() {
 
     return (
         <div>
-        <TableContainer component={Paper}>
+        <TableContainer component={Paper}  style={{borderLeft:'solid 3px #58877B'}}>
             <Table className={classes.table} aria-label="simple table">
                 <TableHead>
                     <TableRow>
