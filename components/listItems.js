@@ -7,10 +7,16 @@ import DashboardIcon from "@material-ui/icons/Dashboard";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import PeopleIcon from "@material-ui/icons/People";
 import BarChartIcon from "@material-ui/icons/BarChart";
-import LayersIcon from "@material-ui/icons/Layers";
-import AssignmentIcon from "@material-ui/icons/Assignment";
+
 import Link from "next/link";
 import Tooltip from "@material-ui/core/Tooltip";
+import GavelIcon from '@material-ui/icons/Gavel';
+import RestoreIcon from '@material-ui/icons/Restore';
+import EuroSymbolIcon from '@material-ui/icons/EuroSymbol';
+import PlaylistAddCheckIcon from '@material-ui/icons/PlaylistAddCheck';
+import ChromeReaderModeIcon from '@material-ui/icons/ChromeReaderMode';
+import DateRangeIcon from '@material-ui/icons/DateRange';
+import GetAppIcon from '@material-ui/icons/GetApp';
 export const mainListItems = (
   <div>
     <Link href="/homes">
@@ -49,7 +55,7 @@ export const mainListItems = (
       <Tooltip title="Agenda" placement="right">
       <ListItem button>
         <ListItemIcon>
-          <BarChartIcon style={{fill: '#106B9C'}}/>
+          <DateRangeIcon style={{fill: '#269a9c'}}/>
         </ListItemIcon>
         <ListItemText primary="Agenda" />
       </ListItem>
@@ -60,7 +66,7 @@ export const mainListItems = (
       <Tooltip title="Imports" placement="right">
       <ListItem button>
         <ListItemIcon>
-          <LayersIcon style={{fill: '#106B9C'}}/>
+          <GetAppIcon style={{fill: '#9c1061'}}/>
         </ListItemIcon>
         <ListItemText primary="Imports" />
       </ListItem>
@@ -76,7 +82,7 @@ export const secondaryListItems = (
       <Tooltip title="Factures" placement="right">
       <ListItem button>
         <ListItemIcon>
-          <AssignmentIcon style={{fill:'#384A6E'}}/>
+          <EuroSymbolIcon style={{fill:'#384A6E'}}/>
         </ListItemIcon>
         <ListItemText primary="Factures" />
       </ListItem>
@@ -86,7 +92,7 @@ export const secondaryListItems = (
       <Tooltip title="Devis" placement="right">
       <ListItem button>
         <ListItemIcon>
-          <AssignmentIcon style={{fill:'#384A6E'}}/>
+          <PlaylistAddCheckIcon style={{fill:'#384A6E'}}/>
         </ListItemIcon>
         <ListItemText primary="Devis" />
       </ListItem>
@@ -96,24 +102,27 @@ export const secondaryListItems = (
       <Tooltip title="Catégories" placement="right">
       <ListItem button>
         <ListItemIcon>
-          <AssignmentIcon style={{fill:'#384A6E'}}/>
+          <ChromeReaderModeIcon style={{fill:'#384A6E'}}/>
         </ListItemIcon>
         <ListItemText primary="Categories" />
       </ListItem>
       </Tooltip>
     </Link>
+      <Link href="/legalNotice">
     <Tooltip title="Mentions légales" placement="right">
     <ListItem button>
       <ListItemIcon>
-        <AssignmentIcon style={{fill:'#384A6E'}} />
+        <GavelIcon style={{fill:'#384A6E'}} />
       </ListItemIcon>
       <ListItemText primary="Mentions légales" />
     </ListItem>
     </Tooltip>
+      </Link>
+      <Link href="/cgu">
     <Tooltip title="Conditions d'utilisation" placement="right">
     <ListItem button>
       <ListItemIcon>
-        <AssignmentIcon style={{fill:'#384A6E'}}/>
+        <GavelIcon style={{fill:'#384A6E'}}/>
       </ListItemIcon>
       <ListItemText
         disableTypography={true}
@@ -122,13 +131,16 @@ export const secondaryListItems = (
       />
     </ListItem>
     </Tooltip>
+      </Link>
+      <Link href="/">
     <Tooltip title="Historique" placement="right">
     <ListItem button>
       <ListItemIcon>
-        <AssignmentIcon style={{fill:'#384A6E'}}/>
+        <RestoreIcon style={{fill:'#384A6E'}}/>
       </ListItemIcon>
       <ListItemText primary="Historique" />
     </ListItem>
     </Tooltip>
+      </Link>
   </div>
 );

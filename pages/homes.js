@@ -19,7 +19,6 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import { mainListItems, secondaryListItems } from '../components/listItems';
-import Chart from '../components/Chart';
 import Deposits from '../components/Deposits';
 import Orders from '../components/Orders';
 import MessageIcon from '@material-ui/icons/Message';
@@ -30,6 +29,7 @@ import SupervisedUserCircleIcon from '@material-ui/icons/SupervisedUserCircle';
 import Title from "../components/Title";
 import Button from "@material-ui/core/button"
 import VisibilityIcon from '@material-ui/icons/Visibility';
+//import Background from '../components/svg/user-friends-solid.svg';
 
 
 function Copyright() {
@@ -125,9 +125,14 @@ const useStyles = makeStyles(theme => ({
     fixedHeight: {
         height: 100,
         textDecoration: 'none',
+       /* backgroundImage: `url(${Background})`,
+        backgroundPosition: 'center',
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat', */
         '&:hover': {
             opacity: 0.7,
             transition: 0.5,
+
         },
     },
 
