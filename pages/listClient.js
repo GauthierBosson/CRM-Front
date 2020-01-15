@@ -18,6 +18,7 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import { mainListItems, secondaryListItems } from '../components/listItems';
 import MessageIcon from '@material-ui/icons/Message';
 import ListClient from '../components/ListCLient';
+import AccessibilityNewIcon from '@material-ui/icons/AccessibilityNew';
 
 
 function Copyright() {
@@ -175,7 +176,7 @@ function Dashboard() {
                 <div className={classes.appBarSpacer} />
 
                 <Container maxWidth="lg" className={classes.container}>
-                    <h1 style={{color:'#19857b'}}>Liste des clients de la base donnée</h1>
+                    <h1 style={{color:'#19857b'}}>Liste des clients de la base données <AccessibilityNewIcon/></h1>
 
                     <ListClient />
 

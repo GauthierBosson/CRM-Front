@@ -53,6 +53,7 @@ const useStyles = makeStyles(theme => ({
     },
     toolbar: {
         paddingRight: 24, // keep right padding when drawer closed
+
     },
     toolbarIcon: {
         display: 'flex',
@@ -66,6 +67,7 @@ const useStyles = makeStyles(theme => ({
         transition: theme.transitions.create(['width', 'margin'], {
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.leavingScreen,
+            backgroundColor:'#F1F1F1',
         }),
     },
     appBarShift: {
@@ -74,6 +76,7 @@ const useStyles = makeStyles(theme => ({
         transition: theme.transitions.create(['width', 'margin'], {
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.enteringScreen,
+            backgroundColor:'#F1F1F1',
         }),
     },
     menuButton: {
@@ -92,6 +95,7 @@ const useStyles = makeStyles(theme => ({
         transition: theme.transitions.create('width', {
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.enteringScreen,
+            backgroundColor:'#F1F1F1',
         }),
     },
     drawerPaperClose: {
@@ -99,6 +103,7 @@ const useStyles = makeStyles(theme => ({
         transition: theme.transitions.create('width', {
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.leavingScreen,
+            backgroundColor:'#F1F1F1',
         }),
         width: theme.spacing(7),
         [theme.breakpoints.up('sm')]: {
@@ -110,6 +115,7 @@ const useStyles = makeStyles(theme => ({
         flexGrow: 1,
         height: '100vh',
         overflow: 'auto',
+        backgroundColor:'#F1F1F1',
     },
     container: {
         paddingTop: theme.spacing(4),
