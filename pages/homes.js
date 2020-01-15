@@ -204,13 +204,13 @@ function Dashboard() {
                         {/* Chart */}
                         <Grid item xs={12} md={4} lg={3}>
                             <Link href="/listClient"  style={{textDecoration:'none'}}>
-                            <Paper className={fixedHeightPaper} style={{borderLeft:'solid 3px #4ECC90'}}>
+                            <Paper className={fixedHeightPaper} style={{borderLeft:'solid 3px #248485'}}>
                                 <Grid container>
 
                                         <Grid item xs={6} style={{marginTop:'8px'}}>
                                             <Box justifyContent="center" style={{display:'flex'}}>
                                                 <Badge  color="secondary">
-                                            <PeopleAltIcon style={{fontSize:'3rem', marginTop:'6px', fill: '#4ECC90'}}/>
+                                            <PeopleAltIcon style={{fontSize:'3rem', marginTop:'6px', fill: '#248485'}}/>
                                         </Badge>
                                             </Box>
                                     </Grid>
@@ -283,7 +283,7 @@ function Dashboard() {
 
                         {/* Recent Orders */}
                         <Grid item xs={12} md={8} lg={6}>
-                            <Paper className={classes.paper} style={{borderLeft:'solid 3px #41CC86'}}>
+                            <Paper className={classes.paper} style={{borderLeft:'solid 3px #248485'}}>
                                 <Orders />
                                 <Button color="secondary" style={{marginTop:'10px'}}>Voir Plus <VisibilityIcon style={{marginLeft:'6px'}} /></Button>
 
@@ -295,7 +295,7 @@ function Dashboard() {
                             </Paper>
                         </Grid>
                         <Grid item xs={12} md={8} lg={2}>
-                            <Paper className={classes.paper} style={{borderLeft:'solid 3px #41CC86'}}>
+                            <Paper className={classes.paper} style={{borderLeft:'solid 3px #248485'}}>
                                 <Deposits />
                             </Paper>
                         </Grid>
