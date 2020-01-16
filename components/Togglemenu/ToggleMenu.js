@@ -28,7 +28,7 @@ export default function SimpleMenu() {
 
     return (
         <div >
-            <ListItem button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
+            <ListItem button aria-controls="simple-menu" aria-haspopup="true" style={{padding:'24px'}} onClick={handleClick}>
                 <ListItemIcon align="left">
                     <DnsIcon color="primary"/>
                 </ListItemIcon>
@@ -106,15 +106,6 @@ export default function SimpleMenu() {
                         </ListItem>
 
                 </Link>
-                <Link href="/index" onClick={handleClose}>
-                        <ListItem button>
-                            <ListItemIcon>
-                                <ExitToAppIcon style={{fill:'#2e2e2e'}}/>
-                            </ListItemIcon>
-                            <ListItemText primary="Déconnexion"/>
-                        </ListItem>
-                </Link>
-
             </Menu>
         </div>
     );

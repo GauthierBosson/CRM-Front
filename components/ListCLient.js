@@ -11,6 +11,7 @@ import VisibilityIcon from '@material-ui/icons/Visibility';
 import Button from '@material-ui/core/Button';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import Tooltip from "@material-ui/core/Tooltip";
+import { Thead, Tbody, Tr, Th, Td} from 'react-super-responsive-table'
 
 
 const useStyles = makeStyles({
@@ -66,6 +67,10 @@ export default function SimpleTable() {
                 </TableBody>
             </Table>
         </TableContainer>
+
         </div>
+
+
+
     );
 }

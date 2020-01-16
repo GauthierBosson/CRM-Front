@@ -97,7 +97,6 @@ const useStyles = makeStyles(theme => ({
         transition: theme.transitions.create('width', {
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.enteringScreen,
-            backgroundColor:'#F1F1F1',
         }),
     },
     drawerPaperClose: {
@@ -105,7 +104,6 @@ const useStyles = makeStyles(theme => ({
         transition: theme.transitions.create('width', {
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.leavingScreen,
-            backgroundColor:'#F1F1F1',
         }),
         width: theme.spacing(7),
         [theme.breakpoints.up('sm')]: {
@@ -117,7 +115,6 @@ const useStyles = makeStyles(theme => ({
         flexGrow: 1,
         height: '100vh',
         overflow: 'auto',
-        backgroundColor:'#F1F1F1',
     },
     container: {
         paddingTop: theme.spacing(4),
@@ -134,13 +131,13 @@ const useStyles = makeStyles(theme => ({
     fixedHeight: {
         height: 100,
         textDecoration: 'none',
-       /* backgroundImage: `url(${Background})`,
-        backgroundPosition: 'center',
-        backgroundSize: 'cover',
-        backgroundRepeat: 'no-repeat', */
+        transition: '0.5'   ,
+
         '&:hover': {
-            opacity: 0.7,
-            transition: 0.5,
+            /*backgroundImage: "url(" + "https://cdn.pixabay.com/photo/2018/03/15/08/54/grid-3227459_1280.jpg" + ")", */
+            backgroundPosition: 'center',
+            backgroundSize: 'cover',
+            backgroundRepeat: 'no-repeat',
 
         },
     },
@@ -195,15 +192,15 @@ function Dashboard() {
                 }}
                 open={open}
             >
-                <div className={classes.toolbarIcon} style={{backgroundColor:'#F1F1F1'}}>
+                <div className={classes.toolbarIcon} >
 
                     <IconButton onClick={handleDrawerClose}>
                         <ChevronLeftIcon />
                     </IconButton>
                 </div>
                 <Divider />
-                <List style={{backgroundColor:'#F1F1F1'}}>{mainListItems}</List>
-                <Divider />
+                <List>{mainListItems}</List>
+
             </Drawer>
             <main className={classes.content}>
                 <div className={classes.appBarSpacer} />
@@ -243,7 +240,9 @@ function Dashboard() {
                                         </Box>
                                     </Grid>
                                     <Grid item xs={6} style={{marginTop:'8px'}}>
+                                        <Box justifyContent="center" style={{display:'flex'}}>
                                         <h3>Prospect</h3>
+                                        </Box>
                                     </Grid>
                                 </Grid>
                             </Paper>
@@ -262,7 +261,9 @@ function Dashboard() {
                                         </Box>
                                     </Grid>
                                     <Grid item xs={6} style={{marginTop:'8px'}}>
+                                        <Box justifyContent="center" style={{display:'flex'}}>
                                         <h3 >Emails</h3>
+                                        </Box>
                                     </Grid>
                                 </Grid>
                             </Paper>
@@ -281,7 +282,9 @@ function Dashboard() {
                                         </Box>
                                     </Grid>
                                     <Grid item xs={6} style={{marginTop:'10px'}}>
+                                        <Box justifyContent="center" style={{display:'flex'}}>
                                         <h3 inset>Demandes</h3>
+                                        </Box>
                                     </Grid>
                                 </Grid>
                             </Paper>
