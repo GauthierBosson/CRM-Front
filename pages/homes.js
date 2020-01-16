@@ -29,7 +29,6 @@ import SupervisedUserCircleIcon from '@material-ui/icons/SupervisedUserCircle';
 import Title from "../components/Title";
 import Button from "@material-ui/core/button"
 import VisibilityIcon from '@material-ui/icons/Visibility';
-//import Background from '../components/svg/user-friends-solid.svg';
 
 
 function Copyright() {
@@ -61,13 +60,15 @@ const useStyles = makeStyles(theme => ({
         justifyContent: 'flex-end',
         padding: '0 8px',
         ...theme.mixins.toolbar,
+
     },
     appBar: {
         zIndex: theme.zIndex.drawer + 1,
         transition: theme.transitions.create(['width', 'margin'], {
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.leavingScreen,
-            backgroundColor:'#F1F1F1',
+
+
         }),
     },
     appBarShift: {
@@ -76,7 +77,7 @@ const useStyles = makeStyles(theme => ({
         transition: theme.transitions.create(['width', 'margin'], {
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.enteringScreen,
-            backgroundColor:'#F1F1F1',
+
         }),
     },
     menuButton: {
@@ -87,6 +88,7 @@ const useStyles = makeStyles(theme => ({
     },
     title: {
         flexGrow: 1,
+
     },
     drawerPaper: {
         position: 'relative',
@@ -127,6 +129,7 @@ const useStyles = makeStyles(theme => ({
         overflow: 'auto',
         flexDirection: 'column',
         borderColor: theme.palette.primary,
+
     },
     fixedHeight: {
         height: 100,
@@ -201,7 +204,6 @@ function Dashboard() {
                 <Divider />
                 <List style={{backgroundColor:'#F1F1F1'}}>{mainListItems}</List>
                 <Divider />
-                <List style={{backgroundColor:'#F1F1F1'}}>{secondaryListItems}</List>
             </Drawer>
             <main className={classes.content}>
                 <div className={classes.appBarSpacer} />
@@ -306,7 +308,7 @@ function Dashboard() {
                             </Paper>
                         </Grid>
                         <Grid item xs={12} md={8} lg={10}>
-                            <Paper className={classes.paper} style={{maxheight:'100'}}>
+                            <Paper className={classes.paper} style={{maxHeight:'100'}}>
 
                             </Paper>
                         </Grid>

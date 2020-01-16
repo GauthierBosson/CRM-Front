@@ -10,6 +10,8 @@ import Paper from '@material-ui/core/Paper';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import Button from '@material-ui/core/Button';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+import Tooltip from "@material-ui/core/Tooltip";
+
 
 const useStyles = makeStyles({
     table: {
@@ -54,10 +56,14 @@ export default function SimpleTable() {
                             </TableCell>
                             <TableCell align="right">{row.calories}</TableCell>
                             <TableCell align="right">{row.fat}</TableCell>
-                            <TableCell align="right"><Button href="/clientProfil" color="primary">
-                                Voir plus
+                            <TableCell align="right"><Tooltip title="Voir Plus" placement="bottom"><Button href="/clientProfil" color="primary">
+                                <VisibilityIcon />
                             </Button>
-                                <Button><DeleteForeverIcon style={{fill:'#CF2C29'}} /></Button></TableCell>
+                            </Tooltip>
+                                <Tooltip title="Delete" placement="bottom">
+                                    <Button><DeleteForeverIcon style={{fill:'#CF2C29'}} /></Button></Tooltip>
+                                </TableCell>
+
                         </TableRow>
                     ))}
                 </TableBody>

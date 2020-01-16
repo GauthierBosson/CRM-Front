@@ -3,18 +3,11 @@ import {makeStyles} from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
-import VisibilityIcon from "@material-ui/icons/Visibility";
 import Grid from "@material-ui/core/Grid";
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import EditIcon from '@material-ui/icons/Edit';
 import TextField from '@material-ui/core/TextField'
+import Tooltip from "@material-ui/core/Tooltip";
 
 
 const useStyles = makeStyles(theme => ({
@@ -82,9 +75,11 @@ export default function TransitionsModal() {
     };
     return (
         <div>
+            <Tooltip title="Modifier" placement="bottom" style={{fontSize:'20px'}}>
             <Button color="secondary" onClick={handleOpen} className={classes.button}>
-                Modifier<EditIcon style={{marginLeft: '3px'}}/>
+                    <EditIcon style={{fontSize:'30px'}} />
             </Button>
+            </Tooltip>
             <Modal
                 aria-labelledby="transition-modal-title"
                 aria-describedby="transition-modal-description"

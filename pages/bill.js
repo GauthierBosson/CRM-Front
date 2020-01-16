@@ -18,7 +18,7 @@ import Link from '@material-ui/core/Link';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
-import { mainListItems, secondaryListItems } from '../components/listItems';
+import { mainListItems } from '../components/listItems';
 import MessageIcon from '@material-ui/icons/Message';
 import Factures from '../components/factures';
 
@@ -171,7 +171,6 @@ function Dashboard() {
                 <Divider />
                 <List style={{backgroundColor:'#F1F1F1'}}>{mainListItems}</List>
                 <Divider />
-                <List style={{backgroundColor:'#F1F1F1'}}>{secondaryListItems}</List>
             </Drawer>
             <main className={classes.content}>
                 <div className={classes.appBarSpacer} />
