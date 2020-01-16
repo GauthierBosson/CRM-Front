@@ -44,8 +44,6 @@ export default function SimpleTable() {
                         <TableCell align="right">Contact</TableCell>
                         <TableCell align="right">Responsable</TableCell>
                         <TableCell align="right">Options</TableCell>
-
-
                     </TableRow>
                 </TableHead>
                 <TableBody>
@@ -63,7 +61,6 @@ export default function SimpleTable() {
                                 <Tooltip title="Delete" placement="bottom">
                                     <Button><DeleteForeverIcon style={{fill:'#CF2C29'}} /></Button></Tooltip>
                                 </TableCell>
-
                         </TableRow>
                     ))}
                 </TableBody>
