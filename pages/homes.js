@@ -138,9 +138,16 @@ const useStyles = makeStyles(theme => ({
             backgroundPosition: 'center',
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat',
+            borderBottom: 'solid 3px #248485',
+            overflow:'hidden',
 
         },
+
+
+
     },
+
+
 
 
 }));

@@ -76,8 +76,8 @@ export default function TransitionsModal() {
     return (
         <div>
             <Tooltip title="Modifier" placement="bottom" style={{fontSize:'20px'}}>
-            <Button color="secondary" onClick={handleOpen} className={classes.button}>
-                    <EditIcon style={{fontSize:'30px'}} />
+            <Button   onClick={handleOpen} className={classes.button}>
+                    <EditIcon style={{fontSize:'35px', fill:'#248485'}} />
             </Button>
             </Tooltip>
             <Modal

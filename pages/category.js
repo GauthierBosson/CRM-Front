@@ -17,8 +17,7 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import {mainListItems } from '../components/listItems';
 import MessageIcon from '@material-ui/icons/Message';
-
-
+import Category from '../components/Category';
 function Copyright() {
   return (
       <Typography variant="body2" color="textSecondary" align="center">
@@ -173,6 +172,8 @@ function Dashboard() {
         <main className={classes.content}>
           <div className={classes.appBarSpacer}/>
           <Container maxWidth="lg" className={classes.container}>
+
+            <Category />
 
           </Container>
         </main>
