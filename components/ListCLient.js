@@ -11,7 +11,10 @@ import VisibilityIcon from '@material-ui/icons/Visibility';
 import Button from '@material-ui/core/Button';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import Tooltip from "@material-ui/core/Tooltip";
-import { Thead, Tbody, Tr, Th, Td} from 'react-super-responsive-table'
+import { ThemeProvider } from '@material-ui/core/styles';
+const theme = {
+    background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+};
 
 
 const useStyles = makeStyles({
@@ -30,6 +33,7 @@ const rows = [
     createData('Lemoineau & Co', 262, 16.0, 24, 6.0),
     createData('KapoupaKap', 305, 3.7, 67, 4.3),
     createData('Gingerbread', 356, 16.0, 49, 3.9),
+
 ];
 
 export default function SimpleTable() {
@@ -41,10 +45,12 @@ export default function SimpleTable() {
             <Table className={classes.table} aria-label="simple table">
                 <TableHead>
                     <TableRow>
-                        <TableCell>Entreprise</TableCell>
-                        <TableCell align="right">Contact</TableCell>
-                        <TableCell align="right">Responsable</TableCell>
-                        <TableCell align="right">Options</TableCell>
+                        <TableCell>Identifiant</TableCell>
+                        <TableCell align="right">Nom</TableCell>
+                        <TableCell align="right">Adresse</TableCell>
+                        <TableCell align="right">Catégorie</TableCell>
+                        <TableCell align="right">Gros</TableCell>
+                        <TableCell align="center">Options</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
@@ -55,13 +61,18 @@ export default function SimpleTable() {
                             </TableCell>
                             <TableCell align="right">{row.calories}</TableCell>
                             <TableCell align="right">{row.fat}</TableCell>
-                            <TableCell align="right"><Tooltip title="Voir Plus" placement="bottom"><Button href="/clientProfil" color="primary">
+                            <TableCell align="right">{row.calories}</TableCell>
+                            <TableCell align="right">{row.carbs}</TableCell>
+                            <ThemeProvider theme={theme}>
+
+                            <TableCell align="center"><Tooltip title="Voir Plus" placement="bottom"><Button href="/clientProfil" color="primary">
                                 <VisibilityIcon />
                             </Button>
                             </Tooltip>
                                 <Tooltip title="Delete" placement="bottom">
                                     <Button><DeleteForeverIcon style={{fill:'#CF2C29'}} /></Button></Tooltip>
                                 </TableCell>
+                            </ThemeProvider>
                         </TableRow>
                     ))}
                 </TableBody>
