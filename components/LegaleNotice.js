@@ -49,7 +49,7 @@ export default function EnhancedTable() {
       <div className={classes.appBarSpacer} />
       <Container maxWidth="lg" className={classes.container}>
         <React.Fragment>
-          <Container maxWidth="lg">
+          <Container maxWidth="false">
             <div className={classes.root}>
               <div style={{ padding: "5px" }}>
                 <h1 style={{ color: "#19857b" }}>
