@@ -11,12 +11,11 @@ import DateRangeIcon from '@material-ui/icons/DateRange';
 import GetAppIcon from '@material-ui/icons/GetApp';
 import ToggleMenu from '../components/Togglemenu/ToggleMenu';
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
-
 export const mainListItems = (
     <div>
         <Link href="/homes">
             <Tooltip title="Accueil" placement="right">
-                <ListItem button style={{padding:'24px'}}>
+                <ListItem button style={{padding:'3vh'}}>
                     <ListItemIcon>
                         <DashboardIcon style={{fill: '#106B9C'}}/>
                     </ListItemIcon>
@@ -26,7 +25,7 @@ export const mainListItems = (
         </Link>
         <Link href="/listClient">
             <Tooltip title="Clients" placement="right">
-                <ListItem button style={{padding:'24px'}}>
+                <ListItem button style={{padding:'3vh'}}>
                     <ListItemIcon>
                         <PeopleIcon style={{fill: '#4ECC90'}}/>
                     </ListItemIcon>
@@ -36,7 +35,7 @@ export const mainListItems = (
         </Link>
         <Link href="/prospect">
             <Tooltip title="Prospects" placement="right">
-                <ListItem button style={{padding:'24px'}}>
+                <ListItem button style={{padding:'3vh'}}>
                     <ListItemIcon>
                         <ShoppingCartIcon style={{fill: '#ffb27a'}}/>
                     </ListItemIcon>
@@ -48,7 +47,7 @@ export const mainListItems = (
 
         <Link href="/agenda">
             <Tooltip title="Agenda" placement="right">
-                <ListItem button style={{padding:'24px'}}>
+                <ListItem button style={{padding:'3vh'}}>
                     <ListItemIcon>
                         <DateRangeIcon style={{fill: '#269a9c'}}/>
                     </ListItemIcon>
@@ -59,7 +58,7 @@ export const mainListItems = (
 
         <Link href="/import">
             <Tooltip title="Imports" placement="right">
-                <ListItem button style={{padding: '24px'}}>
+                <ListItem button style={{padding: '3vh'}}>
                     <ListItemIcon>
                         <GetAppIcon style={{fill: '#9c1061'}}/>
                     </ListItemIcon>
@@ -72,7 +71,7 @@ export const mainListItems = (
         <div style={{marginTop: '90px'}}>
             <Link href="/index">
                 <Tooltip title="Déconnexion" placement="right">
-                    <ListItem button style={{padding: '24px'}}>
+                    <ListItem button style={{padding: '3vh'}}>
                         <ListItemIcon>
                             <ExitToAppIcon style={{fill:'#2e2e2e'}}/>
                         </ListItemIcon>

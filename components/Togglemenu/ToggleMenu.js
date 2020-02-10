@@ -1,8 +1,6 @@
 import React from 'react';
-import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import DnsIcon from '@material-ui/icons/Dns';
+
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
@@ -13,7 +11,7 @@ import PlaylistAddCheckIcon from '@material-ui/icons/PlaylistAddCheck';
 import ChromeReaderModeIcon from '@material-ui/icons/ChromeReaderMode';
 import GavelIcon from '@material-ui/icons/Gavel';
 import RestoreIcon from '@material-ui/icons/Restore';
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 
 export default function SimpleMenu() {
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -28,12 +26,14 @@ export default function SimpleMenu() {
 
     return (
         <div >
-            <ListItem button aria-controls="simple-menu" aria-haspopup="true" style={{padding:'24px'}} onClick={handleClick}>
+            <Tooltip title="Voir plus" placement="right">
+            <ListItem button aria-controls="simple-menu" aria-haspopup="true" style={{padding:'3vh'}} onClick={handleClick}>
                 <ListItemIcon align="left">
-                    <DnsIcon color="primary"/>
+                    <MoreHorizIcon color="primary"/>
                 </ListItemIcon>
                 <ListItemText primary="Plus"/>
             </ListItem>
+            </Tooltip>
 
             <Menu
                 id="simple-menu"
