@@ -11,7 +11,7 @@ const useStyles = makeStyles(theme => ({
   },
   paper: {
     width: "100%",
-    marginBottom: theme.spacing(2)
+    marginBottom: theme.spacing(2),
   },
   table: {
     minWidth: 750
@@ -47,7 +47,7 @@ export default function EnhancedTable() {
   return (
     <main className={classes.content}>
       <div className={classes.appBarSpacer} />
-      <Container maxWidth="lg" className={classes.container}>
+      <Container maxWidth="false" className={classes.container}>
         <React.Fragment>
           <Container maxWidth="false">
             <div className={classes.root}>
@@ -184,7 +184,7 @@ export default function EnhancedTable() {
                             <br />
                             Horaires de la 
                             <strong>
-                              <a href="http://www.patinoire.biz/p+patinoire-de-lyon---charlemagne+113.html">
+                              <a target="blank" href="http://www.patinoire.biz/p+patinoire-de-lyon---charlemagne+113.html">
                                 Patinoire Lyon
                               </a>
                             </strong>

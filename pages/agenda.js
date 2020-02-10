@@ -19,6 +19,8 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import { mainListItems } from '../components/listItems';
 import MessageIcon from '@material-ui/icons/Message';
 import Agenda from '../components/Agenda'
+import Paper from '@material-ui/core/Paper';
+
 function Copyright() {
   return (
       <Typography variant="body2" color="textSecondary" align="center">
@@ -172,9 +174,9 @@ function Dashboard() {
         <main className={classes.content}>
           <div className={classes.appBarSpacer} />
           <Container maxWidth="false" className={classes.container}>
-
+            <Paper >
             <Agenda/>
-
+            </Paper>
           </Container>
         </main>
       </div>

@@ -67,9 +67,6 @@ export const mainListItems = (
                 </ListItem>
             </Tooltip>
         </Link>
-
-
-
         <ToggleMenu />
 
         <div style={{marginTop: '90px'}}>

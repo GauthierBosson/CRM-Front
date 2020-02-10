@@ -152,7 +152,7 @@ function Dashboard() {
             noWrap
             className={classes.title}
           >
-            <strong>Liste Propspects</strong>
+            <strong>Liste Prospects</strong>
           </Typography>
           <IconButton color="inherit">
             <Badge badgeContent={4} color="error">
@@ -190,10 +190,8 @@ function Dashboard() {
         <div className={classes.appBarSpacer} />
 
 
-        <Container maxWidth="lg" className={classes.container}>
-          <h1 style={{ color: "#19857b" }}>
-            Liste des propsects <AccessibilityNewIcon />
-          </h1>
+        <Container maxWidth="false" className={classes.container}>
+         
 
           <ListClient />
         </Container>

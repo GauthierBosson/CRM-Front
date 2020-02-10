@@ -360,14 +360,18 @@ export default function EnhancedTable() {
                               </TableCell>
                               <TableCell align="right">{row.fat}</TableCell>
                               <TableCell align="right">
+                                <Tooltip title="Voir Plus" placement="left">
                                 <button
                                   style={{
                                     border: "0px",
                                     backgroundColor: "transparent"
                                   }}
                                 >
+
                                   <ModalViewBill />
                                 </button>
+                                </Tooltip>
+                                <Tooltip title="Archiver" placement="right">
                                 <Button
                                   href="/bill"
                                   style={{
@@ -378,6 +382,7 @@ export default function EnhancedTable() {
                                 >
                                   <ArchiveIcon />{" "}
                                 </Button>
+                                </Tooltip>
                               </TableCell>
                             </TableRow>
                           );
@@ -402,12 +407,7 @@ export default function EnhancedTable() {
                   onChangeRowsPerPage={handleChangeRowsPerPage}
                 />
               </Paper>
-              <FormControlLabel
-                control={
-                  <Switch checked={dense} onChange={handleChangeDense} />
-                }
-                label="Dense padding"
-              />
+
             </div>
           </Container>
         </React.Fragment>
