@@ -282,9 +282,9 @@ export default function EnhancedTable() {
     return (
         <main className={classes.content}>
             <div className={classes.appBarSpacer} />
-            <Container maxWidth="lg" className={classes.container}>
+            <Container maxWidth="false" className={classes.container}>
                 <React.Fragment>
-                    <Container maxWidth="lg">
+                    <Container maxWidth="false">
 
 
                         <div className={classes.root}>

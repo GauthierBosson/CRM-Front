@@ -174,7 +174,7 @@ function Dashboard() {
         </Drawer>
         <main className={classes.content}>
           <div className={classes.appBarSpacer} />
-          <Container maxWidth="lg" className={classes.container}>
+          <Container maxWidth="false" className={classes.container}>
             <h1 style={{color:'#19857b'}}>Devis enregistrés</h1>
 
             <QuoteHistory />

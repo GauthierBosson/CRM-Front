@@ -37,59 +37,59 @@ export default function SignIn() {
 
   return (
       <div className={classes.background}>
-    <Container component="main" maxWidth="sm">
+        <Container component="main" maxWidth="sm">
 
-    <div style={{height:'100px'}} ></div>
-      <CssBaseline />
-      <div className={classes.paper}>
-        <Typography component="h1" variant="h5" style={{fontSize:'40px',color:'white', fontFamily:'Public Sans, sans-serif'}}>
-          Connexion <LockOpenIcon style={{marginLeft:'6px', fontSize:'40px', color:'white'}}/>
-        </Typography>
+          <div style={{height:'100px'}} ></div>
+          <CssBaseline />
+          <div className={classes.paper}>
+            <Typography component="h1" variant="h5" style={{fontSize:'40px',color:'white', fontFamily:'Public Sans, sans-serif'}}>
+              Connexion <LockOpenIcon style={{marginLeft:'6px', fontSize:'40px', color:'white'}}/>
+            </Typography>
 
-        <Card style={{marginTop:'20px', backgroundColor:'#F1F1F1', boxShadow:'-webkit-box-shadow: 11px 11px 16px 0px rgba(5,5,5,0.23);\n' +
-              '-moz-box-shadow: 11px 11px 16px 0px rgba(5,5,5,0.23);\n' +
-              'box-shadow: 11px 11px 16px 0px rgba(5,5,5,0.23);'}}>
-          <CardContent>
-        <form className={classes.form} noValidate>
-          <Grid style={{ marginTop: "20px" }}>
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="email"
-              name="email"
-              autoComplete="email"
-              autoFocus
-            />
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Modt de passe"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-            />
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              className={classes.submit}
-            >
-              Se connecter
-            </Button>
-          </Grid>
-        </form>
-          </CardContent>
+            <Card style={{marginTop:'20px', backgroundColor:'#F1F1F1', boxShadow:'-webkit-box-shadow: 11px 11px 16px 0px rgba(5,5,5,0.23);\n' +
+                  '-moz-box-shadow: 11px 11px 16px 0px rgba(5,5,5,0.23);\n' +
+                  'box-shadow: 11px 11px 16px 0px rgba(5,5,5,0.23);'}}>
+              <CardContent>
+                <form className={classes.form} noValidate>
+                  <Grid style={{ marginTop: "20px" }}>
+                    <TextField
+                        variant="outlined"
+                        margin="normal"
+                        required
+                        fullWidth
+                        id="email"
+                        label="email"
+                        name="email"
+                        autoComplete="email"
+                        autoFocus
+                    />
+                    <TextField
+                        variant="outlined"
+                        margin="normal"
+                        required
+                        fullWidth
+                        name="password"
+                        label="Modt de passe"
+                        type="password"
+                        id="password"
+                        autoComplete="current-password"
+                    />
+                    <Button
+                        type="submit"
+                        fullWidth
+                        variant="contained"
+                        color="primary"
+                        className={classes.submit}
+                    >
+                      Se connecter
+                    </Button>
+                  </Grid>
+                </form>
+              </CardContent>
 
-        </Card>
-      </div>
-    </Container>
+            </Card>
+          </div>
+        </Container>
       </div>
   );
 }

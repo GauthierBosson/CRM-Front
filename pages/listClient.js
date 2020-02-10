@@ -174,7 +174,7 @@ function Dashboard() {
             <main className={classes.content}>
                 <div className={classes.appBarSpacer} />
 
-                <Container maxWidth="lg" className={classes.container}>
+                <Container maxWidth="false" className={classes.container}>
                     <h1 style={{color:'#19857b'}}>Liste des clients de la base données <AccessibilityNewIcon/></h1>
 
                     <ListClient />
