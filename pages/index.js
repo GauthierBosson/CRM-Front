@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
@@ -9,6 +9,10 @@ import Grid from "@material-ui/core/Grid";
 import LockOpenIcon from '@material-ui/icons/LockOpen';
 import Card from "@material-ui/core/Card";
 import CardContent from '@material-ui/core/CardContent';
+import { login } from '../utils/auth';
+
+import axios from 'axios';
+
 const useStyles = makeStyles(theme => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -33,6 +37,29 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function SignIn() {
+  const [credentials, setCredentials] = useState({ email: '', password: '' });
+
+  const handleSubmit = async event => {
+    event.preventDefault();
+
+    console.log(JSON.stringify(credentials));
+    try {
+      const response = await axios.post('http://localhost:3001/api/v1/users/login', { email: credentials.email, password: credentials.password });
+      if (response.status === 200) {
+        const { token } = response.data
+        await login({ token })
+      } else {
+        console.log('Login failed.')
+        // https://github.com/developit/unfetch#caveats
+        let error = new Error(response.statusText)
+        error.response = response
+        throw error
+      }
+    } catch (error) {
+      console.error('erreur : ', error)
+    }
+  }
+
   const classes = useStyles();
 
   return (
@@ -50,7 +77,7 @@ export default function SignIn() {
                   '-moz-box-shadow: 11px 11px 16px 0px rgba(5,5,5,0.23);\n' +
                   'box-shadow: 11px 11px 16px 0px rgba(5,5,5,0.23);'}}>
               <CardContent>
-                <form className={classes.form} noValidate>
+                <form onSubmit={handleSubmit} className={classes.form}>
                   <Grid style={{ marginTop: "20px" }}>
                     <TextField
                         variant="outlined"
@@ -62,6 +89,11 @@ export default function SignIn() {
                         name="email"
                         autoComplete="email"
                         autoFocus
+                        onChange={event => {
+                          setCredentials(
+                            Object.assign({}, credentials, { email: event.target.value })
+                          )
+                        }}
                     />
                     <TextField
                         variant="outlined"
@@ -73,6 +105,11 @@ export default function SignIn() {
                         type="password"
                         id="password"
                         autoComplete="current-password"
+                        onChange={event => {
+                          setCredentials(
+                            Object.assign({}, credentials, { password: event.target.value })
+                          )
+                        }}
                     />
                     <Button
                         type="submit"

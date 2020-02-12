@@ -30,6 +30,9 @@ import Title from "../components/Title";
 import Button from "@material-ui/core/Button";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 
+import nextCookie from 'next-cookies';
+import { withAuthSync } from '../utils/auth';
+
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -359,6 +362,8 @@ function Dashboard() {
     </div>
 
 
-  );}
-export default Dashboard;
+  );
+}
+
+export default withAuthSync(Dashboard);
 
