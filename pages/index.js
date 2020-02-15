@@ -42,7 +42,6 @@ export default function SignIn() {
   const handleSubmit = async event => {
     event.preventDefault();
 
-    console.log(JSON.stringify(credentials));
     try {
       const response = await axios.post('http://localhost:3001/api/v1/users/login', { email: credentials.email, password: credentials.password });
       if (response.status === 200) {

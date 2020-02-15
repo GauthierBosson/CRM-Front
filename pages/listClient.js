@@ -20,6 +20,9 @@ import MessageIcon from '@material-ui/icons/Message';
 import ListClient from '../components/ListCLient';
 import AccessibilityNewIcon from '@material-ui/icons/AccessibilityNew';
 
+import clientsServices from '../utils/clientsServices';
+import { withAuthSync } from '../utils/auth';
+
 
 function Copyright() {
     return (
@@ -115,7 +118,7 @@ const useStyles = makeStyles(theme => ({
         height: 100  },
 }));
 
-function Dashboard() {
+function ClientsList(props) {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
     const handleDrawerOpen = () => {
@@ -177,7 +180,7 @@ function Dashboard() {
                 <Container maxWidth="false" className={classes.container}>
                     <h1 style={{color:'#19857b'}}>Liste des clients de la base données <AccessibilityNewIcon/></h1>
 
-                    <ListClient />
+                    <ListClient clientsList={props.clientsList} />
 
                 </Container>
             </main>
@@ -185,6 +188,11 @@ function Dashboard() {
     );
 }
 
+ClientsList.getInitialProps = async ctx => {
+    const clientsList = await clientsServices.getClients(ctx);
+
+    return {clientsList: clientsList.data.data};
+}
 
 
-export default Dashboard
+export default withAuthSync(ClientsList, ['employee', 'admin'])

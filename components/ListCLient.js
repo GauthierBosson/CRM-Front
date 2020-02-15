@@ -12,6 +12,7 @@ import Button from '@material-ui/core/Button';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import Tooltip from "@material-ui/core/Tooltip";
 import { ThemeProvider } from '@material-ui/core/styles';
+import Link from 'next/link';
 const theme = {
     background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
 };
@@ -36,7 +37,7 @@ const rows = [
 
 ];
 
-export default function SimpleTable() {
+export default function SimpleTable(props) {
     const classes = useStyles();
 
     return (
@@ -45,30 +46,31 @@ export default function SimpleTable() {
             <Table className={classes.table} aria-label="simple table">
                 <TableHead>
                     <TableRow>
-                        <TableCell>Identifiant</TableCell>
                         <TableCell align="right">Nom</TableCell>
-                        <TableCell align="right">Adresse</TableCell>
-                        <TableCell align="right">Catégorie</TableCell>
-                        <TableCell align="right">Gros</TableCell>
-                        <TableCell align="center">Options</TableCell>
+                        <TableCell align="right">Entreprise</TableCell>
+                        <TableCell align="right">Email</TableCell>
+                        <TableCell align="right">Téléphone</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {rows.map(row => (
-                        <TableRow key={row.name}>
+                    {props.clientsList.map(client => (
+                        <TableRow key={client.firstname}>
                             <TableCell component="th" scope="row">
-                                {row.name}
+                                {client.firstname}
                             </TableCell>
-                            <TableCell align="right">{row.calories}</TableCell>
-                            <TableCell align="right">{row.fat}</TableCell>
-                            <TableCell align="right">{row.calories}</TableCell>
-                            <TableCell align="right">{row.carbs}</TableCell>
+                            <TableCell align="right">{client.company}</TableCell>
+                            <TableCell align="right">{client.email}</TableCell>
+                            <TableCell align="right">{client.phone}</TableCell>
                             <ThemeProvider theme={theme}>
 
-                            <TableCell align="center"><Tooltip title="Voir Plus" placement="bottom"><Button href="/clientProfil" color="primary">
-                                <VisibilityIcon />
-                            </Button>
-                            </Tooltip>
+                            <TableCell align="center">
+                                <Tooltip title="Voir Plus" placement="bottom">
+                                    <Link href={`/clientProfil?id=${client._id}`}>
+                                        <Button color="primary">
+                                            <VisibilityIcon />
+                                        </Button>
+                                    </Link>
+                                </Tooltip>
                                 <Tooltip title="Delete" placement="bottom">
                                     <Button><DeleteForeverIcon style={{fill:'#CF2C29'}} /></Button></Tooltip>
                                 </TableCell>

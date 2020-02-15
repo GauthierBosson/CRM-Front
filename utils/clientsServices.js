@@ -1,34 +1,63 @@
 import axios from "axios";
-const API_URL = "http://localhost:3001";
+import nextCookie from 'next-cookies';
+import cookie from 'js-cookie';
+
+const API_URL = "http://localhost:3001/api/v1";
 
 export default class clientsServices {
-  static getClients() {
+  static createInstance(ctx) {
+    const { token } = nextCookie(ctx);
+    return axios.create({
+      headers: {
+        'Authorization': 'Bearer ' + token,
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+    })
+  }
+
+  static getClients(ctx) {
+    const instance = this.createInstance(ctx);
     const url = `${API_URL}/clients`;
-    return axios.get(url).then(response => {
+    return instance.get(url).then(response => {
       return response.data;
     });
   }
 
-  static getClient(id) {
+  static getClient(id, ctx) {
+    const instance = this.createInstance(ctx);
     const url = `${API_URL}/clients/${id}`;
-    return axios.get(url).then(response => {
+    return instance.get(url).then(response => {
       return response.data;
     });
   }
 
-  static updateClient(client) {
+  static updateClient(client, ctx) {
+    const instance = this.createInstance(ctx);
     const url = `${API_URL}/clients/${client.id}`;
-    return axios.update(url).then(response => {
+    return instance.patch(url).then(response => {
       return response.data;
     });
   }
 
-  static deleteClient(id) {
+  static deleteClient(id, ctx) {
+    const instance = this.createInstance(ctx);
     const url = `${API_URL}/clients/${id}`;
-    return axios.delete(url).then(response => {
+    return instance.delete(url).then(response => {
       return response.data;
     });
   }
 
-  static addClient = client => axios.post(`${API_URL}/client`, client);
+  static addClient = (client) => {
+    const token = cookie.get('token');
+    const instance = axios.create({
+      headers: {
+        'Authorization': 'Bearer ' + token,
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+    })
+    return instance.post(`${API_URL}/clients/add`, client)
+      .then(response => response.data.data.doc);
+  } 
 }

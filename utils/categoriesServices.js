@@ -1,6 +1,5 @@
 import axios from "axios";
 import nextCookie from 'next-cookies';
-import cookie from 'js-cookie';
 
 const API_URL = "http://localhost:3001/api/v1";
 
@@ -48,6 +47,8 @@ export default class categoriesServices {
     });
   }
 
-  static addCategory = (categorie, ctx) =>
+  static addCategory = (categorie, ctx) => {
+    const instance = this.createInstance(ctx);
     instance.post(`${API_URL}/categories/add`, categorie);
+  }
 }

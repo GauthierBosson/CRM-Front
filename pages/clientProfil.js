@@ -20,6 +20,8 @@ import { mainListItems } from '../components/listItems';
 import MessageIcon from '@material-ui/icons/Message';
 import DetailsClients from '../components/DetailsClients'
 
+import clientsServices from '../utils/clientsServices';
+
 function Copyright() {
   return (
       <Typography variant="body2" color="textSecondary" align="center">
@@ -114,7 +116,7 @@ const useStyles = makeStyles(theme => ({
     height: 100  },
 }));
 
-function Dashboard() {
+function ClientProfil() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const handleDrawerOpen = () => {
@@ -180,6 +182,13 @@ function Dashboard() {
   );
 }
 
+ClientProfil.getInitialProps = async ctx => {
+  const { id } = ctx.query;
+
+  const infos = await clientsServices.getClient(id, ctx);
+
+  return { clientInfos: infos }
+}
 
 
-export default Dashboard
+export default ClientProfil
