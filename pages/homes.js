@@ -33,6 +33,9 @@ import VisibilityIcon from "@material-ui/icons/Visibility";
 import nextCookie from 'next-cookies';
 import { withAuthSync } from '../utils/auth';
 
+// TESTING PURPOSE
+import categoriesServices from '../utils/categoriesServices';
+
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -365,5 +368,11 @@ function Dashboard() {
   );
 }
 
-export default withAuthSync(Dashboard);
+Dashboard.getInitialProps = async ctx => {
+  const test = await categoriesServices.getCategories(ctx);
+
+  return test;
+}
+
+export default withAuthSync(Dashboard, ['employee', 'admin']);
 

@@ -2,16 +2,22 @@ import { useEffect } from 'react';
 import Router from 'next/router';
 import nextCookie from 'next-cookies';
 import cookie from 'js-cookie';
+import jwtDecode from 'jwt-decode'
 
 export const login = ({ token }) => {
   cookie.set('token', token, { expires: 1 })
   Router.push('/homes')
 }
 
-export const auth = ctx => {
+export const auth = (ctx, role) => {
   const { token } = nextCookie(ctx)
+  let decodedToken = null;
 
-  if (!token) {
+  if (token) {
+    decodedToken = jwtDecode(token);
+  }
+
+  if (!token || !role.includes(decodedToken.role)) {
     if (typeof window === 'undefined') {
       ctx.res.writeHead(302, { Location: '/' })
       ctx.res.end()
@@ -30,7 +36,7 @@ export const logout = () => {
   Router.push('/')
 }
 
-export const withAuthSync = WrappedComponent => {
+export const withAuthSync = (WrappedComponent, role) => {
   const Wrapper = props => {
     const syncLogout = event => {
       if (event.key === 'logout') {
@@ -52,7 +58,7 @@ export const withAuthSync = WrappedComponent => {
   }
 
   Wrapper.getInitialProps = async ctx => {
-    const token = auth(ctx)
+    const token = auth(ctx, role)
 
     const componentProps =
       WrappedComponent.getInitialProps &&

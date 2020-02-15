@@ -1,35 +1,53 @@
 import axios from "axios";
-const API_URL = "http://localhost:3001";
+import nextCookie from 'next-cookies';
+import cookie from 'js-cookie';
+
+const API_URL = "http://localhost:3001/api/v1";
 
 export default class categoriesServices {
-  static getCategorie() {
+  static createInstance(ctx) {
+    const { token } = nextCookie(ctx);
+    return axios.create({
+      headers: {
+        'Authorization': 'Bearer ' + token,
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+    })
+  }
+
+  static getCategories(ctx) {
+    const instance = this.createInstance(ctx);
     const url = `${API_URL}/categories`;
-    return axios.get(url).then(response => {
+    return instance.get(url).then(response => {
       return response.data;
     });
   }
 
-  static getCategorie(id) {
+  static getCategory(id, ctx) {
+    const instance = this.createInstance(ctx);
     const url = `${API_URL}/categories/${id}`;
-    return axios.get(url).then(response => {
+    return instance.get(url).then(response => {
       return response.data;
     });
   }
 
-  static updateCategorie(categorie) {
-    const url = `${API_URL}/categories/${categorie.id}`;
-    return axios.update(url).then(response => {
+  static updateCategory(category, ctx) {
+    const instance = this.createInstance(ctx);
+    const url = `${API_URL}/categories/${category.id}`;
+    return instance.update(url).then(response => {
       return response.data;
     });
   }
 
-  static deleteCategorie(id) {
+  static deleteCategory(id, ctx) {
+    const instance = this.createInstance(ctx);
     const url = `${API_URL}/categories/${id}`;
-    return axios.delete(url).then(response => {
+    return instance.delete(url).then(response => {
       return response.data;
     });
   }
 
-  static addCategorie = categorie =>
-    axios.post(`${API_URL}/categories`, categorie);
+  static addCategory = (categorie, ctx) =>
+    instance.post(`${API_URL}/categories/add`, categorie);
 }

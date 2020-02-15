@@ -11,6 +11,9 @@ import DateRangeIcon from '@material-ui/icons/DateRange';
 import GetAppIcon from '@material-ui/icons/GetApp';
 import ToggleMenu from '../components/Togglemenu/ToggleMenu';
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+
+import { logout } from '../utils/auth';
+
 export const mainListItems = (
     <div>
         <Link href="/homes">
@@ -68,17 +71,15 @@ export const mainListItems = (
         </Link>
         <ToggleMenu />
 
-        <div style={{marginTop: '90px'}}>
-            <Link href="/index">
-                <Tooltip title="Déconnexion" placement="right">
-                    <ListItem button style={{padding: '3vh'}}>
-                        <ListItemIcon>
-                            <ExitToAppIcon style={{fill:'#2e2e2e'}}/>
-                        </ListItemIcon>
-                        <ListItemText primary="Déconnexion"/>
-                    </ListItem>
-                </Tooltip>
-            </Link>
+        <div style={{marginTop: '90px'}} onClick={() => logout()}>
+            <Tooltip title="Déconnexion" placement="right">
+                <ListItem button style={{padding: '3vh'}}>
+                    <ListItemIcon>
+                        <ExitToAppIcon style={{fill:'#2e2e2e'}}/>
+                    </ListItemIcon>
+                    <ListItemText primary="Déconnexion"/>
+                </ListItem>
+            </Tooltip>
         </div>
 
 
