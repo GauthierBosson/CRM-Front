@@ -2,6 +2,7 @@
 import Button from '@material-ui/core/Button';
 import ModifClientsModal from '../components/modal/modalModifDetailsClients/ModifClientsModal';
 import React from 'react';
+import Link from 'next/link';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
@@ -9,7 +10,7 @@ import ReceiptIcon from '@material-ui/icons/Receipt';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import BusinessIcon from '@material-ui/icons/Business';
 
-const clientProfil = () => {
+const clientProfil = (props) => {
     return (
         <div>
             <Grid container spacing={3}>
@@ -49,18 +50,24 @@ const clientProfil = () => {
                 </Grid>
 
 
-                <Grid item xs={6} align="right">
+                <Grid item xs={4} align="left">
                     <Button variant="contained" color="primary" disableElevation>
                         Envoyer un mail <MailOutlineIcon style={{marginLeft: '6px'}}/>
                     </Button>
                 </Grid>
-                <Grid item xs={6} align="left">
+                <Grid item xs={4} align="left">
                     <Button variant="contained" color="primary" disableElevation>
                         Voir Devis<ReceiptIcon style={{marginLeft: '6px'}} />
                     </Button>
 
                 </Grid>
-
+                <Grid item xs={4} align="left">
+                    <Link href={`/appointementPropose?id=${props.clientInfos._id}`}>
+                        <Button variant="contained" color="primary" disableElevation>
+                            Proposer RDV<ReceiptIcon style={{marginLeft: '6px'}} />
+                        </Button>
+                    </Link>
+                </Grid>
 
             </Grid>
         </div>

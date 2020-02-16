@@ -18,8 +18,10 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import { mainListItems } from '../components/listItems';
 import MessageIcon from '@material-ui/icons/Message';
-import Agenda from '../components/Agenda'
+import AgendaComponent from '../components/AgendaComponent'
 import Paper from '@material-ui/core/Paper';
+import nextCookie from 'next-cookies';
+import jwtDecode from 'jwt-decode';
 
 function Copyright() {
   return (
@@ -115,7 +117,7 @@ const useStyles = makeStyles(theme => ({
     height: 100  },
 }));
 
-function Dashboard() {
+function Agenda(props) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const handleDrawerOpen = () => {
@@ -175,7 +177,7 @@ function Dashboard() {
           <div className={classes.appBarSpacer} />
           <Container maxWidth="false" className={classes.container}>
             <Paper >
-            <Agenda/>
+            <AgendaComponent userId={props.userId} />
             </Paper>
           </Container>
         </main>
@@ -183,6 +185,11 @@ function Dashboard() {
   );
 }
 
+Agenda.getInitialProps = async ctx => {
+  const { token } = nextCookie(ctx);
+  const decoded = jwtDecode(token);
 
+  return { userId: decoded.id }
+}
 
-export default Dashboard
+export default Agenda

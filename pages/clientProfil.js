@@ -116,7 +116,7 @@ const useStyles = makeStyles(theme => ({
     height: 100  },
 }));
 
-function ClientProfil() {
+function ClientProfil(props) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const handleDrawerOpen = () => {
@@ -175,7 +175,7 @@ function ClientProfil() {
         <main className={classes.content}>
           <div className={classes.appBarSpacer} />
           <Container maxWidth="false" className={classes.container}>
-            <DetailsClients />
+            <DetailsClients clientInfos={props.clientInfos} />
           </Container>
         </main>
       </div>
@@ -187,7 +187,7 @@ ClientProfil.getInitialProps = async ctx => {
 
   const infos = await clientsServices.getClient(id, ctx);
 
-  return { clientInfos: infos }
+  return { clientInfos: infos.data.doc }
 }
 
 
