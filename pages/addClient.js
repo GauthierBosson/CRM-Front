@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import Router from 'next/router';
+import TextField from '@material-ui/core/TextField';
+import Autocomplete from '@material-ui/lab/Autocomplete';
 
 import clientsServices from '../utils/clientsServices';
+import companiesServices from '../utils/companiesServices';
 
-function addClient() {
+function addClient(props) {
   const [formInfos, setFormInfos] = useState({
     email: '',
     firstname: '',
@@ -46,6 +49,34 @@ function addClient() {
 
   return (
     <form onSubmit={handleSubmit}>
+      <div style={{ width: 300 }}>
+      <Autocomplete
+        id="company"
+        freeSolo
+        disableClearable={true}
+        disableCloseOnSelect={true}
+        options={props.companiesList.map(company => company.name)}
+        onChange={(event, value) => {
+          setFormInfos(
+            Object.assign({}, formInfos, { company: value })
+          )
+        }}
+        renderInput={params => (
+          <TextField 
+            {...params} 
+            label="Entreprise" 
+            margin="normal" 
+            variant="outlined" 
+            onChange={(event) => {
+              setFormInfos(
+                Object.assign({}, formInfos, { company: event.target.value })
+              )
+            }}
+            fullWidth 
+          />
+        )}
+      />
+    </div>
       <label htmlFor="email">Email</label>
       <input 
         id="email" 
@@ -75,17 +106,6 @@ function addClient() {
         onChange={event => {
           setFormInfos(
             Object.assign({}, formInfos, { lastname: event.target.value })
-          )
-        }}
-      />
-
-      <label htmlFor="company">Entreprise</label>
-      <input 
-        id="company" 
-        type="text" 
-        onChange={event => {
-          setFormInfos(
-            Object.assign({}, formInfos, { company: event.target.value })
           )
         }}
       />
@@ -159,6 +179,12 @@ function addClient() {
       <input type="submit" value="valider" />
     </form>
   )
+}
+
+addClient.getInitialProps = async ctx => {
+  const companiesList = await companiesServices.getCompanies(ctx);
+
+  return { companiesList: companiesList.data.data };
 }
 
 export default addClient;

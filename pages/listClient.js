@@ -19,6 +19,7 @@ import { mainListItems } from '../components/listItems';
 import MessageIcon from '@material-ui/icons/Message';
 import ListClient from '../components/ListCLient';
 import AccessibilityNewIcon from '@material-ui/icons/AccessibilityNew';
+import Button from '@material-ui/core/Button';
 
 import clientsServices from '../utils/clientsServices';
 import { withAuthSync } from '../utils/auth';
@@ -179,9 +180,12 @@ function ClientsList(props) {
 
                 <Container maxWidth="false" className={classes.container}>
                     <h1 style={{color:'#19857b'}}>Liste des clients de la base données <AccessibilityNewIcon/></h1>
-
+                    <Link href="/addClient">
+                        <Button variant="contained" color="primary" style={{marginBottom: 10}}>
+                            Ajouter un client
+                        </Button>
+                    </Link>
                     <ListClient clientsList={props.clientsList} />
-
                 </Container>
             </main>
         </div>
