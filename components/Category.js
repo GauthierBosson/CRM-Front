@@ -11,8 +11,8 @@ import {Input} from "@material-ui/core";
 import Button from '@material-ui/core/Button';
 import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
 import Tooltip from '@material-ui/core/Tooltip';
-
-
+import AddIcon from '@material-ui/icons/Add';
+import IconButton from '@material-ui/core/IconButton';
 
 
 
@@ -74,7 +74,9 @@ export default function CustomizedTables() {
                             <StyledTableCell component="th" scope="row">
                                 <strong>{row.name}</strong>
                             </StyledTableCell>
-                            <StyledTableCell align="right">2</StyledTableCell>
+                            <StyledTableCell align="right">   <IconButton color="primary" aria-label="upload picture" component="span">
+                                <AddIcon />
+                            </IconButton></StyledTableCell>
 
 
 
