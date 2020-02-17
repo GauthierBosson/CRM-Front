@@ -11,7 +11,7 @@ function DashboardClient() {
         variant="contained" 
         color="primary"
       >
-        Mes commandes
+        Mes factures
       </Button>
       <Button 
         variant="contained" 
