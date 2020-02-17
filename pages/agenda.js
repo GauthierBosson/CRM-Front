@@ -22,6 +22,9 @@ import AgendaComponent from '../components/AgendaComponent'
 import Paper from '@material-ui/core/Paper';
 import nextCookie from 'next-cookies';
 import jwtDecode from 'jwt-decode';
+import moment from 'moment';
+
+import appointementsServices from '../utils/appointementsServices';
 
 function Copyright() {
   return (
@@ -177,7 +180,10 @@ function Agenda(props) {
           <div className={classes.appBarSpacer} />
           <Container maxWidth="false" className={classes.container}>
             <Paper >
-            <AgendaComponent userId={props.userId} />
+            <AgendaComponent 
+              userId={props.userId} 
+              listAppointements={props.listAppointements}
+            />
             </Paper>
           </Container>
         </main>
@@ -188,8 +194,23 @@ function Agenda(props) {
 Agenda.getInitialProps = async ctx => {
   const { token } = nextCookie(ctx);
   const decoded = jwtDecode(token);
+  const listConverted = [];
 
-  return { userId: decoded.id }
+  const listAppointements = await appointementsServices.getAppointements(ctx);
+  await listAppointements.data.data.map(appointement => {
+    let appointementObj = {};
+    appointementObj.start = appointement.start;
+    appointementObj.end = appointement.end;
+    appointementObj.title = appointement.title;
+
+    listConverted.push(appointementObj);
+  })
+
+
+  return { 
+    userId: decoded.id,
+    listAppointements: listConverted
+  }
 }
 
 export default Agenda

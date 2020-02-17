@@ -60,4 +60,12 @@ export default class categoriesServices {
     instance.post(`${API_URL}/appointements/add`, appointement)
       .then(response => response.data);
   }
+
+  static getAppointementByUserId = (id, ctx) => {
+    const instance = this.createInstance(ctx);
+    const url = `${API_URL}/appointements/user/${id}`;
+    return instance.get(url).then(response => {
+      return response.data;
+    });
+  }
 }

@@ -31,17 +31,27 @@ const useStyles = makeStyles(theme => ({
 function AgendaComponent(props) {
     const classes = useStyles();
     const appointementsFinal = []
-    props.listAppointements.map(appointement => {
+    props.userAppointements.map(appointement => {
         let appointementFinal = {};
         appointementFinal.start = moment(appointement.start).toDate();
         appointementFinal.end = moment(appointement.end).toDate();
         appointementFinal.title = appointement.title;
+        appointementFinal.isMine = true;
+        
+        appointementsFinal.push(appointementFinal);
+    })
+    props.clientAppointements.map(appointement => {
+        let appointementFinal = {};
+        appointementFinal.start = moment(appointement.start).toDate();
+        appointementFinal.end = moment(appointement.end).toDate();
+        appointementFinal.title = appointement.title;
+        appointementFinal.isMine = false;
         
         appointementsFinal.push(appointementFinal);
     })
     const [events, setEvents] = useState(appointementsFinal);
     const [openModal, setOpenModal] = useState(false);
-    const [newEvent, setNewEvent] = useState({ userId: props.userId, start: '', end: '', title: '' })
+    const [newEvent, setNewEvent] = useState({ userId: props.userId, clientId: props.clientInfos._id, start: '', end: '', title: '', isMine: true })
 
     const handleOpenModal = () => {
         setOpenModal(true);
@@ -83,6 +93,25 @@ function AgendaComponent(props) {
                         defaultView="week"
                         localizer={localizer}
                         events={events}
+                        eventPropGetter={
+                            (event, start, end, isSelected) => {
+                                let newStyle = {
+                                  backgroundColor: "red",
+                                  color: 'white',
+                                  borderRadius: "5px",
+                                  border: "none"
+                                };
+                          
+                                if (event.isMine){
+                                  newStyle.backgroundColor = "blue"
+                                }
+                          
+                                return {
+                                  className: "",
+                                  style: newStyle
+                                };
+                              }
+                        }
                         startAccessor="start"
                         endAccessor="end"
                         onSelectEvent={event => alert(event.title)}
