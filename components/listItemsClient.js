@@ -43,7 +43,5 @@ export const mainListItemsClient = (
             </Tooltip>
         </div>
 
-
-
     </div>
 );

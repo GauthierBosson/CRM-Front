@@ -1,5 +1,5 @@
 import React from 'react';
-import { withStyles, makeStyles } from '@material-ui/core/styles';
+import {withStyles, makeStyles} from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -13,7 +13,6 @@ import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
 import Tooltip from '@material-ui/core/Tooltip';
 import AddIcon from '@material-ui/icons/Add';
 import IconButton from '@material-ui/core/IconButton';
-
 
 
 const StyledTableCell = withStyles(theme => ({
@@ -35,7 +34,7 @@ const StyledTableRow = withStyles(theme => ({
 }))(TableRow);
 
 function createData(name) {
-    return { name };
+    return {name};
 }
 
 const rows = [
@@ -57,37 +56,40 @@ export default function CustomizedTables() {
 
     return (
         <div>
-            <h1 style={{color:'#19857b'}}>Liste des catégories</h1>
+            <h1 style={{color: '#19857b'}}>Liste des catégories</h1>
 
             <TableContainer component={Paper}>
-            <Table className={classes.table} aria-label="customized table">
-                <TableHead>
-                    <TableRow>
-                        <StyledTableCell>Nom de catégorie</StyledTableCell>
-                        <StyledTableCell align="right">Nombre de client par catégories</StyledTableCell>
-                    </TableRow>
-                </TableHead>
-                <TableBody>
+                <Table className={classes.table} aria-label="customized table">
+                    <TableHead>
+                        <TableRow>
+                            <StyledTableCell>Nom de catégorie</StyledTableCell>
+                            <StyledTableCell align="right">Nombre de Prestation par catégories</StyledTableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
 
-                    {rows.map(row => (
-                        <StyledTableRow key={row.name}>
-                            <StyledTableCell component="th" scope="row">
-                                <strong>{row.name}</strong>
-                            </StyledTableCell>
-                            <StyledTableCell align="right">   <IconButton color="primary" aria-label="upload picture" component="span">
-                                <AddIcon />
-                            </IconButton></StyledTableCell>
-
-
-
+                        {rows.map(row => (
+                            <StyledTableRow key={row.name}>
+                                <StyledTableCell component="th" scope="row">
+                                    <strong>{row.name}</strong>
+                                </StyledTableCell>
+                                <StyledTableCell align="right"><Tooltip title="Voir plus" placement="left"><Button
+                                    href="/prestation">
+                                    <AddIcon/>
+                                </Button>
+                                </Tooltip>
+                                </StyledTableCell>
+                            </StyledTableRow>
+                        ))}
+                        <StyledTableRow><StyledTableCell><Input
+                            placeholder="Ajouter une catégorie"></Input></StyledTableCell>
+                            <StyledTableCell align="right"><Tooltip title="Ajouter" placement="bottom"><Button
+                                style={{color: '#269a9c'}}><PlaylistAddIcon
+                                style={{fontSize: '30px'}}/></Button></Tooltip></StyledTableCell>
                         </StyledTableRow>
-                    ))}
-                    <StyledTableRow><StyledTableCell><Input placeholder="Ajouter une catégorie"></Input></StyledTableCell>
-                        <StyledTableCell align="right"><Tooltip title="Ajouter" placement="bottom"  ><Button style={{color:'#269a9c'}}><PlaylistAddIcon style={{fontSize:'30px'}}/></Button></Tooltip></StyledTableCell>
-                    </StyledTableRow>
-                </TableBody>
-            </Table>
-        </TableContainer>
+                    </TableBody>
+                </Table>
+            </TableContainer>
         </div>
     );
 }
