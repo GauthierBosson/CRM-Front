@@ -146,16 +146,7 @@ function ClientsList(props) {
                     <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
                         <strong>Liste Clients</strong>
                     </Typography>
-                    <IconButton color="inherit">
-                        <Badge badgeContent={4} color="error">
-                            <NotificationsIcon />
-                        </Badge>
-                    </IconButton>
-                    <IconButton color="inherit">
-                        <Badge  color="secondary">
-                            <MessageIcon />
-                        </Badge>
-                    </IconButton>
+
                 </Toolbar>
             </AppBar>
             <Drawer

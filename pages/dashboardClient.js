@@ -23,6 +23,10 @@ import {mainListItemsClient} from '../components/listItemsClient';
 import MessageIcon from '@material-ui/icons/Message';
 import DashboardClient from '../components/DashboardClient';
 
+
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+
+
 const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
@@ -103,6 +107,7 @@ const useStyles = makeStyles(theme => ({
     fixedHeight: {
         height: 100
     },
+
 }));
 
 function Dashboard() {
@@ -132,16 +137,7 @@ function Dashboard() {
                     <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
                         <strong>Dashboard client</strong>
                     </Typography>
-                    <IconButton color="inherit">
-                        <Badge badgeContent={4} color="error">
-                            <NotificationsIcon/>
-                        </Badge>
-                    </IconButton>
-                    <IconButton color="inherit">
-                        <Badge color="secondary">
-                            <MessageIcon/>
-                        </Badge>
-                    </IconButton>
+
                 </Toolbar>
             </AppBar>
             <Drawer

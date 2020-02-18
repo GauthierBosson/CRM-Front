@@ -154,16 +154,7 @@ function Dashboard() {
           >
             <strong>Liste Prospects</strong>
           </Typography>
-          <IconButton color="inherit">
-            <Badge badgeContent={4} color="error">
-              <NotificationsIcon />
-            </Badge>
-          </IconButton>
-          <IconButton color="inherit">
-            <Badge color="secondary">
-              <MessageIcon />
-            </Badge>
-          </IconButton>
+
         </Toolbar>
       </AppBar>
       <Drawer
@@ -191,7 +182,7 @@ function Dashboard() {
 
 
         <Container maxWidth="false" className={classes.container}>
-         
+
 
           <ListClient />
         </Container>
