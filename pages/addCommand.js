@@ -9,6 +9,7 @@ import Select from '@material-ui/core/Select';
 import { makeStyles } from '@material-ui/core/styles';
 import Input from '@material-ui/core/Input';
 import InputAdornment from '@material-ui/core/InputAdornment';
+import { FieldArray, Form, Formik, Field } from 'formik';
 
 import projectsServices from '../utils/projectsServices';
 import prestationsServices from '../utils/prestationsServices';
@@ -26,67 +27,82 @@ const useStyles = makeStyles(theme => ({
 
 function AddCommand(props) {
   const classes = useStyles();
-  const [command, setCommand] = React.useState({ 
-    project: props.projectDetails._id,
-    prestation: [
-      {
-        prestation: '', 
-        price: ''
-      }
-    ]
-  });
-
-  const handleChange = event => {
-    setCommand(
-      Object.assign({}, command, { prestations: [{prestations:{prestation: event.target.value} }]})
-    );
-  };
-
-  const handlePriceChange = event => {
-    setCommand(
-      Object.assign({}, command, { price: event.target.value })
-    )
-  }
-
-  const handleSubmit = async event => {
-    event.preventDefault();
-
-    try {
-      await commandsServices.addCommand(command)
-    } catch(error) {
-      console.log(error);
-    }
-  }
 
   return (
     <>
       <h1>Ajouter une commande</h1>
-      <form onSubmit={handleSubmit}>
-        <FormControl className={classes.formControl}>
-          <InputLabel id="demo-simple-select-label">Prestation</InputLabel>
-          <Select
-            labelId="demo-simple-select-label"
-            id="demo-simple-select"
-            value={command.prestation}
-            onChange={handleChange}
-          >
-            {props.prestations.map(prestation => {
-              return <MenuItem value={prestation._id}>{prestation.name}</MenuItem>
-            })}
-          </Select>
-        </FormControl>
-        <FormControl className={classes.formControl}>
-          <InputLabel htmlFor="standard-adornment-amount">Prix</InputLabel>
-            <Input
-              id="standard-adornment-amount"
-              type="number"
-              value={command.price}
-              onChange={handlePriceChange}
-              startAdornment={<InputAdornment position="start">€</InputAdornment>}
-            />
-        </FormControl>
+      <Formik 
+        initialValues={{
+          project: props.projectDetails._id,
+          prestations: [
+            {
+              prestation: '',
+              price: ''
+            }
+          ]
+        }}
+        onSubmit={async values => {
+          try {
+            await commandsServices.addCommand(values)
+          } catch(error) {
+            console.log(error)
+          }
+        }}
+      >
+        {formikProps => (
+          <Form>
+            <FieldArray 
+              name="prestations"
+              render={arrayHelpers => (
+                <div>
+                  {formikProps.values.prestations && formikProps.values.prestations.length > 0 ? (
+                    formikProps.values.prestations.map((prestation, index) => (
+                      <div key={index}>
+                        <Field name={`prestations.${index}.prestation`}>
+                          {({ field, form, meta }) => (
+                              <FormControl className={classes.formControl}>
+                                <InputLabel id={`prestation${index}`}>Prestation</InputLabel>
+                                <Select
+                                  labelId={`prestation${index}`}
+                                  id={`prestation${index}`}
+                                  value={formikProps.values.prestations[index].prestation}
+                                  onChange={formikProps.handleChange}
+                                  name={field.name}
+                                >
+                                  {props.prestations.map((prestation, index) => {
+                                    return <MenuItem key={index} value={prestation._id}>{prestation.name}</MenuItem>
+                                  })}
+                                </Select>
+                              </FormControl>
+                          )}
+                        </Field>
+                        <Field name={`prestations.${index}.price`}>
+                          {({ field, form, meta }) => (
+                            <FormControl className={classes.formControl}>
+                              <InputLabel htmlFor={`prestation-price${index}`}>Prix</InputLabel>
+                              <Input
+                                id={`prestation-price${index}`}
+                                type="number"
+                                name={field.name}
+                                value={formikProps.values.prestations[index].price}
+                                onChange={formikProps.handleChange}
+                                startAdornment={<InputAdornment position="start">€</InputAdornment>}
+                              />
+                            </FormControl>
+                          )}
+                        </Field>
+                        <Button type="button" variant="contained" onClick={() => arrayHelpers.remove(index)}>-</Button>
+                      </div>
+                    ))
+                  ): null}
+                <Button type="button" variant="contained" onClick={() => arrayHelpers.push({ prestation: '', price: '' })}>+</Button>
+            </div>
+          )}
+        />
         <Button type="submit" variant="contained" color="primary">Valider</Button>
-      </form>
+      </Form>
+        )}
+      </Formik>
     </>
   )
 }
