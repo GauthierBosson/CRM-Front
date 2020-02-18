@@ -46,8 +46,14 @@ export default class clientsServices {
     });
   }
 
-  static deleteClient(id, ctx) {
-    const instance = this.createInstance(ctx);
+  static deleteClient(id) {
+    const instance = axios.create({
+      headers: {
+        Authorization: "Bearer " + cookie.get("token"),
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      }
+    });
     const url = `${API_URL}/clients/${id}`;
     return instance.delete(url).then(response => {
       return response.data;
