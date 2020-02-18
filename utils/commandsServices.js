@@ -24,6 +24,14 @@ export default class commandsServices {
     });
   }
 
+  static getCommandsByProject(id, ctx) {
+    const instance = this.createInstance(ctx);
+    const url = `${API_URL}/commands/project/${id}`;
+    return instance.get(url).then(response => {
+      return response.data;
+    });
+  }
+
   static getCommand(id, ctx) {
     const instance = this.createInstance(ctx);
     const url = `${API_URL}/commands/${id}`;

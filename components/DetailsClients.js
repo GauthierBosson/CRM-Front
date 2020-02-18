@@ -3,6 +3,7 @@ import Button from '@material-ui/core/Button';
 import ModifClientsModal from '../components/modal/modalModifDetailsClients/ModifClientsModal';
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Router from 'next/router';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
@@ -48,8 +49,8 @@ const clientProfil = (props) => {
         event.preventDefault();
         try {
             const response = await projectsServices.addProject(project);
-            console.log(response);
             handleCloseModal();
+            Router.push(`/projectDetails?id=${response.data.doc._id}`)
         } catch (error) {
             console.log(error);
         }

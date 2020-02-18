@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Router from 'next/router';
 import Button from '@material-ui/core/Button';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -43,7 +44,8 @@ function AddCommand(props) {
         }}
         onSubmit={async values => {
           try {
-            await commandsServices.addCommand(values)
+            const response = await commandsServices.addCommand(values);
+            Router.push(`/command?id${response.data.doc._id}`);
           } catch(error) {
             console.log(error)
           }
