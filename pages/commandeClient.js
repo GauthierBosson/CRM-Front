@@ -1,6 +1,7 @@
 import React from 'react';
+import Button from '@material-ui/core/Button';
 import clsx from 'clsx';
-import { makeStyles } from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
@@ -11,32 +12,13 @@ import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import Badge from '@material-ui/core/Badge';
 import Container from '@material-ui/core/Container';
-import Link from '@material-ui/core/Link';
+import Paper from '@material-ui/core/Paper';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
-import { mainListItems } from '../components/listItems';
+import {mainListItemsClient} from '../components/listItemsClient';
 import MessageIcon from '@material-ui/icons/Message';
-import ListClient from '../components/ListCLient';
-import AccessibilityNewIcon from '@material-ui/icons/AccessibilityNew';
-import Button from '@material-ui/core/Button';
-import clientsServices from '../utils/clientsServices';
-import { withAuthSync } from '../utils/auth';
-import PublishIcon from "@material-ui/icons/Publish";
-
-
-function Copyright() {
-    return (
-        <Typography variant="body2" color="textSecondary" align="center">
-            {'Copyright © '}
-            <Link color="inherit" href="https://material-ui.com/">
-                Your Website
-            </Link>{' '}
-            {new Date().getFullYear()}
-            {'.'}
-        </Typography>
-    );
-}
+import CommandeClient from '../components/CommandeClient';
 
 const drawerWidth = 240;
 
@@ -116,10 +98,11 @@ const useStyles = makeStyles(theme => ({
         borderColor: theme.palette.primary,
     },
     fixedHeight: {
-        height: 100  },
+        height: 100
+    },
 }));
 
-function ClientsList(props) {
+function Dashboard() {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
     const handleDrawerOpen = () => {
@@ -131,7 +114,7 @@ function ClientsList(props) {
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
     return (
         <div className={classes.root}>
-            <CssBaseline />
+            <CssBaseline/>
             <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
                 <Toolbar className={classes.toolbar}>
                     <IconButton
@@ -141,19 +124,19 @@ function ClientsList(props) {
                         onClick={handleDrawerOpen}
                         className={clsx(classes.menuButton, open && classes.menuButtonHidden)}
                     >
-                        <MenuIcon />
+                        <MenuIcon/>
                     </IconButton>
                     <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-                        <strong>Liste Clients</strong>
+                        <strong>Dashboard client</strong>
                     </Typography>
                     <IconButton color="inherit">
                         <Badge badgeContent={4} color="error">
-                            <NotificationsIcon />
+                            <NotificationsIcon/>
                         </Badge>
                     </IconButton>
                     <IconButton color="inherit">
-                        <Badge  color="secondary">
-                            <MessageIcon />
+                        <Badge color="secondary">
+                            <MessageIcon/>
                         </Badge>
                     </IconButton>
                 </Toolbar>
@@ -165,44 +148,31 @@ function ClientsList(props) {
                 }}
                 open={open}
             >
-                <div className={classes.toolbarIcon} style={{backgroundColor:'#F1F1F1'}}>
+                <div className={classes.toolbarIcon} style={{backgroundColor: '#F1F1F1'}}>
 
                     <IconButton onClick={handleDrawerClose}>
-                        <ChevronLeftIcon />
+                        <ChevronLeftIcon/>
                     </IconButton>
                 </div>
-                <Divider />
-                <List style={{backgroundColor:'#F1F1F1'}}>{mainListItems}</List>
-                <Divider />
+                <Divider/>
+                <List style={{backgroundColor: '#F1F1F1'}}>{mainListItemsClient}</List>
+                <Divider/>
             </Drawer>
             <main className={classes.content}>
-                <div className={classes.appBarSpacer} />
-
+                <div className={classes.appBarSpacer}/>
                 <Container maxWidth="false" className={classes.container}>
-                    <h1 style={{color:'#19857b'}}>Liste des clients de la base données <AccessibilityNewIcon/></h1>
-                    <Link href="/addClient">
-                        <Button variant="contained" color="primary" style={{marginBottom: 10}}>
-                            Ajouter un client
-                        </Button>
-                    </Link>
-                    <ListClient clientsList={props.clientsList} />
-                </Container>
-                <Container maxWidth="false" className={classes.container}>
-                    <Button variant="contained" align="center" color="primary">
-                        <PublishIcon />
-                        Import CSV
-                    </Button>
+                    <Paper style={{padding:"30px", borderLeft:'solid 2px darkgreen'}}>
+                        <CommandeClient/>
+                    </Paper>
                 </Container>
             </main>
         </div>
     );
 }
 
-ClientsList.getInitialProps = async ctx => {
-    const clientsList = await clientsServices.getClients(ctx);
 
-    return {clientsList: clientsList.data.data};
-}
+export default Dashboard;
 
 
-export default withAuthSync(ClientsList, ['employee', 'admin'])
+
+
