@@ -58,7 +58,7 @@ export default function SimpleTable(props) {
                             <TableCell component="th" scope="row">
                                 {client.firstname}
                             </TableCell>
-                            <TableCell align="right">{client.company}</TableCell>
+                            <TableCell align="right">{client.company.name}</TableCell>
                             <TableCell align="right">{client.email}</TableCell>
                             <TableCell align="right">{client.phone}</TableCell>
                             <ThemeProvider theme={theme}>
