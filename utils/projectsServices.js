@@ -24,7 +24,7 @@ export default class projectsServices {
     });
   }
 
-  static getCategory(id, ctx) {
+  static getProject(id, ctx) {
     const instance = this.createInstance(ctx);
     const url = `${API_URL}/projects/${id}`;
     return instance.get(url).then(response => {
