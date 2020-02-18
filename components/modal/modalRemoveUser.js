@@ -2,18 +2,18 @@ import React, { useState, useEffect, Fragment } from "react";
 import Modal from "@material-ui/core/Modal";
 import clientsServices from "../../utils/clientsServices";
 import Backdrop from "@material-ui/core/Backdrop";
-
 import { Grid } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import Zoom from "@material-ui/core/Zoom";
+import getUsersClients from "../../utils/clientsServices";
 
 const ModalRemove = props => {
   const {
     openRemove,
     currentClient,
     handleClose,
-    handleCloseDelete,
-    history
+    handleCloseDelete
+    // history
   } = props;
 
   // const [user, setUser] = useState(currentUser);
@@ -23,17 +23,12 @@ const ModalRemove = props => {
     clientsServices
       .deleteClient(currentClient._id)
       .then(() => {
-        history.push("/listCLient");
         handleCloseDelete();
       })
       .catch(() => {
         new Error("Impossible de supprimer l'utilisateur");
       });
   };
-
-  // useEffect(() => {
-  //   setUser(currentUser);
-  // }, [currentUser]);
 
   return (
     <Fragment>

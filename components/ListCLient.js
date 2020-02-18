@@ -25,14 +25,6 @@ const useStyles = makeStyles({
   }
 });
 
-// const rows = [
-//   createData("José Massonnerie", 159, 6.0, 24, 4.0),
-//   createData("Mc Donalds", 237, 9.0, 37, 4.3),
-//   createData("Lemoineau & Co", 262, 16.0, 24, 6.0),
-//   createData("KapoupaKap", 305, 3.7, 67, 4.3),
-//   createData("Gingerbread", 356, 16.0, 49, 3.9)
-// ];
-
 export default function SimpleTable(props) {
   const [openRemove, setOpenRemove] = useState(false);
   const [client, setClient] = useState(null);

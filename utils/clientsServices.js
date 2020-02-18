@@ -24,6 +24,21 @@ export default class clientsServices {
     });
   }
 
+  static getUsersClients() {
+    const instance = axios.create({
+      headers: {
+        Authorization: "Bearer " + cookie.get("token"),
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      }
+    });
+    const url = `${API_URL}/clients/`;
+    return instance.get(url).then(response => {
+      console.log("ta mère en slip");
+      return response.data;
+    });
+  }
+
   static getClient(id, ctx) {
     const instance = this.createInstance(ctx);
     const url = `${API_URL}/clients/${id}`;
