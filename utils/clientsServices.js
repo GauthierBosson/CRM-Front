@@ -1,6 +1,6 @@
 import axios from "axios";
-import nextCookie from 'next-cookies';
-import cookie from 'js-cookie';
+import nextCookie from "next-cookies";
+import cookie from "js-cookie";
 
 const API_URL = "http://localhost:3001/api/v1";
 
@@ -9,11 +9,11 @@ export default class clientsServices {
     const { token } = nextCookie(ctx);
     return axios.create({
       headers: {
-        'Authorization': 'Bearer ' + token,
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
+        Authorization: "Bearer " + token,
+        "Content-Type": "application/json",
+        Accept: "application/json"
       }
-    })
+    });
   }
 
   static getClients(ctx) {
@@ -32,10 +32,16 @@ export default class clientsServices {
     });
   }
 
-  static updateClient(client, ctx) {
-    const instance = this.createInstance(ctx);
-    const url = `${API_URL}/clients/${client.id}`;
-    return instance.patch(url).then(response => {
+  static updateClient(id, datas) {
+    const instance = axios.create({
+      headers: {
+        Authorization: "Bearer " + cookie.get("token"),
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      }
+    });
+    const url = `${API_URL}/clients/${id}`;
+    return instance.patch(url, datas).then(response => {
       return response.data;
     });
   }
@@ -48,16 +54,17 @@ export default class clientsServices {
     });
   }
 
-  static addClient = (client) => {
-    const token = cookie.get('token');
+  static addClient = client => {
+    const token = cookie.get("token");
     const instance = axios.create({
       headers: {
-        'Authorization': 'Bearer ' + token,
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
+        Authorization: "Bearer " + token,
+        "Content-Type": "application/json",
+        Accept: "application/json"
       }
-    })
-    return instance.post(`${API_URL}/clients/signupClient`, client)
+    });
+    return instance
+      .post(`${API_URL}/clients/signupClient`, client)
       .then(response => response.data.data.client);
-  } 
+  };
 }
