@@ -45,7 +45,7 @@ function AddCommand(props) {
         onSubmit={async values => {
           try {
             const response = await commandsServices.addCommand(values);
-            Router.push(`/command?id${response.data.doc._id}`);
+            Router.push(`/projectDetails?id=${props.projectDetails._id}`);
           } catch(error) {
             console.log(error)
           }

@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import Link from 'next/link';
 import {lighten, makeStyles} from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Button from "@material-ui/core/Button";
@@ -49,7 +50,7 @@ function generate(element) {
     );
 }
 
- function DashboardClient() {
+ function ProjectCommands(props) {
     return (
         <main>
             <div>
@@ -57,25 +58,33 @@ function generate(element) {
                     <React.Fragment>
                         <Container maxWidth="false" align="center">
                             <div>
-                                <h1>Nom Du projet</h1>
+                              <h1>{props.projectDetails.name}</h1>
                             </div>
                             <div>
                             <h2 align="left">Voir les commandes du projet</h2>
                                 <List>
 
                                     <ListItem>
-                                        <ListItemIcon>
-                                            <FolderIcon/>
-                                        </ListItemIcon>
-                                        <Button href="/factureClient">
-                                            <ListItemText
+                                      {props.commands.map(command => {
+                                        return (
+                                          <>
+                                            <ListItemIcon>
+                                              <FolderIcon/>
+                                            </ListItemIcon>
+                                            <Button href="/factureClient">
+                                              <ListItemText
                                                 primary="Dakr Commande n°1"
                                                 secondary
-                                            />
-                                        </Button>
+                                              />
+                                            </Button>
+                                          </>
+                                        )
+                                      })}
                                     </ListItem>
                                 </List>
-
+                                <Link href={`/addCommand?id=${props.projectDetails._id}`} >
+                                  <Button variant="contained" >Ajouter une commande</Button>
+                                </Link>
 
                             </div>
                         </Container>
@@ -86,4 +95,4 @@ function generate(element) {
     )
 }
 
-export default DashboardClient;
+export default ProjectCommands;
