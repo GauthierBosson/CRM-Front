@@ -24,6 +24,22 @@ export default class clientsServices {
     });
   }
 
+  static getClientsRole(ctx) {
+    const instance = this.createInstance(ctx);
+    const url = `${API_URL}/clients/clientRole`;
+    return instance.get(url).then(response => {
+      return response.data;
+    });
+  }
+
+  static getProspectsRole(ctx) {
+    const instance = this.createInstance(ctx);
+    const url = `${API_URL}/clients/prospectRole`;
+    return instance.get(url).then(response => {
+      return response.data;
+    });
+  }
+
   static getClient(id, ctx) {
     const instance = this.createInstance(ctx);
     const url = `${API_URL}/clients/${id}`;

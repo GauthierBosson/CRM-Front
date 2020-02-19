@@ -214,7 +214,7 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import {mainListItems} from '../components/listItems';
 import MessageIcon from '@material-ui/icons/Message';
-import AddClient from '../components/AddClient';
+import AddProspect from '../components/AddProspect';
 
 import clientsServices from '../utils/clientsServices';
 import companiesServices from '../utils/companiesServices';
@@ -314,7 +314,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-function AddClientPage(props) {
+function AddProspectPage(props) {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
     const handleDrawerOpen = () => {
@@ -339,7 +339,7 @@ function AddClientPage(props) {
                         <MenuIcon/>
                     </IconButton>
                     <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-                        <strong>Ajout client</strong>
+                        <strong>Ajout prospect</strong>
                     </Typography>
 
                 </Toolbar>
@@ -365,7 +365,7 @@ function AddClientPage(props) {
                 <div className={classes.appBarSpacer}/>
                 <Container maxWidth="false" className={classes.container}>
                     <Paper style={{padding:"30px", borderLeft:'solid 2px darkgreen'}}>
-                    <AddClient companiesList={props.companiesList} />
+                    <AddProspect companiesList={props.companiesList} />
                     </Paper>
                     </Container>
             </main>
@@ -373,10 +373,10 @@ function AddClientPage(props) {
     );
 }
 
-AddClientPage.getInitialProps = async ctx => {
+AddProspectPage.getInitialProps = async ctx => {
   const companiesList = await companiesServices.getCompanies(ctx);
 
   return { companiesList: companiesList.data.data };
 }
 
-export default AddClientPage
+export default AddProspectPage

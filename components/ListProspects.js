@@ -28,16 +28,7 @@ function createData(name, calories, fat, carbs, protein) {
     return { name, calories, fat, carbs, protein };
 }
 
-const rows = [
-    createData('José Massonnerie', 159, 6.0, 24, 4.0),
-    createData('Mc Donalds', 237, 9.0, 37, 4.3),
-    createData('Lemoineau & Co', 262, 16.0, 24, 6.0),
-    createData('KapoupaKap', 305, 3.7, 67, 4.3),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-
-];
-
-export default function SimpleTable(props) {
+export default function ListProspects(props) {
     const classes = useStyles();
 
     return (
@@ -53,19 +44,19 @@ export default function SimpleTable(props) {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {props.clientsList.map((client, index) => (
+                    {props.prospects.map((prospect, index) => (
                         <TableRow key={index}>
                             <TableCell component="th" scope="row">
-                                {client.firstname}
+                                {prospect.firstname}
                             </TableCell>
-                            <TableCell align="right">{client.company.name}</TableCell>
-                            <TableCell align="right">{client.email}</TableCell>
-                            <TableCell align="right">{client.phone}</TableCell>
+                            <TableCell align="right">{prospect.company.name}</TableCell>
+                            <TableCell align="right">{prospect.email}</TableCell>
+                            <TableCell align="right">{prospect.phone}</TableCell>
                             <ThemeProvider theme={theme}>
 
                             <TableCell align="center">
                                 <Tooltip title="Voir Plus" placement="bottom">
-                                    <Link href={`/clientProfil?id=${client._id}`}>
+                                    <Link href={`/clientProfil?id=${prospect._id}`}>
                                         <Button color="primary">
                                             <VisibilityIcon />
                                         </Button>

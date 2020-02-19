@@ -17,8 +17,11 @@ import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import { mainListItems } from "../components/listItems";
 import MessageIcon from "@material-ui/icons/Message";
-import ListClient from "../components/ListCLient";
+import ListProspects from '../components/ListProspects';
 import AccessibilityNewIcon from "@material-ui/icons/AccessibilityNew";
+import Button from '@material-ui/core/Button';
+
+import clientsServices from '../utils/clientsServices';
 
 function Copyright() {
   return (
@@ -115,7 +118,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-function Dashboard() {
+function Prospects(props) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const handleDrawerOpen = () => {
@@ -189,15 +192,28 @@ function Dashboard() {
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
 
-
+        <h1 style={{color:'#19857b'}}>Liste des prospects de la base données <AccessibilityNewIcon/></h1>
+                    <Link href="/addProspect">
+                        <Button variant="contained" color="primary" style={{marginBottom: 10}}>
+                            Ajouter un prospect
+                        </Button>
+                    </Link>
         <Container maxWidth={false} className={classes.container}>
          
 
-          <ListClient />
+          <ListProspects prospects={props.prospects} />
         </Container>
       </main>
     </div>
   );
 }
 
-export default Dashboard;
+Prospects.getInitialProps = async ctx => {
+  const prospects = await clientsServices.getProspectsRole(ctx);
+
+  return {
+    prospects: prospects.data.doc
+  }
+}
+
+export default Prospects;
