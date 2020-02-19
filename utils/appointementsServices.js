@@ -4,7 +4,7 @@ import cookie from 'js-cookie';
 
 const API_URL = "http://localhost:3001/api/v1";
 
-export default class categoriesServices {
+export default class appointementsServices {
   static createInstance(ctx) {
     const { token } = nextCookie(ctx);
     return axios.create({

@@ -11,8 +11,8 @@ import { logout } from '../utils/auth';
 
 export const mainListItemsClient = (
     <div>
-        <Link href="/DashboardClient">
-            <Tooltip title="Projets" placement="right">
+        <Link href="/dashboardClient">
+            <Tooltip title="Dashboard" placement="right">
                 <ListItem button >
                     <ListItemIcon>
                         <DashboardIcon align="center" style={{fill: '#16939c'}}/>
@@ -21,7 +21,7 @@ export const mainListItemsClient = (
                 </ListItem>
             </Tooltip>
         </Link>
-        <Link href="/#">
+        <Link href="/agendaClient">
             <Tooltip title="Agenda" placement="right">
                 <ListItem button >
                     <ListItemIcon>

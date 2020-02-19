@@ -60,4 +60,10 @@ export default class projectsServices {
     return instance.post(`${API_URL}/projects/add`, project)
       .then(response => response.data);
   }
+
+  static getProjectsByUserId = (id, ctx) => {
+    const instance = this.createInstance(ctx);
+    const url = `${API_URL}/projects/user/${id}`;
+    return instance.get(url).then(response => response.data);
+  }
 }

@@ -65,15 +65,15 @@ function generate(element) {
                                 <List>
 
                                     <ListItem>
-                                      {props.commands.map(command => {
+                                      {props.commands.map((command, index) => {
                                         return (
                                           <>
                                             <ListItemIcon>
                                               <FolderIcon/>
                                             </ListItemIcon>
-                                            <Button href="/factureClient">
+                                            <Button href={`/invoice?id=${command._id}`}>
                                               <ListItemText
-                                                primary="Dakr Commande n°1"
+                                                primary={`Commande n°${index + 1}`}
                                                 secondary
                                               />
                                             </Button>
@@ -83,7 +83,7 @@ function generate(element) {
                                     </ListItem>
                                 </List>
                                 <Link href={`/addCommand?id=${props.projectDetails._id}`} >
-                                  <Button variant="contained" >Ajouter une commande</Button>
+                                  <Button variant="contained" color="primary">Ajouter une commande</Button>
                                 </Link>
 
                             </div>

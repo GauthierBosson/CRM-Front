@@ -192,9 +192,3 @@ ProjectDetails.getInitialProps = async ctx => {
 }
 
 export default ProjectDetails
-
-//////////////////////////////////////////////////////////////////////////
-
-function Dashboard() {
-    
-}

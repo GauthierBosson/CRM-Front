@@ -4,7 +4,6 @@ import clsx from 'clsx';
 import {makeStyles} from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Drawer from '@material-ui/core/Drawer';
-import Box from '@material-ui/core/Box';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
@@ -13,22 +12,19 @@ import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import Badge from '@material-ui/core/Badge';
 import Container from '@material-ui/core/Container';
-import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import Link from '@material-ui/core/Link';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import {mainListItemsClient} from '../components/listItemsClient';
+import {mainListItems} from '../components/listItems';
 import MessageIcon from '@material-ui/icons/Message';
-import DashboardClient from '../components/DashboardClient';
-import {withAuthSyncClient} from '../utils/authClient'
-import nextCookie from 'next-cookies';
-import jwtDecode from 'jwt-decode';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
+import PictureAsPdfIcon from '@material-ui/icons/PictureAsPdf';
+import CreditCardIcon from '@material-ui/icons/CreditCard';
+import Grid from '@material-ui/core/Grid';
+import FactureClient from '../components/FactureClient';
 
-import clientsServices from '../utils/clientsServices';
-import projectsServices from '../utils/projectsServices';
+import commandsServices from '../utils/commandsServices';
 
 const drawerWidth = 240;
 
@@ -110,10 +106,9 @@ const useStyles = makeStyles(theme => ({
     fixedHeight: {
         height: 100
     },
-
 }));
 
-function DashboardClientPage(props) {
+function InvoiceClient(props) {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
     const handleDrawerOpen = () => {
@@ -140,7 +135,6 @@ function DashboardClientPage(props) {
                     <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
                         <strong>Dashboard client</strong>
                     </Typography>
-
                 </Toolbar>
             </AppBar>
             <Drawer
@@ -163,26 +157,32 @@ function DashboardClientPage(props) {
             <main className={classes.content}>
                 <div className={classes.appBarSpacer}/>
                 <Container maxWidth="false" className={classes.container}>
-                    <Paper style={{padding:"30px", borderLeft:'solid 2px darkgreen'}}>
-                        <DashboardClient projects={props.projects} />
+                    <Paper style={{padding: "30px", borderLeft: 'solid 2px darkgreen'}}>
+                        <FactureClient command={props.command} />
                     </Paper>
+
+                </Container>
+                <Container maxWidth="false" className={classes.container}>
+                    <Grid container spacing={3}>
+                        <Grid item xs={6}>
+                            <div align="right"><Button>Générer en PDF <PictureAsPdfIcon
+                                style={{marginLeft: '4px'}}/></Button></div>
+                        </Grid>
+                    </Grid>
                 </Container>
             </main>
         </div>
     );
 }
 
-DashboardClientPage.getInitialProps = async ctx => {
-  const { token } = nextCookie(ctx);
-  const decoded = jwtDecode(token);
+InvoiceClient.getInitialProps = async ctx => {
+  const { id } = ctx.query;
 
-  const client = await clientsServices.getClient(decoded.id, ctx);
-  const projects = await projectsServices.getProjectsByUserId(client.data.doc.company._id, ctx);
+  const command = await commandsServices.getCommand(id, ctx)
 
   return {
-    client: client.data.doc,
-    projects: projects.data.data
+    command: command.data.doc
   }
 }
 
-export default withAuthSyncClient(DashboardClientPage, ['client'])
+export default InvoiceClient

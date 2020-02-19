@@ -1,7 +1,10 @@
 import React, {useState} from "react";
+import Link from 'next/link';
 import {lighten, makeStyles} from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Button from "@material-ui/core/Button";
+import nextCookie from 'next-cookies';
+
 import FolderIcon from '@material-ui/icons/Folder';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -49,7 +52,7 @@ function generate(element) {
     );
 }
 
- function DashboardClient(props) {
+function DashboardClient(props) {
     return (
         <main>
             <div>
@@ -57,22 +60,31 @@ function generate(element) {
                     <React.Fragment>
                         <Container maxWidth="false" align="center">
                             <div>
-                              <h1>{props.project.name}</h1>
+                                <h1>Projets</h1>
+                                <Link href="/agendaClient">
+                                  <Button align="center"
+                                          variant="contained"
+                                          color="primary"
+                                  >
+                                      Mes rendez-vous
+                                  </Button>
+                                </Link>
                             </div>
+
                             <div>
-                            <h2 align="left">Commandes du projet</h2>
+
                                 <List>
-                                    {props.commands.map((command, index) => {
+                                    {props.projects.map(project => {
                                       return (
                                         <ListItem>
                                           <ListItemIcon>
-                                              <FolderIcon/>
+                                            <FolderIcon/>
                                           </ListItemIcon>
-                                          <Button href={`invoiceClient?id=${command._id}`}>
-                                              <ListItemText
-                                                  primary={`Commande n°${index + 1}`}
-                                                  secondary
-                                              />
+                                          <Button href={`/commands?id=${project._id}`}>
+                                            <ListItemText
+                                              primary={project.name}
+                                              secondary
+                                            />
                                           </Button>
                                         </ListItem>
                                       )
@@ -81,6 +93,8 @@ function generate(element) {
 
 
                             </div>
+
+
                         </Container>
                     </React.Fragment>
                 </Container>

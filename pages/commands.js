@@ -15,6 +15,10 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import {mainListItemsClient} from '../components/listItemsClient';
 import CommandeClient from '../components/CommandeClient';
+import nextCookie from 'next-cookies';
+
+import commandsServices from '../utils/commandsServices';
+import projectsServices from '../utils/projectsServices';
 
 const drawerWidth = 240;
 
@@ -98,7 +102,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-function Dashboard() {
+function Commands(props) {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
     const handleDrawerOpen = () => {
@@ -149,7 +153,7 @@ function Dashboard() {
                 <div className={classes.appBarSpacer}/>
                 <Container maxWidth="false" className={classes.container}>
                     <Paper style={{padding:"30px", borderLeft:'solid 2px darkgreen'}}>
-                        <CommandeClient/>
+                        <CommandeClient commands={props.commands} project={props.project} />
                     </Paper>
                 </Container>
             </main>
@@ -157,5 +161,16 @@ function Dashboard() {
     );
 }
 
+Commands.getInitialProps = async ctx => {
+  const { id } = ctx.query;
+  const commands = await commandsServices.getCommandsByProject(id, ctx)
+  const project = await projectsServices.getProject(id, ctx)
 
-export default Dashboard;
+  return {
+    commands: commands.data.data.doc,
+    project: project.data.doc
+  }
+}
+
+
+export default Commands;
