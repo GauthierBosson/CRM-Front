@@ -151,7 +151,7 @@ function Commands(props) {
             </Drawer>
             <main className={classes.content}>
                 <div className={classes.appBarSpacer}/>
-                <Container maxWidth="false" className={classes.container}>
+                <Container maxWidth={false} className={classes.container}>
                     <Paper style={{padding:"30px", borderLeft:'solid 2px darkgreen'}}>
                         <CommandeClient commands={props.commands} project={props.project} />
                     </Paper>

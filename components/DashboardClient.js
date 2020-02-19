@@ -56,9 +56,9 @@ function DashboardClient(props) {
     return (
         <main>
             <div>
-                <Container maxWidth="false">
+                <Container maxWidth={false}>
                     <React.Fragment>
-                        <Container maxWidth="false" align="center">
+                        <Container maxWidth={false} align="center">
                             <div>
                                 <h1>Projets</h1>
                                 <Link href="/agendaClient">

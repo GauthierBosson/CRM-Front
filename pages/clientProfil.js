@@ -174,7 +174,7 @@ function ClientProfil(props) {
         </Drawer>
         <main className={classes.content}>
           <div className={classes.appBarSpacer} />
-          <Container maxWidth="false" className={classes.container}>
+          <Container maxWidth={false} className={classes.container}>
             <DetailsClients clientInfos={props.clientInfos} />
           </Container>
         </main>

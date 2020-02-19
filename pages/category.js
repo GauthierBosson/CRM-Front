@@ -171,7 +171,7 @@ function Dashboard() {
         </Drawer>
         <main className={classes.content}>
           <div className={classes.appBarSpacer}/>
-          <Container maxWidth="false" className={classes.container}>
+          <Container maxWidth={false} className={classes.container}>
 
             <Category />
 

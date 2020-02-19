@@ -210,7 +210,7 @@ function Dashboard() {
       </Drawer>
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
-        <Container maxWidth="false" className={classes.container}>
+        <Container maxWidth={false} className={classes.container}>
           <Grid container spacing={2}>
             {/* Chart */}
             <Grid item xs={12} md={4} lg={3}>
@@ -320,7 +320,7 @@ function Dashboard() {
                     </Grid>
                     <Grid item xs={6} style={{ marginTop: "10px" }}>
                       <Box justifyContent="center" style={{ display: "flex" }}>
-                        <h3 inset>Demandes</h3>
+                        <h3>Demandes</h3>
                       </Box>
                     </Grid>
                   </Grid>

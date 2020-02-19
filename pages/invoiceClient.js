@@ -156,13 +156,13 @@ function InvoiceClient(props) {
             </Drawer>
             <main className={classes.content}>
                 <div className={classes.appBarSpacer}/>
-                <Container maxWidth="false" className={classes.container}>
+                <Container maxWidth={false} className={classes.container}>
                     <Paper style={{padding: "30px", borderLeft: 'solid 2px darkgreen'}}>
                         <FactureClient command={props.command} />
                     </Paper>
 
                 </Container>
-                <Container maxWidth="false" className={classes.container}>
+                <Container maxWidth={false} className={classes.container}>
                     <Grid container spacing={3}>
                         <Grid item xs={6}>
                             <div align="right"><Button>Générer en PDF <PictureAsPdfIcon

@@ -43,7 +43,7 @@ export default function SimpleMenu() {
             >
                 <Link href="/bill" onClick={handleClose}>
 
-                        <ListItem button oncli>
+                        <ListItem>
                             <ListItemIcon>
                                 <EuroSymbolIcon style={{fill:'#cac52e'}}/>
                             </ListItemIcon>

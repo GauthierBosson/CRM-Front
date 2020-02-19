@@ -178,7 +178,7 @@ function AgendaClient(props) {
         </Drawer>
         <main className={classes.content}>
           <div className={classes.appBarSpacer} />
-          <Container maxWidth="false" className={classes.container}>
+          <Container maxWidth={false} className={classes.container}>
             <Paper >
             <AgendaComponent 
               userId={props.userId} 
