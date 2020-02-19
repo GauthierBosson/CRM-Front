@@ -129,19 +129,13 @@ export default function FactureUser() {
 
 
                     <Grid container spacing={3}>
-                        <Grid item sm={4} align="center">
-                            <div id="transition-modal-description"><strong> RIB <br/>
-                            </strong></div>
-                            <br/>
-                            <div> IBAN : **** **** **** 1234 <br/> BIC n° : 123 123 123</div>
-                        </Grid>
-                        <Grid item sm={4} align="center">
+                        <Grid item sm={6} align="center">
                             <div id="transition-modal-description" align="center" style={{fontSize: '30px'}}> A Régler
                                 avant
                                 le <br/></div>
                             <div><strong style={{fontSize: '20px'}}> 10/10/20</strong></div>
                         </Grid>
-                        <Grid item sm={4} align="center">
+                        <Grid item sm={6} align="center">
                             <div id="transition-modal-description" align=""> Total<br/>
                                 <div style={{fontSize: '30px', color: '#19857b'}}><strong>3000 € </strong></div>
                             </div>
