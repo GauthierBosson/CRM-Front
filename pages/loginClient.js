@@ -65,14 +65,14 @@ export default function loginClient() {
       <div className={classes.background}>
         <Container component="main" maxWidth="sm">
 
-          <div style={{height:'100px'}} ></div>
+          <div style={{height:'50px'}} ></div>
           <CssBaseline />
           <div className={classes.paper}>
             <Typography component="h1" variant="h5" style={{fontSize:'40px',color:'white', fontFamily:'Public Sans, sans-serif'}}>
               Connexion client <LockOpenIcon style={{marginLeft:'6px', fontSize:'40px', color:'white'}}/>
             </Typography>
 
-            <Card style={{marginTop:'20px', backgroundColor:'#F1F1F1', boxShadow:'-webkit-box-shadow: 11px 11px 16px 0px rgba(5,5,5,0.23);\n' +
+            <Card style={{marginTop:'10px', backgroundColor:'#F1F1F1', boxShadow:'-webkit-box-shadow: 11px 11px 16px 0px rgba(5,5,5,0.23);\n' +
                   '-moz-box-shadow: 11px 11px 16px 0px rgba(5,5,5,0.23);\n' +
                   'box-shadow: 11px 11px 16px 0px rgba(5,5,5,0.23);'}}>
               <CardContent>
@@ -121,6 +121,9 @@ export default function loginClient() {
                     </Button>
                   </Grid>
                 </form>
+                <div align="right">
+                <Button ><small>Mot de passe oublié</small></Button>
+                </div>
               </CardContent>
 
             </Card>

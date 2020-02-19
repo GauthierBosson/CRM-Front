@@ -88,9 +88,7 @@ export default function EnhancedTable() {
           <Container maxWidth="false">
             <div className={classes.root}>
               <div style={{ padding: "5px" }}>
-                <h1 style={{ color: "#19857b" }}>
-                  Import fichier .csv ou Json
-                </h1>
+
               </div>
 
               <Grid container>
@@ -98,8 +96,7 @@ export default function EnhancedTable() {
                   <Paper>
                     <br />
                     <h3 align="center">
-                      Cliquer sur Importer un fichier ou Glissez déposer le
-                      fichier dans la zone <strong> ci-dessous</strong>
+                      Cliquer sur Importer un fichier <strong> ci-dessous</strong>
                     </h3>
                     <br />
                     <Grid container>

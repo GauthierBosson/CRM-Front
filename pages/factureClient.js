@@ -161,11 +161,11 @@ function Dashboard() {
                 <Container maxWidth="false" className={classes.container}>
                     <Grid container spacing={3}>
                         <Grid item xs={6}>
-                            <div align="right"><Button>Générer en PDF <PictureAsPdfIcon
+                            <div align="right"><Button color="primary" variant="contained">Générer en PDF <PictureAsPdfIcon
                                 style={{marginLeft: '4px'}}/></Button></div>
                         </Grid>
                         <Grid item xs={6}>
-                            <div align="left"><Button href="/PaymentClient">Payer <CreditCardIcon style={{marginLeft: '4px'}}/></Button>
+                            <div align="left"><Button  color="primary" variant="contained" href="/PaymentClient">Payer <CreditCardIcon style={{marginLeft: '4px'}}/></Button>
                             </div>
                         </Grid>
                     </Grid>

@@ -65,7 +65,7 @@ export default function SignIn() {
       <div className={classes.background}>
         <Container component="main" maxWidth="sm">
 
-          <div style={{height:'100px'}} ></div>
+          <div style={{height:'50px'}} ></div>
           <CssBaseline />
           <div className={classes.paper}>
             <Typography component="h1" variant="h5" style={{fontSize:'40px',color:'white', fontFamily:'Public Sans, sans-serif'}}>
@@ -120,7 +120,9 @@ export default function SignIn() {
                       Se connecter
                     </Button>
                   </Grid>
-                </form>
+                </form><div align="right">
+                <Button ><small>Mot de passe oublié</small></Button>
+              </div>
               </CardContent>
 
             </Card>

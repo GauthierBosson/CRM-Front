@@ -7,6 +7,7 @@ import Link from "next/link";
 import Tooltip from "@material-ui/core/Tooltip";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import EventAvailableIcon from '@material-ui/icons/EventAvailable';
+import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import { logout } from '../utils/auth';
 
 export const mainListItemsClient = (
@@ -31,8 +32,18 @@ export const mainListItemsClient = (
                 </ListItem>
             </Tooltip>
         </Link>
+        <Link href="/profilClient">
+            <Tooltip title="Profil" placement="right">
+                <ListItem button >
+                    <ListItemIcon>
+                        <AccountBoxIcon style={{fill: '#8c4a9c'}}/>
+                    </ListItemIcon>
+                    <ListItemText primary="Profil"/>
+                </ListItem>
+            </Tooltip>
+        </Link>
 
-        <div style={{marginTop: '42rem'}} onClick={() => logout()}>
+        <div style={{marginTop: '20rem'}} onClick={() => logout()}>
             <Tooltip title="Déconnexion" placement="right">
                 <ListItem button style={{padding: '3vh'}}>
                     <ListItemIcon>
