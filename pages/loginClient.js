@@ -9,7 +9,7 @@ import Grid from "@material-ui/core/Grid";
 import LockOpenIcon from '@material-ui/icons/LockOpen';
 import Card from "@material-ui/core/Card";
 import CardContent from '@material-ui/core/CardContent';
-import { login } from '../utils/auth';
+import { login } from '../utils/authClient';
 
 import axios from 'axios';
 
@@ -36,14 +36,14 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function SignIn() {
+export default function loginClient() {
   const [credentials, setCredentials] = useState({ email: '', password: '' });
 
   const handleSubmit = async event => {
     event.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:3001/api/v1/users/login', { email: credentials.email, password: credentials.password });
+      const response = await axios.post('http://localhost:3001/api/v1/clients/login', { email: credentials.email, password: credentials.password });
       if (response.status === 200) {
         const { token } = response.data
         await login({ token })
@@ -69,7 +69,7 @@ export default function SignIn() {
           <CssBaseline />
           <div className={classes.paper}>
             <Typography component="h1" variant="h5" style={{fontSize:'40px',color:'white', fontFamily:'Public Sans, sans-serif'}}>
-              Connexion <LockOpenIcon style={{marginLeft:'6px', fontSize:'40px', color:'white'}}/>
+              Connexion client <LockOpenIcon style={{marginLeft:'6px', fontSize:'40px', color:'white'}}/>
             </Typography>
 
             <Card style={{marginTop:'20px', backgroundColor:'#F1F1F1', boxShadow:'-webkit-box-shadow: 11px 11px 16px 0px rgba(5,5,5,0.23);\n' +

@@ -2,6 +2,7 @@ import React from 'react'
 import NextHead from 'next/head'
 import { string } from 'prop-types'
 
+
 const defaultDescription = ''
 const defaultOGURL = ''
 const defaultOGImage = ''
@@ -19,6 +20,7 @@ const Head = props => (
     <link rel="apple-touch-icon" href="/static/touch-icon.png" />
     <link rel="mask-icon" href="/static/favicon-mask.svg" color="#49B882" />
     <link rel="icon" href="/static/favicon.ico" />
+    <link href="https://fonts.googleapis.com/css?family=Public+Sans&display=swap" rel="stylesheet" />
     <meta property="og:url" content={props.url || defaultOGURL} />
     <meta property="og:title" content={props.title || ''} />
     <meta
@@ -42,3 +44,5 @@ Head.propTypes = {
 }
 
 export default Head
+
+
