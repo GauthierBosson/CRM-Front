@@ -158,7 +158,7 @@ export default function TransitionsModal() {
                                 <form className={classes.root} noValidate autoComplete="off">
                                 <div align="right" style={{marginTop:'20px'}}>
                                     <Button style={{marginRight:'1%'}} color="primary" variant="contained" align="center">Enregistrer</Button>
-                                    <Button variant="contained" color="error" href="/" align="center" style={{color:'#cf2c29'}}>Annuler</Button>
+                                    <Button variant="contained" href="/" align="center" >Annuler</Button>
                                 </div>
                             </form>
                         </div>

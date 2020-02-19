@@ -11,14 +11,16 @@ const theme = createMuiTheme({
             main: '#3e3e3e',
         },
         error: {
-            main: red.A400,
+            main: '#9c3f4e',
         },
         background: {
             default: 'rgba(241,241,241,0.88)',
         },
-
         success: {
             main: '#248485',
+        },
+        primary2: {
+          main: '#9c3f4e',
         },
     },
 });
