@@ -1,7 +1,7 @@
 {
   "build": {
     "env": {
-      "API_URL": "http://webpartner-crm-api.herokuapp.com/api/v1"
+      "API_URL": "@http://webpartner-crm-api.herokuapp.com/api/v1"
     }
   }
 }
