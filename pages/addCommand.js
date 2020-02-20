@@ -11,6 +11,12 @@ import { makeStyles } from '@material-ui/core/styles';
 import Input from '@material-ui/core/Input';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import { FieldArray, Form, Formik, Field } from 'formik';
+import DateFnsUtils from '@date-io/date-fns';
+import {
+  MuiPickersUtilsProvider,
+  KeyboardDatePicker,
+} from '@material-ui/pickers';
+import TextField from '@material-ui/core/TextField';
 
 import projectsServices from '../utils/projectsServices';
 import prestationsServices from '../utils/prestationsServices';
@@ -34,15 +40,22 @@ function AddCommand(props) {
       <h1>Ajouter une commande</h1>
       <Formik 
         initialValues={{
+          name: '',
           project: props.projectDetails._id,
           prestations: [
             {
               prestation: '',
-              price: ''
+              price: '',
+              quantity: 1
             }
-          ]
+          ],
+          dueDate: new Date(),
+          total: 0
         }}
         onSubmit={async values => {
+          values.prestations.forEach(prestation => {
+            values.total = values.total + (prestation.price * prestation.quantity)
+          })
           try {
             const response = await commandsServices.addCommand(values);
             Router.push(`/projectDetails?id=${props.projectDetails._id}`);
@@ -53,6 +66,14 @@ function AddCommand(props) {
       >
         {formikProps => (
           <Form>
+            <TextField
+              id="standard-name"
+              label="Nom de la facture"
+              name="name"
+              value={formikProps.values.name}
+              onChange={formikProps.handleChange}
+              margin="normal"
+            />
             <FieldArray 
               name="prestations"
               render={arrayHelpers => (
@@ -93,11 +114,44 @@ function AddCommand(props) {
                             </FormControl>
                           )}
                         </Field>
+                        <Field name={`prestations.${index}.quantity`}>
+                          {({ field, form, meta }) => (
+                            <FormControl className={classes.formControl}>
+                              <InputLabel htmlFor={`prestation-quantity${index}`}>Quantité</InputLabel>
+                              <Input 
+                                id={`prestation-quantity${index}`}
+                                type="number"
+                                name={field.name}
+                                value={formikProps.values.prestations[index].quantity}
+                                onChange={formikProps.handleChange}
+                              />
+                            </FormControl>
+                          )}
+                        </Field>
                         <Button type="button" variant="contained" onClick={() => arrayHelpers.remove(index)}>-</Button>
                       </div>
                     ))
                   ): null}
                 <Button type="button" variant="contained" onClick={() => arrayHelpers.push({ prestation: '', price: '' })}>+</Button>
+                <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                  <KeyboardDatePicker
+                    disableToolbar
+                    variant="inline"
+                    format="dd/MM/yyyy"
+                    margin="normal"
+                    id="dueDate"
+                    name="dueDate"
+                    minDate={new Date()}
+                    label="Echéance pour paiement"
+                    value={formikProps.values.dueDate}
+                    onChange={value => {
+                      formikProps.setFieldValue('dueDate', value);
+                    }}
+                    KeyboardButtonProps={{
+                      'aria-label': 'change date',
+                    }}
+                  />
+                </MuiPickersUtilsProvider>
             </div>
           )}
         />

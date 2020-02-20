@@ -93,11 +93,13 @@ const useStyles = makeStyles(theme => ({
 function addCompany(props) {
     const [formInfos, setFormInfos] = useState({
         email: '',
-        firstname: '',
-        lastname: '',
-        company: '',
+        name: '',
         phone: '',
-        role: 'client'
+        country: '',
+        state: '',
+        city: '',
+        zip_code: '',
+        street: ''
     })
 
     const handleSubmit = async event => {
@@ -105,18 +107,21 @@ function addCompany(props) {
 
         const infos = {
             email: formInfos.email,
-            name: formInfos.firstname,
-            country: formInfos.country,
-            state: formInfos.state,
-            city: formInfos.city,
-            zip_code: formInfos.zip_code,
-            street: formInfos.street,
+            name: formInfos.name,
             phone: formInfos.phone,
+            address: {
+                country: formInfos.country,
+                state: formInfos.state,
+                city: formInfos.city,
+                zip_code: formInfos.zip_code,
+                street: formInfos.street,
+            }
         }
 
         try {
-            const response = await clientsServices.addClient(infos);
-            Router.push(`/clientProfil?id=${response._id}`)
+            const response = await companiesServices.addCompany(infos);
+            console.log(response);
+            Router.push(`/companyProfil?id=${response.data.doc._id}`)
         } catch (error) {
             console.error(error)
         }
@@ -143,20 +148,52 @@ function addCompany(props) {
             }}/>
                 </Grid>
                 <Grid item xs={6} sm={3}>
-
-            <TextField id="lastname" label="Nom" type="text" onChange={event => {
-                setFormInfos(
-                    Object.assign({}, formInfos, {lastname: event.target.value})
-                )
-            }}/>
-                </Grid>
-                <Grid item xs={6} sm={3}>
             <TextField id="phone" type="text" label="Téléphone" onChange={event => {
                 setFormInfos(
                     Object.assign({}, formInfos, {phone: event.target.value})
                 )
             }}/>
                 </Grid>
+                <Grid item xs={6} sm={3}>
+
+            <TextField id="country" label="Pays" type="text" onChange={event => {
+                setFormInfos(
+                    Object.assign({}, formInfos, {country: event.target.value})
+                )
+            }}/>
+                </Grid>
+                <Grid item xs={6} sm={3}>
+
+                    <TextField id="state" label="Région" type="text" onChange={event => {
+                        setFormInfos(
+                            Object.assign({}, formInfos, {state: event.target.value})
+                        )
+                    }}/>
+                </Grid>
+                <Grid item xs={6} sm={3}>
+
+                    <TextField id="city" label="Ville" type="text" onChange={event => {
+                        setFormInfos(
+                            Object.assign({}, formInfos, {city: event.target.value})
+                        )
+                    }}/>
+                 </Grid>
+                 <Grid item xs={6} sm={3}>
+
+                    <TextField id="zip_code" label="Code postal" type="text" onChange={event => {
+                        setFormInfos(
+                            Object.assign({}, formInfos, {zip_code: event.target.value})
+                        )
+                    }}/>
+                 </Grid>
+                 <Grid item xs={6} sm={3}>
+
+                    <TextField id="adresse" label="Adresse" type="text" onChange={event => {
+                        setFormInfos(
+                            Object.assign({}, formInfos, {street: event.target.value})
+                        )
+                    }}/>
+                 </Grid>
             </Grid>
             <div align="center">
             <Button variant="outlined" align="center"  type="submit" color="primary" style={{marginTop:"3%"}}>

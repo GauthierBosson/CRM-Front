@@ -11,6 +11,8 @@ import Button from '@material-ui/core/Button';
 import PictureAsPdfIcon from '@material-ui/icons/PictureAsPdf';
 import {lighten, makeStyles} from "@material-ui/core/styles";
 
+import moment from 'moment';
+
 
 const useStyles = makeStyles(theme => ({
 
@@ -45,7 +47,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export default function FactureUser() {
+export default function FactureUser(props) {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
 
@@ -62,12 +64,12 @@ export default function FactureUser() {
         <>
             <div>
                 <div id="transition-modal-title" style={{fontSize: '30px', borderLeft: 'solid 3px #19857b'}}><strong
-                    style={{marginLeft: '10px'}}>Détails de la Facture </strong></div>
+                    style={{marginLeft: '10px'}}>Détails de la Facture : {props.command.name} </strong></div>
 
                 <br/>
                 <br/>
                 <Grid item sm={12}>
-                    <h2 id="transition-modal-title" align="center">Logo Entreprise</h2>
+                    <h2 id="transition-modal-title" align="center">Web Partner</h2>
                 </Grid>
 
                 <br/>
@@ -76,14 +78,10 @@ export default function FactureUser() {
                     <Grid item sm={6}>
                         <br/>
                         <br/>
-                        <div id="transition-modal-description"><strong> Nom Responsable entreprise <br/>
-                        </strong></div>
                         <br/>
-                        <div> Date : 10/11/2019 <br/> Facture n° :</div>
                     </Grid>
                     <Grid item sm={6}>
-                        <div id="transition-modal-description" align="right"> Numéro adresse<br/>Ville Code
-                            postal
+                        <div id="transition-modal-description" align="right"> {props.command.project.clientId.name}<br/>{props.command.project.clientId.address.street}<br/>{props.command.project.clientId.address.city} {props.command.project.clientId.address.zip_code}
                         </div>
                     </Grid>
                 </Grid>
@@ -102,24 +100,23 @@ export default function FactureUser() {
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-
-                                <TableRow>
-                                    <TableCell component="th" scope="row">
-                                        Base de donnée
-                                    </TableCell>
-                                    <TableCell align="right">3000 €</TableCell>
-                                    <TableCell align="right">2</TableCell>
-                                    <TableCell align="right">3000 €</TableCell>
-                                </TableRow>
-                                <TableRow>
-                                    <TableCell component="th" scope="row">
-                                        Module de paieùent
-                                    </TableCell>
-                                    <TableCell align="right">290 €</TableCell>
-                                    <TableCell align="right">1</TableCell>
-                                    <TableCell align="right">290 €</TableCell>
-                                </TableRow>
+                                {props.command.prestations.map(prestation => (
+                                    <TableRow>
+                                        <TableCell component="th" scope="row">
+                                            {prestation.prestation.name}
+                                        </TableCell>
+                                        <TableCell align="right">{prestation.price} €</TableCell>
+                                        <TableCell align="right">{prestation.prestation.quantity}</TableCell>
+                                        <TableCell align="right">{prestation.price * prestation.prestation.quantity} €</TableCell>
+                                    </TableRow>
+                                ))}
                             </TableBody>
+
+                                <TableCell></TableCell>
+                                <TableCell></TableCell>
+                                <TableCell></TableCell>
+                                <TableCell align="right">{props.command.total} € HT</TableCell>
+
                         </Table>
                     </TableContainer>
 
@@ -133,11 +130,11 @@ export default function FactureUser() {
                             <div id="transition-modal-description" align="center" style={{fontSize: '30px'}}> A Régler
                                 avant
                                 le <br/></div>
-                            <div><strong style={{fontSize: '20px'}}> 10/10/20</strong></div>
+                            <div><strong style={{fontSize: '20px'}}>{moment(props.command.dueDate).format('DD/MM/YYYY')}</strong></div>
                         </Grid>
                         <Grid item sm={6} align="center">
                             <div id="transition-modal-description" align=""> Total<br/>
-                                <div style={{fontSize: '30px', color: '#19857b'}}><strong>3000 € </strong></div>
+                                <div style={{fontSize: '30px', color: '#19857b'}}><strong>{props.command.total + (props.command.total * 0.2)} € </strong></div>
                             </div>
                         </Grid>
                     </Grid>
