@@ -63,12 +63,10 @@ const clientProfil = (props) => {
                     <Paper style={{padding: '10px', borderLeft:'solid 3px #4ECC90'}}><h3 style={{fontSize: '24px',borderLeft:'solid 3px #4ECC90', padding:'10px', marginLeft:'20px'}} align="left">Coordonnées <AccountCircleIcon style={{fill:'#24a2a3', fontSize:'30px', marginLeft: '5px'}}/></h3>
 
                         <p style={{marginLeft: '7px', fontSize: '15px'}}>
-                            Nom/Prénom : <br/>
-                            Adresse Complète :
+                            Nom/Prénom : {props.clientInfos.firstname} {props.clientInfos.lastname} <br/>
+                            E-mail : {props.clientInfos.email}
                             <br/>
-                            E-mail :
-                            <br/>
-                            Tel :
+                            Tel : {props.clientInfos.phone}
                         </p>
 
 
@@ -76,16 +74,10 @@ const clientProfil = (props) => {
                             d'entreprise <BusinessIcon style={{fill:'#248485', fontSize:'30px', marginLeft: '7px'}}/></h3>
 
                             <p style={{marginLeft: '5px', fontSize: '15px'}}>
-                                Nom d'entreprise : <br/>
-                                Tel :
+                                Nom d'entreprise : {props.clientInfos.company.name}<br/>
+                                Tel : {props.clientInfos.company.phone}
                                 <br/>
-                                Adresse Complète :
-                                <br/>
-                                Dirigeant :
-                                <br/>
-                                SIRET :
-                                <br/>
-                                Catégorie Activité :
+                                Adresse Complète : {props.clientInfos.company.address.street}, {props.clientInfos.company.address.zip_code}, {props.clientInfos.company.address.city}, {props.clientInfos.company.address.state}, {props.clientInfos.company.address.country}
                                 <br/>
                             </p>
                             <div align="right"><ModifClientsModal/></div>
@@ -134,6 +126,7 @@ const clientProfil = (props) => {
                     <Fade in={openModal}>
                         <div className={classes.paper}>
                             <form onSubmit={handleSubmit}>
+                                <h3 style={{textAlign: 'center'}}>Création d'un projet</h3>
                                 <TextField 
                                     id="project-title" 
                                     label="Intitulé du projet" 
