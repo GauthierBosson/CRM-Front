@@ -58,14 +58,14 @@ function generate(element) {
                     <React.Fragment>
                         <Container maxWidth="false" align="center">
                             <div>
-                              <h1>{props.projectDetails.name}</h1>
+                                <h1>{props.projectDetails.name} pour {props.projectDetails.clientId.name}</h1>
                             </div>
                             <div>
-                            <h2 align="left">Voir les commandes du projet</h2>
+                            <h2 align="left">Voir les factures du projet</h2>
                                 <List>
 
                                     <ListItem>
-                                      {props.commands.map((command, index) => {
+                                      {props.commands.length ? props.commands.map((command, index) => {
                                         return (
                                           <>
                                             <ListItemIcon>
@@ -79,11 +79,11 @@ function generate(element) {
                                             </Button>
                                           </>
                                         )
-                                      })}
+                                      }): <p style={{textAlign: 'center', width: '100%'}}>Aucune facture n'est liée à ce projet</p>}
                                     </ListItem>
                                 </List>
                                 <Link href={`/addCommand?id=${props.projectDetails._id}`} >
-                                  <Button variant="contained" color="primary">Ajouter une commande</Button>
+                                  <Button variant="contained" color="primary">Ajouter une facture</Button>
                                 </Link>
 
                             </div>
