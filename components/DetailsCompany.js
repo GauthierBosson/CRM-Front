@@ -65,10 +65,10 @@ const detailsCompany = (props) => {
                             d'entreprise <BusinessIcon style={{fill:'#248485', fontSize:'30px', marginLeft: '7px'}}/></h3>
 
                             <p style={{marginLeft: '5px', fontSize: '15px'}}>
-                                Nom d'entreprise : <br/>
-                                Tel :
+                                Nom d'entreprise : {props.companyInfos.name}<br/>
+                                Tel : {props.companyInfos.phone}
                                 <br/>
-                                Adresse Complète :
+                                Adresse Complète : {props.companyInfos.address.street}, {props.companyInfos.address.zip_code}, {props.companyInfos.address.city}, {props.companyInfos.address.country}
                             </p>
                             <div align="right"><ModifClientsModal/></div>
                         </div>
