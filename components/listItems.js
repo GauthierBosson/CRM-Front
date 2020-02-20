@@ -3,6 +3,7 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import DashboardIcon from "@material-ui/icons/Dashboard";
+import BusinessIcon from '@material-ui/icons/Business';
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import PeopleIcon from "@material-ui/icons/People";
 import Link from "next/link";
@@ -40,7 +41,7 @@ export const mainListItems = (
             <Tooltip title="Entreprises" placement="right">
                 <ListItem button style={{padding:'3vh'}}>
                     <ListItemIcon>
-                        <PeopleIcon style={{fill: '#4ECC90'}}/>
+                        <BusinessIcon style={{fill: '#4ECC90'}}/>
                     </ListItemIcon>
                     <ListItemText primary="Entreprises"/>
                 </ListItem>
