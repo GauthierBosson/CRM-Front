@@ -1,7 +1,6 @@
 import React from 'react';
-import Button from '@material-ui/core/Button';
 import clsx from 'clsx';
-import {makeStyles} from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
@@ -12,19 +11,33 @@ import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import Badge from '@material-ui/core/Badge';
 import Container from '@material-ui/core/Container';
-import Paper from '@material-ui/core/Paper';
+import Link from 'next/link';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
-import {mainListItemsClient} from '../components/listItemsClient';
-import {mainListItems} from '../components/listItems';
+import { mainListItems } from '../components/listItems';
 import MessageIcon from '@material-ui/icons/Message';
-import PictureAsPdfIcon from '@material-ui/icons/PictureAsPdf';
-import CreditCardIcon from '@material-ui/icons/CreditCard';
-import Grid from '@material-ui/core/Grid';
-import FactureClient from '../components/FactureClient';
+import CompaniesList from '../components/CompaniesList';
+import AccessibilityNewIcon from '@material-ui/icons/AccessibilityNew';
+import Button from '@material-ui/core/Button';
 
-import commandsServices from '../utils/commandsServices';
+import clientsServices from '../utils/clientsServices';
+import companiesServices from '../utils/companiesServices';
+import { withAuthSync } from '../utils/auth';
+
+
+function Copyright() {
+    return (
+        <Typography variant="body2" color="textSecondary" align="center">
+            {'Copyright © '}
+            <Link color="inherit" href="https://material-ui.com/">
+                Your Website
+            </Link>{' '}
+            {new Date().getFullYear()}
+            {'.'}
+        </Typography>
+    );
+}
 
 const drawerWidth = 240;
 
@@ -104,11 +117,10 @@ const useStyles = makeStyles(theme => ({
         borderColor: theme.palette.primary,
     },
     fixedHeight: {
-        height: 100
-    },
+        height: 100  },
 }));
 
-function InvoiceClient(props) {
+function Companies(props) {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
     const handleDrawerOpen = () => {
@@ -118,14 +130,9 @@ function InvoiceClient(props) {
         setOpen(false);
     };
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
-
-    async function generatePDF() {
-        const invoice = await invoicesServices.generateInvoice(props.command._id, props.command);
-    }
-
     return (
         <div className={classes.root}>
-            <CssBaseline/>
+            <CssBaseline />
             <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
                 <Toolbar className={classes.toolbar}>
                     <IconButton
@@ -135,11 +142,21 @@ function InvoiceClient(props) {
                         onClick={handleDrawerOpen}
                         className={clsx(classes.menuButton, open && classes.menuButtonHidden)}
                     >
-                        <MenuIcon/>
+                        <MenuIcon />
                     </IconButton>
                     <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-                        <strong>Dashboard client</strong>
+                        <strong>Liste entreprises</strong>
                     </Typography>
+                    <IconButton color="inherit">
+                        <Badge badgeContent={4} color="error">
+                            <NotificationsIcon />
+                        </Badge>
+                    </IconButton>
+                    <IconButton color="inherit">
+                        <Badge  color="secondary">
+                            <MessageIcon />
+                        </Badge>
+                    </IconButton>
                 </Toolbar>
             </AppBar>
             <Drawer
@@ -149,45 +166,38 @@ function InvoiceClient(props) {
                 }}
                 open={open}
             >
-                <div className={classes.toolbarIcon} style={{backgroundColor: '#F1F1F1'}}>
+                <div className={classes.toolbarIcon} style={{backgroundColor:'#F1F1F1'}}>
 
                     <IconButton onClick={handleDrawerClose}>
-                        <ChevronLeftIcon/>
+                        <ChevronLeftIcon />
                     </IconButton>
                 </div>
-                <Divider/>
-                <List style={{backgroundColor: '#F1F1F1'}}>{mainListItemsClient}</List>
-                <Divider/>
+                <Divider />
+                <List style={{backgroundColor:'#F1F1F1'}}>{mainListItems}</List>
+                <Divider />
             </Drawer>
             <main className={classes.content}>
-                <div className={classes.appBarSpacer}/>
-                <Container maxWidth={false} className={classes.container}>
-                    <Paper style={{padding: "30px", borderLeft: 'solid 2px darkgreen'}}>
-                        <FactureClient command={props.command} />
-                    </Paper>
+                <div className={classes.appBarSpacer} />
 
-                </Container>
                 <Container maxWidth={false} className={classes.container}>
-                    <Grid container spacing={3}>
-                        <Grid item xs={6}>
-                            <div align="right"><Button onClick={() => generatePDF()}>Générer en PDF <PictureAsPdfIcon
-                                style={{marginLeft: '4px'}}/></Button></div>
-                        </Grid>
-                    </Grid>
+                    <h1 style={{color:'#19857b'}}>Liste des entreprises de la base de données <AccessibilityNewIcon/></h1>
+                    <Link href="/addCompany">
+                        <Button variant="contained" color="primary" style={{marginBottom: 10}}>
+                            Ajouter une entreprise
+                        </Button>
+                    </Link>
+                    <CompaniesList companiesList={props.companiesList} />
                 </Container>
             </main>
         </div>
     );
 }
 
-InvoiceClient.getInitialProps = async ctx => {
-  const { id } = ctx.query;
+Companies.getInitialProps = async ctx => {
+    const companiesList = await companiesServices.getCompanies(ctx);
 
-  const command = await commandsServices.getCommand(id, ctx)
-
-  return {
-    command: command.data.doc
-  }
+    return {companiesList: companiesList.data.data};
 }
 
-export default InvoiceClient
+
+export default withAuthSync(Companies, ['employee', 'admin'])

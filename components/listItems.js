@@ -36,6 +36,16 @@ export const mainListItems = (
                 </ListItem>
             </Tooltip>
         </Link>
+        <Link href="/companies">
+            <Tooltip title="Entreprises" placement="right">
+                <ListItem button style={{padding:'3vh'}}>
+                    <ListItemIcon>
+                        <PeopleIcon style={{fill: '#4ECC90'}}/>
+                    </ListItemIcon>
+                    <ListItemText primary="Entreprises"/>
+                </ListItem>
+            </Tooltip>
+        </Link>
         <Link href="/prospect">
             <Tooltip title="Prospects" placement="right">
                 <ListItem button style={{padding:'3vh'}}>
