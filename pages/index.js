@@ -13,6 +13,8 @@ import { login } from '../utils/auth';
 
 import axios from 'axios';
 
+const API_URL = process.env.API_URL || 'http://localhost:3001/api/v1';
+
 const useStyles = makeStyles(theme => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -43,7 +45,7 @@ export default function SignIn() {
     event.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:3001/api/v1/users/login', { email: credentials.email, password: credentials.password });
+      const response = await axios.post(`${API_URL}/users/login`, { email: credentials.email, password: credentials.password });
       if (response.status === 200) {
         const { token } = response.data
         await login({ token })
