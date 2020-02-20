@@ -22,6 +22,7 @@ import {mainListItems} from '../components/listItems';
 import MessageIcon from '@material-ui/icons/Message';
 import AddClient from '../components/AddClient';
 import AddCompany from '../components/AddCompany'
+import { withAuthSync } from '../utils/auth';
 
 import clientsServices from '../utils/clientsServices';
 import companiesServices from '../utils/companiesServices';
@@ -180,4 +181,4 @@ function AddCompanyPage() {
     );
 }
 
-export default AddCompanyPage
+export default withAuthSync(AddCompanyPage, ['admin', 'employee'])

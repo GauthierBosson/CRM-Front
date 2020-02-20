@@ -17,6 +17,7 @@ import {
   KeyboardDatePicker,
 } from '@material-ui/pickers';
 import TextField from '@material-ui/core/TextField';
+import { withAuthSync } from '../utils/auth';
 
 import projectsServices from '../utils/projectsServices';
 import prestationsServices from '../utils/prestationsServices';
@@ -175,4 +176,4 @@ AddCommand.getInitialProps = async ctx => {
    }
 }
 
-export default AddCommand
+export default withAuthSync(AddCommand, ['admin', 'employee'])

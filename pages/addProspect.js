@@ -379,4 +379,4 @@ AddProspectPage.getInitialProps = async ctx => {
   return { companiesList: companiesList.data.data };
 }
 
-export default AddProspectPage
+export default withAuthSync(AddProspectPage, ['admin', 'employee'])

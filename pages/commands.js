@@ -19,6 +19,7 @@ import nextCookie from 'next-cookies';
 
 import commandsServices from '../utils/commandsServices';
 import projectsServices from '../utils/projectsServices';
+import { withAuthSync } from '../utils/auth';
 
 const drawerWidth = 240;
 
@@ -173,4 +174,4 @@ Commands.getInitialProps = async ctx => {
 }
 
 
-export default Commands;
+export default withAuthSync(Commands, ['admin', 'employee']);

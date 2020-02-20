@@ -21,6 +21,7 @@ import MessageIcon from '@material-ui/icons/Message';
 import DetailsCompany from '../components/DetailsCompany';
 
 import companiesServices from '../utils/companiesServices';
+import { withAuthSync } from '../utils/auth';
 
 function Copyright() {
   return (
@@ -202,4 +203,4 @@ CompanyProfil.getInitialProps = async ctx => {
 }
 
 
-export default CompanyProfil
+export default withAuthSync(CompanyProfil, ['admin', 'employee'])
