@@ -1,9 +1,8 @@
 import React from 'react';
 import clsx from 'clsx';
-import {makeStyles} from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Drawer from '@material-ui/core/Drawer';
-import Box from '@material-ui/core/Box';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
@@ -12,18 +11,20 @@ import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import Badge from '@material-ui/core/Badge';
 import Container from '@material-ui/core/Container';
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-import Link from '@material-ui/core/Link';
+import Link from 'next/link';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
-import {mainListItems} from '../components/listItems';
+import { mainListItems } from '../components/listItems';
 import MessageIcon from '@material-ui/icons/Message';
-import AddClient from '../components/AddClient';
+import CompaniesList from '../components/CompaniesList';
+import AccessibilityNewIcon from '@material-ui/icons/AccessibilityNew';
+import Button from '@material-ui/core/Button';
 
 import clientsServices from '../utils/clientsServices';
 import companiesServices from '../utils/companiesServices';
+import { withAuthSync } from '../utils/auth';
+
 
 function Copyright() {
     return (
@@ -116,11 +117,10 @@ const useStyles = makeStyles(theme => ({
         borderColor: theme.palette.primary,
     },
     fixedHeight: {
-        height: 100
-    },
+        height: 100  },
 }));
 
-function AddClientPage(props) {
+function Companies(props) {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
     const handleDrawerOpen = () => {
@@ -132,7 +132,7 @@ function AddClientPage(props) {
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
     return (
         <div className={classes.root}>
-            <CssBaseline/>
+            <CssBaseline />
             <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
                 <Toolbar className={classes.toolbar}>
                     <IconButton
@@ -142,12 +142,21 @@ function AddClientPage(props) {
                         onClick={handleDrawerOpen}
                         className={clsx(classes.menuButton, open && classes.menuButtonHidden)}
                     >
-                        <MenuIcon/>
+                        <MenuIcon />
                     </IconButton>
                     <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-                        <strong>Ajout client</strong>
+                        <strong>Liste entreprises</strong>
                     </Typography>
-
+                    <IconButton color="inherit">
+                        <Badge badgeContent={4} color="error">
+                            <NotificationsIcon />
+                        </Badge>
+                    </IconButton>
+                    <IconButton color="inherit">
+                        <Badge  color="secondary">
+                            <MessageIcon />
+                        </Badge>
+                    </IconButton>
                 </Toolbar>
             </AppBar>
             <Drawer
@@ -157,32 +166,38 @@ function AddClientPage(props) {
                 }}
                 open={open}
             >
-                <div className={classes.toolbarIcon} style={{backgroundColor: '#F1F1F1'}}>
+                <div className={classes.toolbarIcon} style={{backgroundColor:'#F1F1F1'}}>
 
                     <IconButton onClick={handleDrawerClose}>
-                        <ChevronLeftIcon/>
+                        <ChevronLeftIcon />
                     </IconButton>
                 </div>
-                <Divider/>
-                <List style={{backgroundColor: '#F1F1F1'}}>{mainListItems}</List>
-                <Divider/>
+                <Divider />
+                <List style={{backgroundColor:'#F1F1F1'}}>{mainListItems}</List>
+                <Divider />
             </Drawer>
             <main className={classes.content}>
-                <div className={classes.appBarSpacer}/>
-                <Container maxWidth="false" className={classes.container}>
-                    <Paper style={{padding:"30px", borderLeft:'solid 2px darkgreen'}}>
-                    <AddClient companiesList={props.companiesList} />
-                    </Paper>
-                    </Container>
+                <div className={classes.appBarSpacer} />
+
+                <Container maxWidth={false} className={classes.container}>
+                    <h1 style={{color:'#19857b'}}>Liste des entreprises de la base de données <AccessibilityNewIcon/></h1>
+                    <Link href="/addCompany">
+                        <Button variant="contained" color="primary" style={{marginBottom: 10}}>
+                            Ajouter une entreprise
+                        </Button>
+                    </Link>
+                    <CompaniesList companiesList={props.companiesList} />
+                </Container>
             </main>
         </div>
     );
 }
 
-AddClientPage.getInitialProps = async ctx => {
-  const companiesList = await companiesServices.getCompanies(ctx);
+Companies.getInitialProps = async ctx => {
+    const companiesList = await companiesServices.getCompanies(ctx);
 
-  return { companiesList: companiesList.data.data };
+    return {companiesList: companiesList.data.data};
 }
 
-export default AddClientPage
+
+export default withAuthSync(Companies, ['employee', 'admin'])

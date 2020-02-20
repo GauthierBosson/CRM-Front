@@ -25,6 +25,7 @@ import Grid from '@material-ui/core/Grid';
 import FactureClient from '../components/FactureClient';
 
 import commandsServices from '../utils/commandsServices';
+import invoicesServices from '../utils/invoicesServices';
 
 const drawerWidth = 240;
 
@@ -118,6 +119,11 @@ function InvoiceClient(props) {
         setOpen(false);
     };
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+
+    async function generatePDF() {
+        const invoice = await invoicesServices.generateInvoice(props.command._id, props.command);
+    }
+
     return (
         <div className={classes.root}>
             <CssBaseline/>
@@ -165,8 +171,11 @@ function InvoiceClient(props) {
                 <Container maxWidth={false} className={classes.container}>
                     <Grid container spacing={3}>
                         <Grid item xs={6}>
-                            <div align="right"><Button>Générer en PDF <PictureAsPdfIcon
+                            <div align="center"><Button onClick={() => generatePDF()}>Générer en PDF <PictureAsPdfIcon
                                 style={{marginLeft: '4px'}}/></Button></div>
+                        </Grid>
+                        <Grid item xs={6}>
+                            <div align="center"><Button>Payer la facture</Button></div>
                         </Grid>
                     </Grid>
                 </Container>
