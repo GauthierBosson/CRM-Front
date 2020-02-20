@@ -71,6 +71,9 @@ const useStyles = makeStyles(theme => ({
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.leavingScreen,
         }),
+        [theme.breakpoints.down('xs')]: {
+            display:'none'
+        },
         width: theme.spacing(7),
         [theme.breakpoints.up('sm')]: {
             width: theme.spacing(9),

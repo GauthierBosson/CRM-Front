@@ -135,7 +135,7 @@ function addClient(props) {
     return (
 
         <form onSubmit={handleSubmit}>
-            <div style={{width: 300}}>
+            <div>
                 <Autocomplete
                     id="company"
                     freeSolo
@@ -149,7 +149,7 @@ function addClient(props) {
                     }}
                     renderInput={params => (
 
-                        <TextField
+                        <TextField item xs={12}
                             {...params}
                             label="Entreprise"
                             margin="normal"
@@ -165,7 +165,7 @@ function addClient(props) {
                 />
             </div>
             <Grid container spacing={3}>
-                <Grid item xs={6} sm={3}>
+                <Grid item xs={12} sm={3} align="center">
             <TextField id="email" label="Email" type="email" onChange={event => {
                 setFormInfos(
                     Object.assign({}, formInfos, {email: event.target.value})
@@ -173,14 +173,14 @@ function addClient(props) {
             }}/>
 
                 </Grid>
-                <Grid item xs={6} sm={3}>
+                <Grid item xs={12} sm={3} align="center">
             <TextField id="firstname" label="Prénom" type="text" onChange={event => {
                 setFormInfos(
                     Object.assign({}, formInfos, {firstname: event.target.value})
                 )
             }}/>
                 </Grid>
-                <Grid item xs={6} sm={3}>
+                <Grid item xs={12} sm={3} align="center">
 
             <TextField id="lastname" label="Nom" type="text" onChange={event => {
                 setFormInfos(
@@ -188,7 +188,7 @@ function addClient(props) {
                 )
             }}/>
                 </Grid>
-                <Grid item xs={6} sm={3}>
+                <Grid item xs={12} sm={3} align="center">
             <TextField id="phone" type="text" label="Téléphone" onChange={event => {
                 setFormInfos(
                     Object.assign({}, formInfos, {phone: event.target.value})
@@ -197,7 +197,7 @@ function addClient(props) {
                 </Grid>
             </Grid>
                 <Grid container spacing={3}>
-                    <Grid item xs={6} sm={3}>
+                    <Grid item xs={12} sm={3} align="center">
             <TextField id="country" type="text" label="Pays" onChange={event => {
                 setFormInfos(
                     Object.assign({}, formInfos, {country: event.target.value})
@@ -205,7 +205,7 @@ function addClient(props) {
             }}
             />
                     </Grid>
-                    <Grid item xs={6} sm={3}>
+                    <Grid item xs={12} sm={3} align="center">
             <TextField id="state" type="text" label="Région"
                        onChange={event => {
                            setFormInfos(
@@ -214,7 +214,7 @@ function addClient(props) {
                        }}
             />
                     </Grid>
-                    <Grid item xs={6} sm={3}>
+                    <Grid item xs={12} sm={3} align="center">
 
             <TextField id="city" type="text" label="Ville" onChange={event => {
                 setFormInfos(
@@ -223,7 +223,7 @@ function addClient(props) {
             }}
             />
                     </Grid>
-                    <Grid item xs={6} sm={3}>
+                    <Grid item xs={12} sm={3} align="center">
             <TextField id="zip_code" type="number" label="Code Zip"
                 onChange={event => {
                     setFormInfos(
@@ -234,7 +234,7 @@ function addClient(props) {
                     </Grid>
                 </Grid>
             <Grid container spacing={3}>
-                <Grid item xs={6} sm={3}>
+                <Grid item xs={12} sm={3} align="center">
             <TextField id="street" type="text" label="Rue"
                 onChange={event => {
                     setFormInfos(
@@ -244,7 +244,7 @@ function addClient(props) {
             />
                 </Grid>
             </Grid>
-            <div align="center">
+            <div align="center" style={{marginTop:'2%'}}>
             <Button variant="outlined" align="center"  type="submit" color="primary" style={{marginTop:"3%"}}>
                 Valider
             </Button>

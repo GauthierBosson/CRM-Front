@@ -23,6 +23,7 @@ const useStyles = makeStyles(theme => ({
     },
     toolbar: {
         paddingRight: 24, // keep right padding when drawer closed
+
     },
     toolbarIcon: {
         display: 'flex',
@@ -36,6 +37,7 @@ const useStyles = makeStyles(theme => ({
         transition: theme.transitions.create(['width', 'margin'], {
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.leavingScreen,
+
         }),
     },
     appBarShift: {
@@ -44,13 +46,17 @@ const useStyles = makeStyles(theme => ({
         transition: theme.transitions.create(['width', 'margin'], {
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.enteringScreen,
+
         }),
+
     },
     menuButton: {
         marginRight: 36,
     },
     menuButtonHidden: {
+
         display: 'none',
+
     },
     title: {
         flexGrow: 1,
@@ -70,6 +76,9 @@ const useStyles = makeStyles(theme => ({
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.leavingScreen,
         }),
+        [theme.breakpoints.down('xs')]: {
+            display:'none'
+        },
         width: theme.spacing(7),
         [theme.breakpoints.up('sm')]: {
             width: theme.spacing(9),

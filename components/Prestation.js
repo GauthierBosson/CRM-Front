@@ -60,8 +60,7 @@ export default function EnhancedTable() {
             <Container maxWidth="false" className={classes.container}>
                 <React.Fragment>
                     <Container maxWidth="false">
-                        <div id="title" style={{fontSize: '30px', borderLeft: 'solid 3px #19857b'}}><strong
-                            style={{marginLeft: '10px'}}> Categorie Name </strong></div>
+                        <div id="title" style={{borderLeft: 'solid 3px #19857b'}}><strong><h2 style={{marginLeft: '3%' }}> Categorie Name </h2></strong></div>
                         <div style={{padding: '%', marginTop: '3%'}}>
                             <p>Liste des prestations associées : </p>
                             <ListItem>

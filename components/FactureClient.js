@@ -61,8 +61,8 @@ export default function TransitionsModal() {
     return (
         <>
             <div>
-                <div id="transition-modal-title" style={{fontSize: '30px', borderLeft: 'solid 3px #19857b'}}><strong
-                    style={{marginLeft: '10px'}}>Détails de la Facture </strong></div>
+                <div id="transition-modal-title" style={{borderLeft: 'solid 3px #19857b'}}><h2><strong
+                    style={{marginLeft: '3%'}}>Détails de la Facture </strong></h2></div>
 
                 <br/>
                 <br/>

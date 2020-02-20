@@ -90,6 +90,9 @@ const useStyles = makeStyles(theme => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
+    [theme.breakpoints.down('xs')]: {
+      display:'none'
+    },
     width: theme.spacing(7),
     [theme.breakpoints.up('sm')]: {
       width: theme.spacing(9),
@@ -141,7 +144,7 @@ function Dashboard() {
               <MenuIcon />
             </IconButton>
             <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-              <strong>Devis</strong>
+              <strong>Devis enregistrés</strong>
             </Typography>
 
           </Toolbar>
@@ -166,7 +169,6 @@ function Dashboard() {
         <main className={classes.content}>
           <div className={classes.appBarSpacer} />
           <Container maxWidth="false" className={classes.container}>
-            <h1 style={{color:'#19857b'}}>Devis enregistrés</h1>
 
             <QuoteHistory />
 

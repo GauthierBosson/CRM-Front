@@ -71,7 +71,7 @@ export const mainListItems = (
         </Link>
         <ToggleMenu />
 
-        <div style={{marginTop: '17em'}} onClick={() => logout()}>
+        <div style={{marginTop: '29%'}} onClick={() => logout()}>
             <Tooltip title="Déconnexion" placement="right">
                 <ListItem button style={{padding: '3vh'}}>
                     <ListItemIcon>
