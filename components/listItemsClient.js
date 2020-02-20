@@ -43,7 +43,7 @@ export const mainListItemsClient = (
             </Tooltip>
         </Link>
 
-        <div style={{marginTop: '20rem'}} onClick={() => logout()}>
+        <div style={{marginTop: '27rem'}} onClick={() => logout()}>
             <Tooltip title="Déconnexion" placement="right">
                 <ListItem button style={{padding: '3vh'}}>
                     <ListItemIcon>
