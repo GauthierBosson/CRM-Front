@@ -21,6 +21,7 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import {mainListItems} from '../components/listItems';
 import MessageIcon from '@material-ui/icons/Message';
 import AddClient from '../components/AddClient';
+import AddCompany from '../components/AddCompany'
 
 import clientsServices from '../utils/clientsServices';
 import companiesServices from '../utils/companiesServices';
@@ -120,7 +121,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-function AddCompanyPage(props) {
+function AddCompanyPage() {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
     const handleDrawerOpen = () => {
@@ -171,7 +172,7 @@ function AddCompanyPage(props) {
                 <div className={classes.appBarSpacer}/>
                 <Container maxWidth="false" className={classes.container}>
                     <Paper style={{padding:"30px", borderLeft:'solid 2px darkgreen'}}>
-                    <AddClient companiesList={props.companiesList} />
+                    <AddCompany />
                     </Paper>
                     </Container>
             </main>
