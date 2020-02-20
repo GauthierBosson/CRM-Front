@@ -120,7 +120,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-function AddClientPage(props) {
+function AddCompanyPage(props) {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
     const handleDrawerOpen = () => {
@@ -145,7 +145,7 @@ function AddClientPage(props) {
                         <MenuIcon/>
                     </IconButton>
                     <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-                        <strong>Ajout client</strong>
+                        <strong>Ajout entreprise</strong>
                     </Typography>
 
                 </Toolbar>
@@ -179,10 +179,4 @@ function AddClientPage(props) {
     );
 }
 
-AddClientPage.getInitialProps = async ctx => {
-  const companiesList = await companiesServices.getCompanies(ctx);
-
-  return { companiesList: companiesList.data.data };
-}
-
-export default AddClientPage
+export default AddCompanyPage

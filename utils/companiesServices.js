@@ -23,12 +23,18 @@ export default class companiesServices {
     });
   }
 
-  static getcompany(id, ctx) {
+  static getCompany(id, ctx) {
     const instance = this.createInstance(ctx);
     const url = `${API_URL}/companies/${id}`;
     return instance.get(url).then(response => {
       return response.data;
     });
+  }
+
+  static getClientsByCompany(id, ctx) {
+    const instance = this.createInstance(ctx);
+    const url = `${API_URL}/companies/clients/${id}`
+    return instance.get(url).then(response => response.data)
   }
 
   static updateCompany(company, ctx) {
