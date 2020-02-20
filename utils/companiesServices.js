@@ -1,5 +1,6 @@
 import axios from "axios";
 import nextCookie from 'next-cookies';
+import cookie from 'js-cookie';
 
 const API_URL = "http://localhost:3001/api/v1";
 
@@ -53,8 +54,16 @@ export default class companiesServices {
     });
   }
 
-  static addCompany = (company, ctx) => {
-    const instance = this.createInstance(ctx);
-    instance.post(`${API_URL}/companies/add`, company);
+  static addCompany = (company) => {
+    const instance = axios.create({
+      headers: {
+        'Authorization': 'Bearer ' + cookie.get('token'),
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+    })
+    return instance.post(`${API_URL}/companies/add`, company).then(response => {
+      return response.data;
+    });
   }
 }
