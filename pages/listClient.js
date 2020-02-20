@@ -185,7 +185,6 @@ function ClientsList(props) {
                             Ajouter un client
                         </Button>
                     </Link>
-                    <input type="file" value="Importer des clients" />
                     <ListClient clientsList={props.clientsList} />
                 </Container>
             </main>
