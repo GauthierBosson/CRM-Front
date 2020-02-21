@@ -45,5 +45,15 @@ export default class userServices {
     });
   }
 
-  static addUser = user => axios.post(`${API_URL}/users`, user);
+  static addUser = (user) => { 
+    const token = cookie.get('token');
+    const instance = axios.create({
+      headers: {
+        'Authorization': 'Bearer ' + token,
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+    })
+    return instance.post(`${API_URL}/users/signup`, user).then(response => response.data);
+  }
 }
