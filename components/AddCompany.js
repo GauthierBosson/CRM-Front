@@ -132,7 +132,7 @@ function addCompany(props) {
         <form onSubmit={handleSubmit}>
             <h1>Créer une nouvelle entreprise</h1>
             <Grid container spacing={3}>
-                <Grid item xs={6} sm={3}>
+                <Grid item xs={12} sm={3}>
             <TextField id="email" label="Email" type="email" onChange={event => {
                 setFormInfos(
                     Object.assign({}, formInfos, {email: event.target.value})
@@ -140,21 +140,21 @@ function addCompany(props) {
             }}/>
 
                 </Grid>
-                <Grid item xs={6} sm={3}>
+                <Grid item xs={12} sm={3}>
             <TextField id="name" label="name" type="text" onChange={event => {
                 setFormInfos(
                     Object.assign({}, formInfos, {name: event.target.value})
                 )
             }}/>
                 </Grid>
-                <Grid item xs={6} sm={3}>
+                <Grid item xs={12} sm={3}>
             <TextField id="phone" type="text" label="Téléphone" onChange={event => {
                 setFormInfos(
                     Object.assign({}, formInfos, {phone: event.target.value})
                 )
             }}/>
                 </Grid>
-                <Grid item xs={6} sm={3}>
+                <Grid item xs={12} sm={3}>
 
             <TextField id="country" label="Pays" type="text" onChange={event => {
                 setFormInfos(
@@ -162,7 +162,7 @@ function addCompany(props) {
                 )
             }}/>
                 </Grid>
-                <Grid item xs={6} sm={3}>
+                <Grid item xs={12} sm={3}>
 
                     <TextField id="state" label="Région" type="text" onChange={event => {
                         setFormInfos(
@@ -170,7 +170,7 @@ function addCompany(props) {
                         )
                     }}/>
                 </Grid>
-                <Grid item xs={6} sm={3}>
+                <Grid item xs={12} sm={3}>
 
                     <TextField id="city" label="Ville" type="text" onChange={event => {
                         setFormInfos(
@@ -178,7 +178,7 @@ function addCompany(props) {
                         )
                     }}/>
                  </Grid>
-                 <Grid item xs={6} sm={3}>
+                 <Grid item xs={12} sm={3}>
 
                     <TextField id="zip_code" label="Code postal" type="text" onChange={event => {
                         setFormInfos(
@@ -186,7 +186,7 @@ function addCompany(props) {
                         )
                     }}/>
                  </Grid>
-                 <Grid item xs={6} sm={3}>
+                 <Grid item xs={12} sm={3}>
 
                     <TextField id="adresse" label="Adresse" type="text" onChange={event => {
                         setFormInfos(

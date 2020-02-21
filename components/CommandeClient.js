@@ -70,7 +70,7 @@ function generate(element) {
                                           </ListItemIcon>
                                           <Button href={`invoiceClient?id=${command._id}`}>
                                               <ListItemText
-                                                  primary={`Commande n°${index + 1}`}
+                                                  primary={command.name}
                                                   secondary
                                               />
                                           </Button>

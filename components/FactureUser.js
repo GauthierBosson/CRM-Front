@@ -106,8 +106,8 @@ export default function FactureUser(props) {
                                             {prestation.prestation.name}
                                         </TableCell>
                                         <TableCell align="right">{prestation.price} €</TableCell>
-                                        <TableCell align="right">{prestation.prestation.quantity}</TableCell>
-                                        <TableCell align="right">{prestation.price * prestation.prestation.quantity} €</TableCell>
+                                        <TableCell align="right">{prestation.quantity}</TableCell>
+                                        <TableCell align="right">{prestation.price * prestation.quantity} €</TableCell>
                                     </TableRow>
                                 ))}
                             </TableBody>
