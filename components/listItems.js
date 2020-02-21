@@ -70,7 +70,7 @@ export const mainListItems = (
             </Tooltip>
         </Link>
 
-        <Link href="/import">
+        {/*<Link href="/import">
             <Tooltip title="Imports" placement="right">
                 <ListItem button style={{padding: '3vh'}}>
                     <ListItemIcon>
@@ -79,7 +79,7 @@ export const mainListItems = (
                     <ListItemText primary="Imports"/>
                 </ListItem>
             </Tooltip>
-        </Link>
+</Link>*/}
         <ToggleMenu />
 
         <div style={{marginTop: '90px'}} onClick={() => logout()}>

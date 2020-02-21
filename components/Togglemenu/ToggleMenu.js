@@ -41,26 +41,6 @@ export default function SimpleMenu() {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
             >
-                <Link href="/bill" onClick={handleClose}>
-
-                        <ListItem>
-                            <ListItemIcon>
-                                <EuroSymbolIcon style={{fill:'#cac52e'}}/>
-                            </ListItemIcon>
-                            <ListItemText primary="Factures" />
-                        </ListItem>
-
-                </Link>
-                <Link href="/quoteHistory" onClick={handleClose}>
-
-                        <ListItem button>
-                            <ListItemIcon>
-                                <PlaylistAddCheckIcon style={{fill:'#874ec2'}}/>
-                            </ListItemIcon>
-                            <ListItemText primary="Devis" />
-                        </ListItem>
-
-                </Link>
                 <Link href="/category" onClick={handleClose}>
 
                         <ListItem button>
