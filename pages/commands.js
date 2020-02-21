@@ -177,4 +177,4 @@ Commands.getInitialProps = async ctx => {
 }
 
 
-export default withAuthSync(Commands, ['admin', 'employee']);
+export default withAuthSync(Commands, ['admin', 'employee', 'client']);

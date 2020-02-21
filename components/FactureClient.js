@@ -10,6 +10,7 @@ import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import PictureAsPdfIcon from '@material-ui/icons/PictureAsPdf';
 import {lighten, makeStyles} from "@material-ui/core/styles";
+import moment from 'moment';
 
 
 const useStyles = makeStyles(theme => ({
@@ -110,8 +111,8 @@ export default function FactureClient(props) {
                                         {prestation.prestation.name}
                                       </TableCell>
                                       <TableCell align="right">{prestation.price} €</TableCell>
-                                      <TableCell align="right">{prestation.prestation.quantity}</TableCell>
-                                      <TableCell align="right">{prestation.prestation.quantity * prestation.price} €</TableCell>
+                                      <TableCell align="right">{prestation.quantity}</TableCell>
+                                      <TableCell align="right">{prestation.quantity * prestation.price} €</TableCell>
                                     </TableRow>
                                   )
                                 })}
@@ -136,11 +137,11 @@ export default function FactureClient(props) {
                             <div id="transition-modal-description" align="center" style={{fontSize: '30px'}}> A Régler
                                 avant
                                 le <br/></div>
-                            <div><strong style={{fontSize: '20px'}}> 10/10/20</strong></div>
+                            <div><strong style={{fontSize: '20px'}}> {moment(props.command.dueDate).format('DD/MM/YYYY')}</strong></div>
                         </Grid>
                         <Grid item sm={6} align="center">
                             <div id="transition-modal-description" align=""> Total<br/>
-                                <div style={{fontSize: '30px', color: '#19857b'}}><strong>3000 € </strong></div>
+                                <div style={{fontSize: '30px', color: '#19857b'}}><strong>{props.command.total} € </strong></div>
                             </div>
                         </Grid>
                     </Grid>
