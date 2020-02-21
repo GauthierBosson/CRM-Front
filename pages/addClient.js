@@ -21,6 +21,7 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import {mainListItems} from '../components/listItems';
 import MessageIcon from '@material-ui/icons/Message';
 import AddClient from '../components/AddClient';
+import { withAuthSync } from '../utils/auth';
 
 import clientsServices from '../utils/clientsServices';
 import companiesServices from '../utils/companiesServices';
@@ -185,4 +186,4 @@ AddClientPage.getInitialProps = async ctx => {
   return { companiesList: companiesList.data.data };
 }
 
-export default AddClientPage
+export default withAuthSync(AddClientPage, ['admin', 'employee'])

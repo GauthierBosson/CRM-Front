@@ -18,6 +18,8 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import {mainListItems } from '../components/listItems';
 import MessageIcon from '@material-ui/icons/Message';
 import Category from '../components/Category';
+
+import categoriesServices from '../utils/categoriesServices';
 function Copyright() {
   return (
       <Typography variant="body2" color="textSecondary" align="center">
@@ -113,7 +115,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function Dashboard() {
+function CategoriesPage(props) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const handleDrawerOpen = () => {
@@ -173,7 +175,7 @@ function Dashboard() {
           <div className={classes.appBarSpacer}/>
           <Container maxWidth={false} className={classes.container}>
 
-            <Category />
+            <Category categories={props.categories} />
 
           </Container>
         </main>
@@ -181,6 +183,14 @@ function Dashboard() {
   );
 }
 
+CategoriesPage.getInitialProps = async ctx => {
+  const categories = await categoriesServices.getCategories(ctx);
 
-export default Dashboard
+  return {
+    categories: categories.data.data
+  }
+}
+
+
+export default CategoriesPage
 

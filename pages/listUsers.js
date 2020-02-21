@@ -1,9 +1,8 @@
 import React from 'react';
 import clsx from 'clsx';
-import {makeStyles} from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Drawer from '@material-ui/core/Drawer';
-import Box from '@material-ui/core/Box';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
@@ -12,20 +11,21 @@ import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import Badge from '@material-ui/core/Badge';
 import Container from '@material-ui/core/Container';
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-import Link from '@material-ui/core/Link';
+import Link from 'next/link';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
-import {mainListItems} from '../components/listItems';
+import { mainListItems } from '../components/listItems';
 import MessageIcon from '@material-ui/icons/Message';
-import AddClient from '../components/AddClient';
-import AddCompany from '../components/AddCompany'
-import { withAuthSync } from '../utils/auth';
+import ListClient from '../components/ListCLient';
+import ListUsers from '../components/ListUsers';
+import AccessibilityNewIcon from '@material-ui/icons/AccessibilityNew';
+import Button from '@material-ui/core/Button';
 
 import clientsServices from '../utils/clientsServices';
-import companiesServices from '../utils/companiesServices';
+import userServices from '../utils/userServices';
+import { withAuthSync } from '../utils/auth';
+
 
 function Copyright() {
     return (
@@ -118,11 +118,10 @@ const useStyles = makeStyles(theme => ({
         borderColor: theme.palette.primary,
     },
     fixedHeight: {
-        height: 100
-    },
+        height: 100  },
 }));
 
-function AddCompanyPage() {
+function ListUsersPage(props) {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
     const handleDrawerOpen = () => {
@@ -134,7 +133,7 @@ function AddCompanyPage() {
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
     return (
         <div className={classes.root}>
-            <CssBaseline/>
+            <CssBaseline />
             <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
                 <Toolbar className={classes.toolbar}>
                     <IconButton
@@ -144,12 +143,21 @@ function AddCompanyPage() {
                         onClick={handleDrawerOpen}
                         className={clsx(classes.menuButton, open && classes.menuButtonHidden)}
                     >
-                        <MenuIcon/>
+                        <MenuIcon />
                     </IconButton>
                     <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-                        <strong>Ajout entreprise</strong>
+                        <strong>Liste Clients</strong>
                     </Typography>
-
+                    <IconButton color="inherit">
+                        <Badge badgeContent={4} color="error">
+                            <NotificationsIcon />
+                        </Badge>
+                    </IconButton>
+                    <IconButton color="inherit">
+                        <Badge  color="secondary">
+                            <MessageIcon />
+                        </Badge>
+                    </IconButton>
                 </Toolbar>
             </AppBar>
             <Drawer
@@ -159,26 +167,38 @@ function AddCompanyPage() {
                 }}
                 open={open}
             >
-                <div className={classes.toolbarIcon} style={{backgroundColor: '#F1F1F1'}}>
+                <div className={classes.toolbarIcon} style={{backgroundColor:'#F1F1F1'}}>
 
                     <IconButton onClick={handleDrawerClose}>
-                        <ChevronLeftIcon/>
+                        <ChevronLeftIcon />
                     </IconButton>
                 </div>
-                <Divider/>
-                <List style={{backgroundColor: '#F1F1F1'}}>{mainListItems}</List>
-                <Divider/>
+                <Divider />
+                <List style={{backgroundColor:'#F1F1F1'}}>{mainListItems}</List>
+                <Divider />
             </Drawer>
             <main className={classes.content}>
-                <div className={classes.appBarSpacer}/>
-                <Container maxWidth="false" className={classes.container}>
-                    <Paper style={{padding:"30px", borderLeft:'solid 2px darkgreen'}}>
-                    <AddCompany />
-                    </Paper>
-                    </Container>
+                <div className={classes.appBarSpacer} />
+
+                <Container maxWidth={false} className={classes.container}>
+                    <h1 style={{color:'#19857b'}}>Liste des clients de la base données <AccessibilityNewIcon/></h1>
+                    <Link href="/addUser">
+                        <Button variant="contained" color="primary" style={{marginBottom: 10}}>
+                            Ajouter un utilisateur
+                        </Button>
+                    </Link>
+                    <ListUsers usersList={props.usersList} />
+                </Container>
             </main>
         </div>
     );
 }
 
-export default withAuthSync(AddCompanyPage, ['admin', 'employee'])
+ListUsersPage.getInitialProps = async ctx => {
+    const usersList = await userServices.getUsers(ctx)
+
+    return {usersList: usersList.data.data};
+}
+
+
+export default withAuthSync(ListUsersPage, ['employee', 'admin'])

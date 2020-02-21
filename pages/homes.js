@@ -303,7 +303,7 @@ function Dashboard() {
               </Link>
             </Grid>
             <Grid item xs={12} md={4} lg={3}>
-              <Link href="/" style={{ textDecoration: "none" }}>
+              <Link href="/listUsers" style={{ textDecoration: "none" }}>
                 <Paper
                   className={fixedHeightPaper}
                   style={{ borderLeft: "solid 3px #CF2C29" }}
@@ -311,16 +311,14 @@ function Dashboard() {
                   <Grid container>
                     <Grid item xs={6} style={{ marginTop: "10px" }}>
                       <Box justifyContent="center" style={{ display: "flex" }}>
-                        <Badge badgeContent={1} color="error">
-                          <AddAlertIcon
+                          <PeopleAltIcon
                             style={{ fontSize: "3rem", marginTop: "6px" }}
                           />
-                        </Badge>
                       </Box>
                     </Grid>
                     <Grid item xs={6} style={{ marginTop: "10px" }}>
                       <Box justifyContent="center" style={{ display: "flex" }}>
-                        <h3>Demandes</h3>
+                        <h3>Utilisateurs</h3>
                       </Box>
                     </Grid>
                   </Grid>

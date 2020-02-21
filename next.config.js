@@ -12,6 +12,7 @@ module.exports = withCSS({
 
 module.exports = {
   env: {
-    API_URL: process.env.API_URL
+    API_URL: process.env.API_URL,
+    STRIPE_SECRET_KEY: "pk_test_D93fLGLHxVKgCTS3112BnHxE00zClW9mcU"
   }
 };

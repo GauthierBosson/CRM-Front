@@ -77,17 +77,7 @@ const detailsCompany = (props) => {
                 </Grid>
 
 
-                <Grid item xs={3} align="left">
-                    <Button disabled={true} variant="contained" color="primary" disableElevation>
-                        Envoyer un mail <MailOutlineIcon style={{marginLeft: '6px'}}/>
-                    </Button>
-                </Grid>
-                <Grid item xs={3} align="left">
-                    <Button variant="contained" color="primary" disableElevation>
-                        Voir Devis<ReceiptIcon style={{marginLeft: '6px'}} />
-                    </Button>
 
-                </Grid>
                 <Grid item xs={3} align="left">
                     <Button onClick={handleOpenModal} variant="contained" color="primary" disableElevation>
                         Créer un projet<ReceiptIcon style={{marginLeft: '6px'}} />

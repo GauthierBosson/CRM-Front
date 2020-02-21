@@ -21,7 +21,7 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import {mainListItems} from '../components/listItems';
 import MessageIcon from '@material-ui/icons/Message';
 import AddClient from '../components/AddClient';
-import AddCompany from '../components/AddCompany'
+import AddUser from '../components/AddUser';
 import { withAuthSync } from '../utils/auth';
 
 import clientsServices from '../utils/clientsServices';
@@ -122,7 +122,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-function AddCompanyPage() {
+function AddUserPage(props) {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
     const handleDrawerOpen = () => {
@@ -147,7 +147,7 @@ function AddCompanyPage() {
                         <MenuIcon/>
                     </IconButton>
                     <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-                        <strong>Ajout entreprise</strong>
+                        <strong>Ajout client</strong>
                     </Typography>
 
                 </Toolbar>
@@ -173,7 +173,7 @@ function AddCompanyPage() {
                 <div className={classes.appBarSpacer}/>
                 <Container maxWidth="false" className={classes.container}>
                     <Paper style={{padding:"30px", borderLeft:'solid 2px darkgreen'}}>
-                    <AddCompany />
+                    <AddUser />
                     </Paper>
                     </Container>
             </main>
@@ -181,4 +181,4 @@ function AddCompanyPage() {
     );
 }
 
-export default withAuthSync(AddCompanyPage, ['admin', 'employee'])
+export default withAuthSync(AddUserPage, ['admin', 'employee'])
