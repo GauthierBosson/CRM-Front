@@ -93,6 +93,9 @@ const useStyles = makeStyles(theme => ({
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.leavingScreen,
         }),
+        [theme.breakpoints.down('xs')]: {
+            display:'none'
+        },
         width: theme.spacing(7),
         [theme.breakpoints.up('sm')]: {
             width: theme.spacing(9),
@@ -146,16 +149,6 @@ function ClientsList(props) {
                     <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
                         <strong>Liste Clients</strong>
                     </Typography>
-                    <IconButton color="inherit">
-                        <Badge badgeContent={4} color="error">
-                            <NotificationsIcon />
-                        </Badge>
-                    </IconButton>
-                    <IconButton color="inherit">
-                        <Badge  color="secondary">
-                            <MessageIcon />
-                        </Badge>
-                    </IconButton>
                 </Toolbar>
             </AppBar>
             <Drawer
@@ -179,7 +172,7 @@ function ClientsList(props) {
                 <div className={classes.appBarSpacer} />
 
                 <Container maxWidth={false} className={classes.container}>
-                    <h1 style={{color:'#19857b'}}>Liste des clients de la base données <AccessibilityNewIcon/></h1>
+                    <h1 style={{color:'#19857b'}}>Liste des clients de la base de données <AccessibilityNewIcon/></h1>
                     <Link href="/addClient">
                         <Button variant="contained" color="primary" style={{marginBottom: 10}}>
                             Ajouter un client

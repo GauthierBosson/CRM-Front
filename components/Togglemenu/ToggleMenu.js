@@ -41,26 +41,6 @@ export default function SimpleMenu() {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
             >
-                <Link href="/bill" onClick={handleClose}>
-
-                        <ListItem>
-                            <ListItemIcon>
-                                <EuroSymbolIcon style={{fill:'#cac52e'}}/>
-                            </ListItemIcon>
-                            <ListItemText primary="Factures" />
-                        </ListItem>
-
-                </Link>
-                <Link href="/quoteHistory" onClick={handleClose}>
-
-                        <ListItem button>
-                            <ListItemIcon>
-                                <PlaylistAddCheckIcon style={{fill:'#874ec2'}}/>
-                            </ListItemIcon>
-                            <ListItemText primary="Devis" />
-                        </ListItem>
-
-                </Link>
                 <Link href="/category" onClick={handleClose}>
 
                         <ListItem button>
@@ -78,30 +58,6 @@ export default function SimpleMenu() {
                                 <GavelIcon style={{fill:'#df8a46'}} />
                             </ListItemIcon>
                             <ListItemText primary="Mentions légales" />
-                        </ListItem>
-
-                </Link>
-                <Link href="/cgu" onClick={handleClose}>
-
-                        <ListItem button>
-                            <ListItemIcon>
-                                <GavelIcon style={{fill:'#5350ba'}}/>
-                            </ListItemIcon>
-                            <ListItemText
-                                disableTypography={true}
-                                style={{ fontSize: "15px" }}
-                                primary="Conditions d'utilisation"
-                            />
-                        </ListItem>
-
-                </Link>
-                <Link href="/" onClick={handleClose}>
-
-                        <ListItem button>
-                            <ListItemIcon>
-                                <RestoreIcon style={{fill:'#0096ba'}}/>
-                            </ListItemIcon>
-                            <ListItemText primary="Historique" />
                         </ListItem>
 
                 </Link>

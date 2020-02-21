@@ -77,7 +77,6 @@ export default function TransitionsModal() {
                 <Fade in={open}>
                     <div className={classes.paper}>
                         <div id="transition-modal-title" style={{fontSize:'30px', borderLeft:'solid 3px #19857b'}}><strong style={{marginLeft:'10px'}}>Détails de la Facture  </strong> </div>
-                        <div align="right"><Button>Générer en PDF <PictureAsPdfIcon style={{marginLeft:'4px'}}/></Button></div>
                         <br/>
                         <br/>
                         <Grid item  sm={12}>

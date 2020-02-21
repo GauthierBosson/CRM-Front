@@ -82,6 +82,9 @@ const useStyles = makeStyles(theme => ({
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.leavingScreen,
         }),
+        [theme.breakpoints.down('xs')]: {
+            display:'none'
+        },
         width: theme.spacing(7),
         [theme.breakpoints.up('sm')]: {
             width: theme.spacing(9),
@@ -139,7 +142,7 @@ function Invoice(props) {
                         <MenuIcon/>
                     </IconButton>
                     <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-                        <strong>Dashboard client</strong>
+                        <strong>Facture</strong>
                     </Typography>
                 </Toolbar>
             </AppBar>

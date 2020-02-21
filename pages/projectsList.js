@@ -93,6 +93,9 @@ const useStyles = makeStyles(theme => ({
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.leavingScreen,
         }),
+        [theme.breakpoints.down('xs')]: {
+            display:'none'
+        },
         width: theme.spacing(7),
         [theme.breakpoints.up('sm')]: {
             width: theme.spacing(9),
@@ -146,16 +149,6 @@ function ProjectsList(props) {
                     <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
                         <strong>Liste des projets</strong>
                     </Typography>
-                    <IconButton color="inherit">
-                        <Badge badgeContent={4} color="error">
-                            <NotificationsIcon />
-                        </Badge>
-                    </IconButton>
-                    <IconButton color="inherit">
-                        <Badge  color="secondary">
-                            <MessageIcon />
-                        </Badge>
-                    </IconButton>
                 </Toolbar>
             </AppBar>
             <Drawer
