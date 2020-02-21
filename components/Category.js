@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -11,6 +11,8 @@ import {Input} from "@material-ui/core";
 import Button from '@material-ui/core/Button';
 import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
 import Tooltip from '@material-ui/core/Tooltip';
+
+import categoriesServices from '../utils/categoriesServices';
 
 
 
@@ -52,8 +54,24 @@ const useStyles = makeStyles({
     },
 });
 
-export default function CustomizedTables() {
+export default function Categories(props) {
     const classes = useStyles();
+
+    const [newCategory, setNewCategory] = useState('')
+    const [categories, setCategories] = useState(props.categories)
+
+    async function addCategory() {
+        const response = await categoriesServices.addCategory({name: newCategory});
+        setCategories(
+            [
+                ...categories,
+                response.data.doc
+            ]
+        )
+        setNewCategory(
+            ''
+        )
+    }
 
     return (
         <div>
@@ -64,24 +82,23 @@ export default function CustomizedTables() {
                 <TableHead>
                     <TableRow>
                         <StyledTableCell>Nom de catégorie</StyledTableCell>
-                        <StyledTableCell align="right">Nombre de client par catégories</StyledTableCell>
+                        <StyledTableCell></StyledTableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
 
-                    {rows.map(row => (
-                        <StyledTableRow key={row.name}>
+                    {categories.map(category => (
+                        <StyledTableRow key={category.name}>
                             <StyledTableCell component="th" scope="row">
-                                <strong>{row.name}</strong>
+                                <strong>{category.name}</strong>
                             </StyledTableCell>
-                            <StyledTableCell align="right">2</StyledTableCell>
-
+                            <StyledTableCell></StyledTableCell>
 
 
                         </StyledTableRow>
                     ))}
-                    <StyledTableRow><StyledTableCell><Input placeholder="Ajouter une catégorie"></Input></StyledTableCell>
-                        <StyledTableCell align="right"><Tooltip title="Ajouter" placement="bottom"  ><Button style={{color:'#269a9c'}}><PlaylistAddIcon style={{fontSize:'30px'}}/></Button></Tooltip></StyledTableCell>
+                    <StyledTableRow><StyledTableCell><Input onChange={event => setNewCategory(event.target.value)} value={newCategory} placeholder="Ajouter une catégorie"></Input></StyledTableCell>
+                        <StyledTableCell align="right"><Tooltip title="Ajouter" placement="bottom"  ><Button onClick={() => addCategory()} style={{color:'#269a9c'}}><PlaylistAddIcon style={{fontSize:'30px'}}/></Button></Tooltip></StyledTableCell>
                     </StyledTableRow>
                 </TableBody>
             </Table>
