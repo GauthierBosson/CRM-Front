@@ -303,7 +303,7 @@ function Dashboard() {
               </Link>
             </Grid>
             <Grid item xs={12} md={4} lg={3}>
-              <Link href="/" style={{ textDecoration: "none" }}>
+              <Link href="/listUsers" style={{ textDecoration: "none" }}>
                 <Paper
                   className={fixedHeightPaper}
                   style={{ borderLeft: "solid 3px #CF2C29" }}

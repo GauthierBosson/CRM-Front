@@ -1,10 +1,25 @@
 import axios from "axios";
-const API_URL = "http://localhost:3001";
+import cookie from 'js-cookie';
+import nextCookie from 'next-cookies';
+
+const API_URL = "http://localhost:3001/api/v1";
 
 export default class userServices {
-  static getUsers() {
+  static createInstance(ctx) {
+    const { token } = nextCookie(ctx);
+    return axios.create({
+      headers: {
+        'Authorization': 'Bearer ' + token,
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+    })
+  }
+
+  static getUsers(ctx) {
+    const instance = this.createInstance(ctx);
     const url = `${API_URL}/users`;
-    return axios.get(url).then(response => {
+    return instance.get(url).then(response => {
       return response.data;
     });
   }
