@@ -2,7 +2,7 @@ import axios from "axios";
 import cookie from 'js-cookie';
 import nextCookie from 'next-cookies';
 
-const API_URL = "http://localhost:3001/api/v1";
+const API_URL = process.env.API_URL || 'http://localhost:3001/api/v1';
 
 export default class projectsServices {
   static createInstance(ctx) {

@@ -3,7 +3,7 @@ import nextCookie from 'next-cookies';
 import cookie from 'js-cookie';
 const FileDownload = require('js-file-download');
 
-const API_URL = "http://localhost:3001/api/v1";
+const API_URL = process.env.API_URL || 'http://localhost:3001/api/v1';
 
 export default class invoiceServices {
   static createInstance(ctx) {
