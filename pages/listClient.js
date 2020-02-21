@@ -179,7 +179,7 @@ function ClientsList(props) {
                 <div className={classes.appBarSpacer} />
 
                 <Container maxWidth={false} className={classes.container}>
-                    <h1 style={{color:'#19857b'}}>Liste des clients de la base données <AccessibilityNewIcon/></h1>
+                    <h1 style={{color:'#19857b'}}>Liste des clients de la base de données <AccessibilityNewIcon/></h1>
                     <Link href="/addClient">
                         <Button variant="contained" color="primary" style={{marginBottom: 10}}>
                             Ajouter un client

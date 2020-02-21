@@ -81,30 +81,6 @@ export default function SimpleMenu() {
                         </ListItem>
 
                 </Link>
-                <Link href="/cgu" onClick={handleClose}>
-
-                        <ListItem button>
-                            <ListItemIcon>
-                                <GavelIcon style={{fill:'#5350ba'}}/>
-                            </ListItemIcon>
-                            <ListItemText
-                                disableTypography={true}
-                                style={{ fontSize: "15px" }}
-                                primary="Conditions d'utilisation"
-                            />
-                        </ListItem>
-
-                </Link>
-                <Link href="/" onClick={handleClose}>
-
-                        <ListItem button>
-                            <ListItemIcon>
-                                <RestoreIcon style={{fill:'#0096ba'}}/>
-                            </ListItemIcon>
-                            <ListItemText primary="Historique" />
-                        </ListItem>
-
-                </Link>
             </Menu>
         </div>
     );
