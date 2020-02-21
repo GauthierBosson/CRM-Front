@@ -89,16 +89,19 @@ const useStyles = makeStyles(theme => ({
         }),
     },
     drawerPaperClose: {
-        overflowX: 'hidden',
-        transition: theme.transitions.create('width', {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.leavingScreen,
-        }),
-        width: theme.spacing(7),
-        [theme.breakpoints.up('sm')]: {
-            width: theme.spacing(9),
-        },
-    },
+      overflowX: 'hidden',
+      transition: theme.transitions.create('width', {
+          easing: theme.transitions.easing.sharp,
+          duration: theme.transitions.duration.leavingScreen,
+      }),
+      [theme.breakpoints.down('xs')]: {
+          display:'none'
+      },
+      width: theme.spacing(7),
+      [theme.breakpoints.up('sm')]: {
+          width: theme.spacing(9),
+      },
+  },
     appBarSpacer: theme.mixins.toolbar,
     content: {
         flexGrow: 1,

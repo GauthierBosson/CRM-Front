@@ -91,14 +91,17 @@ const useStyles = makeStyles(theme => ({
   drawerPaperClose: {
     overflowX: 'hidden',
     transition: theme.transitions.create('width', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
+        easing: theme.transitions.easing.sharp,
+        duration: theme.transitions.duration.leavingScreen,
     }),
+    [theme.breakpoints.down('xs')]: {
+        display:'none'
+    },
     width: theme.spacing(7),
     [theme.breakpoints.up('sm')]: {
-      width: theme.spacing(9),
+        width: theme.spacing(9),
     },
-  },
+},
   appBarSpacer: theme.mixins.toolbar,
   content: {
     flexGrow: 1,
@@ -147,16 +150,7 @@ function Agenda(props) {
             <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
               <strong>Agenda</strong>
             </Typography>
-            <IconButton color="inherit">
-              <Badge badgeContent={4} color="error">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
-            <IconButton color="inherit">
-              <Badge  color="secondary">
-                <MessageIcon />
-              </Badge>
-            </IconButton>
+            
           </Toolbar>
         </AppBar>
         <Drawer
